@@ -11,7 +11,7 @@ module SpreeAvataxOfficial
       private
 
       def refund_in_avatax
-        return unless SpreeAvataxOfficial::Config.enabled && SpreeAvataxOfficial::Config.commit_transaction_enabled
+        return unless order.avatax_enabled? && order.avalara_integration.preferred_commit_transaction_enabled
 
         SpreeAvataxOfficial::Transactions::RefundService.call(refundable: self)
       end

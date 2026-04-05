@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load(File.expand_path('../.env', __dir__))
+
 # Run Coverage report
 require 'simplecov'
 SimpleCov.start do
@@ -28,7 +31,6 @@ Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 # Requires factories and other useful helpers defined in spree_core.
 require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/caching'
-require 'spree/testing_support/capybara_ext'
 require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
@@ -51,11 +53,6 @@ RSpec.configure do |config|
   # spree_get :index
   config.include Spree::TestingSupport::ControllerRequests, type: :controller
 
-  # == Devise helpers
-  #
-  # Helpers using in user authorization
-  config.include Devise::Test::ControllerHelpers, type: :controller
-
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -70,38 +67,28 @@ RSpec.configure do |config|
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_paths = ["#{::Rails.root}/spec/fixtures"]
 
-  # Capybara javascript drivers require transactional fixtures set to false, and we use DatabaseCleaner
-  # to cleanup after each test instead.  Without transactional fixtures set to false the records created
-  # to setup a test will be unavailable to the browser, which runs under a separate server instance.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
   config.color                      = true
   config.raise_on_warning           = true
   config.order                      = 'random'
   config.default_formatter          = 'doc'
   config.fail_fast                  = ENV['FAIL_FAST'] || false
 
-  config.around(avatax_enabled: true) do |example|
-    SpreeAvataxOfficial::Config.enabled = true
-
-    example.run
-
-    SpreeAvataxOfficial::Config.enabled = false
-  end
-
   config.before do
     Rails.cache.clear
 
-    create(:country, name: 'United States', iso_name: 'UNITED STATES', iso: 'US', states_required: true)
-    create(:store, default_currency: 'USD', default_country_id: Spree::Country.first.id)
+    Spree::Country.find_by(iso: 'US') || create(:country, name: 'United States', iso_name: 'UNITED STATES', iso: 'US', states_required: true)
+
+    unless Spree::Store.exists?
+      create(:store, default_currency: 'USD', default_country_id: Spree::Country.find_by(iso: 'US')&.id)
+    end
   end
 
-  config.before(type: :feature) do
-    DatabaseCleaner.start
+  config.before(:each, :avalara_integration) do
+    store = Spree::Store.default
+    Spree::Integrations::Avalara.find_by(store_id: store.id) || create(:avalara_integration, store: store) if store&.persisted?
   end
 
-  config.append_after(type: :feature) do
-    DatabaseCleaner.clean
-  end
 end

@@ -8,7 +8,7 @@ module SpreeAvataxOfficial
       end
 
       def included_in_price
-        tax_zone.try(:included_in_price) || false
+        order.market&.tax_inclusive || false
       end
 
       def tax_category

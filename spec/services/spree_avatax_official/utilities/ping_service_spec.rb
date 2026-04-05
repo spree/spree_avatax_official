@@ -1,7 +1,9 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Utilities::PingService do
-  subject { described_class.call }
+describe SpreeAvataxOfficial::Utilities::PingService, :avalara_integration do
+  subject { described_class.call(store: store) }
+
+  let(:store) { Spree::Store.default }
 
   context 'with proper credentials' do
     it 'respond with success' do

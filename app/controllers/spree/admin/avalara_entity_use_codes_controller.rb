@@ -5,7 +5,6 @@ module Spree
 
       def index
         @use_codes = SpreeAvataxOfficial::EntityUseCode.all.order(code: :asc)
-        respond_with(@use_codes)
       end
 
       def new
@@ -38,10 +37,7 @@ module Spree
           flash[:error] = @use_code.errors.full_messages.to_sentence
         end
 
-        respond_with(@use_code) do |format|
-          format.html { redirect_to admin_avalara_entity_use_codes_path }
-          format.js   { render_js_for_destroy }
-        end
+        redirect_to admin_avalara_entity_use_codes_path
       end
 
       private

@@ -14,21 +14,21 @@ module SpreeAvataxOfficial
 
     private
 
-    def client
-      AvaTax::Client.new(
-        app_name:           APP_NAME,
-        app_version:        APP_VERSION,
-        connection_options: CONNECTION_OPTIONS,
-        logger:             true,
-        faraday_response:   true,
-        endpoint:           SpreeAvataxOfficial::Config.endpoint,
-        username:           SpreeAvataxOfficial::Config.account_number,
-        password:           SpreeAvataxOfficial::Config.license_key
-      )
+    def integration_for(order)
+      order.store.integrations.active.find_by(type: 'Spree::Integrations::Avalara')
+    end
+
+    def client(order:)
+      integration = integration_for(order)
+
+      raise 'Avalara integration is not configured for this store' unless integration
+
+      integration.avatax_client
     end
 
     def company_code(order)
-      order.store&.avatax_company_code || SpreeAvataxOfficial::Config.company_code
+      integration = integration_for(order)
+      integration&.preferred_company_code.presence || order.store&.avatax_company_code
     end
 
     def request_result(response, object = nil)

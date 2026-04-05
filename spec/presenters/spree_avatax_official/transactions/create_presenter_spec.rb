@@ -1,18 +1,20 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::CreatePresenter do
+describe SpreeAvataxOfficial::Transactions::CreatePresenter, :avalara_integration do
   subject { described_class.new(order: order, transaction_type: transaction_type) }
 
   describe '#to_json' do
+    before { allow(SpreeAvataxOfficial::CreateTaxAdjustmentsService).to receive(:call).and_return(Spree::ServiceModule::Result.new(true, true)) }
+
     let(:order) { create(:order_with_line_items) }
     let(:order_items) { order.taxable_items }
-    let(:ship_from_address) { SpreeAvataxOfficial::Config.ship_from_address }
+    let(:ship_from_address) { avalara_integration.preferred_ship_from_address }
     let(:transaction_type) { 'SalesOrder' }
 
     let(:result) do
       {
         type:            transaction_type,
-        companyCode:     SpreeAvataxOfficial::Configuration.new.company_code,
+        companyCode:     order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code),
         code:            order.number,
         referenceCode:   order.number,
         date:            order.updated_at.strftime('%Y-%m-%d'),
@@ -59,7 +61,9 @@ describe SpreeAvataxOfficial::Transactions::CreatePresenter do
 
     context 'with company code', if: defined?(Spree::Store) do
       it 'serializes the object' do
-        order.update(store: create(:store, avatax_company_code: 'test123'))
+        new_store = create(:store, avatax_company_code: 'test123')
+        create(:avalara_integration, store: new_store, preferred_company_code: 'test123')
+        order.update(store: new_store)
 
         result[:companyCode] = 'test123'
 

@@ -1,8 +1,8 @@
 module SpreeAvataxOfficial
   module Address
     class Validate < SpreeAvataxOfficial::Base
-      def call(address:)
-        response = send_request(address)
+      def call(address:, order:)
+        response = send_request(address, order)
 
         return failure(response) if errors?(response)
 
@@ -15,12 +15,12 @@ module SpreeAvataxOfficial
         response.body['messages'] || response.body['error']
       end
 
-      def send_request(address)
+      def send_request(address, order)
         ship_to_address_model = SpreeAvataxOfficial::ShipToAddressPresenter.new(
           address: address
         ).to_json
 
-        client.resolve_address(ship_to_address_model)
+        client(order: order).resolve_address(ship_to_address_model)
       end
     end
   end

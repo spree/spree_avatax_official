@@ -1,8 +1,10 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Address::Validate do
+describe SpreeAvataxOfficial::Address::Validate, :avalara_integration do
   describe '#call' do
-    subject { described_class.call(address: address) }
+    let(:order) { create(:order) }
+
+    subject { described_class.call(address: address, order: order) }
 
     context 'with valid address' do
       let(:address) { create(:usa_address) }

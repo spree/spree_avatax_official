@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::PartialRefundService do
+describe SpreeAvataxOfficial::Transactions::PartialRefundService, :avalara_integration do
   describe '#call' do
     subject do
       described_class.call(

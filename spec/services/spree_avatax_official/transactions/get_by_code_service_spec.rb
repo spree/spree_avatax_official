@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::GetByCodeService do
+describe SpreeAvataxOfficial::Transactions::GetByCodeService, :avalara_integration do
   describe '#call' do
     subject { described_class.call(**params) }
 

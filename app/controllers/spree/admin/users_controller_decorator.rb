@@ -6,7 +6,7 @@ module Spree
       end
 
       def avalara_information
-        if request.put? && @user.update_attributes(user_params)
+        if request.put? && @user.update(user_params)
           flash.now[:success] = Spree.t(:account_updated)
         end
 

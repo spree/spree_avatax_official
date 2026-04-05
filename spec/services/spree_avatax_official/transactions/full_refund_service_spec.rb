@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::FullRefundService do
+describe SpreeAvataxOfficial::Transactions::FullRefundService, :avalara_integration do
   describe '#call' do
     subject { described_class.call(order: order, transaction_code: 'REFUND7482-1') }
 

@@ -3,11 +3,9 @@ require 'spec_helper'
 describe SpreeAvataxOfficial::ItemPresenter do
   subject     { described_class.new(item: item) }
 
-  let(:zone)  { create(:zone, included_in_price: false) }
-
   describe '#to_json' do
     before do
-      allow(item.order).to receive(:tax_zone).and_return zone
+      allow(item).to receive(:included_in_price).and_return false
     end
 
     context 'with line item' do
@@ -111,10 +109,8 @@ describe SpreeAvataxOfficial::ItemPresenter do
       end
 
       context 'with tax included in price' do
-        let(:zone) { create(:zone, included_in_price: true) }
-
         it 'serializes the object' do
-          allow(item).to receive(:tax_zone).and_return zone
+          allow(item).to receive(:included_in_price).and_return true
 
           result[:taxIncluded] = true
 

@@ -54,6 +54,179 @@ http_interactions:
         Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147","country":"US","taxRegionId":4014900,"latitude":"39.931676","longitude":"-75.159051"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
         STATE TAX","rateType":"General","taxable":46.30,"rate":0.060000,"tax":2.78,"taxCalculated":2.78,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
         COUNTY TAX","rateType":"General","taxable":46.30,"rate":0.020000,"tax":0.92,"taxCalculated":0.92,"nonTaxable":0.0,"exemption":0.0}]}'
-    http_version: 
   recorded_at: Fri, 20 Sep 2019 09:03:37 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R183602110","referenceCode":"R183602110","companyCode":"test1","date":"2026-04-05","customerCode":"viki@dickijohns.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":4,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        281478","itemCode":"SKU-28"},{"number":"LI-bf57f52a-2ab3-44bc-8be3-8f99ecccd196","quantity":3,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        293242","itemCode":"SKU-29"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R183602110","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 67363f17-c742-4238-a316-7c0ad81e1855
+      X-Avalara-Uid:
+      - 67363f17-c742-4238-a316-7c0ad81e1855
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:45 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R183602110","referenceCode":"R183602110","companyCode":"test1","date":"2026-04-05","customerCode":"viki@dickijohns.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":4,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        281478","itemCode":"SKU-28"},{"number":"LI-bf57f52a-2ab3-44bc-8be3-8f99ecccd196","quantity":3,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        293242","itemCode":"SKU-29"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R183602110","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - bb96e438-e0e3-46c2-ad9b-f64f418a38b3
+      X-Avalara-Uid:
+      - bb96e438-e0e3-46c2-ad9b-f64f418a38b3
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:46 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R183602110","referenceCode":"R183602110","companyCode":"test1","date":"2026-04-05","customerCode":"viki@dickijohns.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":4,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        281478","itemCode":"SKU-28"},{"number":"LI-bf57f52a-2ab3-44bc-8be3-8f99ecccd196","quantity":3,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        293242","itemCode":"SKU-29"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R183602110","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 275d1dcd-2fa0-418b-af65-5614b4c0ecf4
+      X-Avalara-Uid:
+      - 275d1dcd-2fa0-418b-af65-5614b4c0ecf4
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:46 GMT
+recorded_with: VCR 6.4.0

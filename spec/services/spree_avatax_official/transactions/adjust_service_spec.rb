@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::AdjustService do
+describe SpreeAvataxOfficial::Transactions::AdjustService, :avalara_integration do
   describe '#call' do
     context 'with correct parameters' do
       subject do

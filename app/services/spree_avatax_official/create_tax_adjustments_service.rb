@@ -53,10 +53,7 @@ module SpreeAvataxOfficial
       item_id     = avatax_item['lineNumber'].slice(3..-1)
       item        = find_item(order, item_id, item_suffix)
 
-      # Spree allows to setup shipping methods without tax category and
-      # in that case it doesn't make sense to collect any tax,
-      # especially because of validation that requires presence of tax category
-      return if item.tax_category.nil?
+      return if item.nil? || item.tax_category.nil?
 
       tax_rate = find_or_create_tax_rate(item, avatax_item)
 
@@ -121,7 +118,10 @@ module SpreeAvataxOfficial
     def build_error_message_from_response(avatax_response)
       return ::Spree.t('spree_avatax_official.create_tax_adjustments.tax_calculation_failed') unless error_present?(avatax_response)
 
-      avatax_response['error']['details'].map do |error_detail_entry|
+      details = avatax_response.dig('error', 'details')
+      return ::Spree.t('spree_avatax_official.create_tax_adjustments.tax_calculation_failed') if details.blank?
+
+      details.map do |error_detail_entry|
         "#{error_detail_entry['number']} - #{error_detail_entry['message']} - #{error_detail_entry['description']}."
       end.join(' ')
     end

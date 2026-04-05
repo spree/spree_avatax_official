@@ -56,6 +56,179 @@ http_interactions:
         Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147","country":"US","taxRegionId":4014900,"latitude":"39.931676","longitude":"-75.159051"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
         STATE TAX","rateType":"General","taxable":55.00,"rate":0.060000,"tax":3.30,"taxCalculated":3.30,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
         COUNTY TAX","rateType":"General","taxable":55.00,"rate":0.020000,"tax":1.10,"taxCalculated":1.10,"nonTaxable":0.0,"exemption":0.0}]}'
-    http_version: 
   recorded_at: Fri, 20 Sep 2019 09:03:40 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R071477617","referenceCode":"R071477617","companyCode":"test1","date":"2026-04-05","customerCode":"sulema.bode@schinner.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":4,"amount":"40.0","taxCode":"P0000000","discounted":true,"addresses":{},"taxIncluded":false,"description":"Product
+        26579","itemCode":"SKU-26"},{"number":"LI-be393e03-c530-4d31-bea7-f01b39496568","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":true,"addresses":{},"taxIncluded":false,"description":"Product
+        271070","itemCode":"SKU-27"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"20.0","currencyCode":"USD","purchaseOrderNo":"R071477617","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 1ca356e2-0818-4178-aae0-a890e6e83fe8
+      X-Avalara-Uid:
+      - 1ca356e2-0818-4178-aae0-a890e6e83fe8
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:42 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R071477617","referenceCode":"R071477617","companyCode":"test1","date":"2026-04-05","customerCode":"sulema.bode@schinner.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":4,"amount":"40.0","taxCode":"P0000000","discounted":true,"addresses":{},"taxIncluded":false,"description":"Product
+        26579","itemCode":"SKU-26"},{"number":"LI-be393e03-c530-4d31-bea7-f01b39496568","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":true,"addresses":{},"taxIncluded":false,"description":"Product
+        271070","itemCode":"SKU-27"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"20.0","currencyCode":"USD","purchaseOrderNo":"R071477617","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 207dff78-9615-4b39-a2b0-9980c40d1104
+      X-Avalara-Uid:
+      - 207dff78-9615-4b39-a2b0-9980c40d1104
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:43 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R071477617","referenceCode":"R071477617","companyCode":"test1","date":"2026-04-05","customerCode":"sulema.bode@schinner.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":4,"amount":"40.0","taxCode":"P0000000","discounted":true,"addresses":{},"taxIncluded":false,"description":"Product
+        26579","itemCode":"SKU-26"},{"number":"LI-be393e03-c530-4d31-bea7-f01b39496568","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":true,"addresses":{},"taxIncluded":false,"description":"Product
+        271070","itemCode":"SKU-27"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"20.0","currencyCode":"USD","purchaseOrderNo":"R071477617","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 4d60a793-eed0-4880-9599-519ab9f63a44
+      X-Avalara-Uid:
+      - 4d60a793-eed0-4880-9599-519ab9f63a44
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:43 GMT
+recorded_with: VCR 6.4.0

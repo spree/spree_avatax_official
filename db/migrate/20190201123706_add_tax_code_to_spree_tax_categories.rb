@@ -1,4 +1,4 @@
-class AddTaxCodeToSpreeTaxCategories < SpreeExtension::Migration[4.2]
+class AddTaxCodeToSpreeTaxCategories < ActiveRecord::Migration[7.2]
   def change
     return if column_exists? :spree_tax_categories, :tax_code
 

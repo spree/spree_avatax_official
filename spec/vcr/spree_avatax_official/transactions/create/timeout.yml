@@ -49,6 +49,64 @@ http_interactions:
         parameter `$include=ForceTimeout` to this API.  The `ForceTimeout` include
         option simulates a timeout error to make tests easier.  To stop receiving
         this error code, remove the word `ForceTimeout`.","faultCode":"Client","helpLink":"http://developer.avalara.com/avatax/errors/TimeoutRequested","severity":"Error"}]}}'
-    http_version: 
   recorded_at: Fri, 20 Sep 2019 09:01:50 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R378842244","referenceCode":"R378842244","companyCode":"test1","date":"2026-04-05","customerCode":"tenesha_homenick@wiegand.biz","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"PA","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
+        61546","itemCode":"SKU-6"},{"number":"FR-b43e1e44-17d1-4444-a8bf-7ff259829bff","quantity":1,"amount":"100.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R378842244","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 96f4516b-092b-4679-8833-89adc9320812
+      X-Avalara-Uid:
+      - 96f4516b-092b-4679-8833-89adc9320812
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:21 GMT
+recorded_with: VCR 6.4.0

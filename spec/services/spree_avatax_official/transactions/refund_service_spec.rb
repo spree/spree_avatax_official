@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::RefundService do
+describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration do
   describe '#call' do
     subject { described_class.call(refundable: return_auth) }
 
@@ -8,7 +8,15 @@ describe SpreeAvataxOfficial::Transactions::RefundService do
     let(:return_auth) { create(:return_authorization, order: order, inventory_units: order.inventory_units) }
 
     context 'with refund' do
-      let(:payment)       { create(:payment, state: :completed, order: order) }
+      let(:payment) do
+        p = order.payments.new(
+          payment_method: create(:check_payment_method),
+          amount: 10
+        )
+        p.state = :completed
+        p.save!(validate: false)
+        p
+      end
       let(:reimbursement) { order.reimbursements.create }
       let(:refund)        { create(:refund, amount: 10, reimbursement: reimbursement, payment: payment) }
 

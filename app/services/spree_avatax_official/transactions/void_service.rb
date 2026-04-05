@@ -16,7 +16,7 @@ module SpreeAvataxOfficial
       def send_request(order, options)
         logger.info(options, order)
 
-        client.void_transaction(
+        client(order: order).void_transaction(
           company_code(order),
           order.number,
           { code: 'DocVoided' },

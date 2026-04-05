@@ -33,7 +33,7 @@ module SpreeAvataxOfficial
       attr_reader :order, :transaction_type, :transaction_code
 
       def company_code
-        order.store.try(:avatax_company_code) || SpreeAvataxOfficial::Config.company_code
+        order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code)
       end
 
       def entity_use_code

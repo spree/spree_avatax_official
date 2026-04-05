@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  tests_postgres:
+    name: Tests (PostgreSQL)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DB: postgres
+      DB_HOST: localhost
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install libvips
+        run: sudo apt-get update && sudo apt-get install -y libvips
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0'
+          bundler-cache: true
+      - name: Create test app
+        run: bundle exec rake test_app
+      - name: Run tests
+        run: bundle exec rspec --format documentation
+
+  tests_mysql:
+    name: Tests (MySQL)
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DB: mysql
+      DB_HOST: 127.0.0.1
+      DB_USERNAME: root
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install libvips
+        run: sudo apt-get update && sudo apt-get install -y libvips
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0'
+          bundler-cache: true
+      - name: Create test app
+        run: bundle exec rake test_app
+      - name: Run tests
+        run: bundle exec rspec --format documentation

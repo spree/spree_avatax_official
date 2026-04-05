@@ -9,7 +9,7 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
   s.version               = SpreeAvataxOfficial.version
   s.summary               = 'The official certified Spree Avatax'
   s.description           = 'The new officially supported Avalara AvaTax extension for Spree Commerce using Avalara REST API v2'
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 3.2.0'
 
   s.author   = 'Spark Solutions'
   s.email    = 'we@sparksolutions.co'
@@ -30,11 +30,10 @@ Gem::Specification.new do |s| # rubocop:disable Metrics/BlockLength
 
   s.add_dependency 'avatax', '>= 19.3'
 
-  spree_version = '>= 4.3'
+  spree_version = '>= 5.4.0.rc5'
 
-  s.add_dependency 'spree_backend', spree_version
-  s.add_dependency 'spree_core',    spree_version
-  s.add_dependency 'spree_extension'
+  s.add_dependency 'spree',       spree_version
+  s.add_dependency 'spree_admin', spree_version
 
   s.add_development_dependency 'dotenv-rails'
   s.add_development_dependency 'spree_dev_tools'

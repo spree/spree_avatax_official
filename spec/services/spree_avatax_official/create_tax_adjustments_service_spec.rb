@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
+describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration do
   subject { described_class.call(order: order) }
 
   let(:usa_address) { create(:usa_address) }
@@ -33,7 +33,7 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
 
         context 'with_tax_included' do
           it 'creates tax rates and tax adjustments for all taxable items' do
-            order.tax_zone.update!(included_in_price: true)
+            enable_tax_inclusive_for_order(order)
             result = nil
 
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/single_line_item') do
@@ -80,7 +80,7 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
 
           context 'with tax included' do
             it 'creates tax rates and tax adjustments' do
-              order.tax_zone.update!(included_in_price: true)
+              enable_tax_inclusive_for_order(order)
               result = nil
 
               VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/line_item_and_shipment') do
@@ -123,11 +123,8 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
           let(:line_item_tax_adjustment) { order.line_items.first.adjustments.tax.first }
           let(:shipment_tax_adjustment) { order.shipments.first.adjustments.tax.first }
 
-          around do |example|
-            SpreeAvataxOfficial::Config.show_rate_in_label = true
-            example.run
-            SpreeAvataxOfficial::Config.show_rate_in_label = false
-          end
+          before { update_avalara_setting(:show_rate_in_label, true) }
+          after { update_avalara_setting(:show_rate_in_label, false) }
 
           it 'sets adjustments labels with percentage tax amount' do
             result = nil
@@ -211,7 +208,7 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
 
         context 'with tax included' do
           it 'creates tax rates and tax adjustments' do
-            order.tax_zone.update(included_in_price: true)
+            enable_tax_inclusive_for_order(order)
             result = nil
 
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/multiple_line_items_multiple_quantity') do
@@ -224,7 +221,6 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
               order.updater.update
             end
 
-            expect(order.tax_zone.included_in_price).to be true
             expect(result.success?).to eq true
             expect(order.total).to eq 50.0
             expect(order.included_tax_total).to eq 3.7
@@ -268,7 +264,7 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
 
         context 'with tax included' do
           it 'creates tax rates and tax adjustments' do
-            order.tax_zone.update(included_in_price: true)
+            enable_tax_inclusive_for_order(order)
             result = nil
 
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/line_item_adjustment_promotion') do
@@ -285,7 +281,6 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService do
               order.updater.update
             end
 
-            expect(order.tax_zone.included_in_price).to be true
             expect(result.success?).to eq true
             expect(order.total).to eq 50.0
             expect(order.included_tax_total).to eq 3.7

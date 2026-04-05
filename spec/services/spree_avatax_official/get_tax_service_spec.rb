@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::GetTaxService do
+describe SpreeAvataxOfficial::GetTaxService, :avalara_integration do
   subject { described_class.call(order: order) }
 
   describe '#call' do

@@ -26,7 +26,7 @@ module SpreeAvataxOfficial
 
         logger.info(refund_transaction_model)
 
-        client.create_transaction(refund_transaction_model)
+        client(order: order).create_transaction(refund_transaction_model)
       end
     end
   end

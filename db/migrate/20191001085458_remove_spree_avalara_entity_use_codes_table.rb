@@ -1,4 +1,4 @@
-class RemoveSpreeAvalaraEntityUseCodesTable < SpreeExtension::Migration[4.2]
+class RemoveSpreeAvalaraEntityUseCodesTable < ActiveRecord::Migration[7.2]
   def change
     return unless table_exists?(:spree_avalara_entity_use_codes)
 

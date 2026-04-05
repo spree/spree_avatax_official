@@ -10,7 +10,7 @@ describe Spree::LineItem do
   end
 
   describe '#update_tax_charge' do
-    context 'with AvaTax tax calculcation', :avatax_enabled do
+    context 'with AvaTax tax calculcation', :avalara_integration do
       let(:order) { create(:avatax_order, ship_address: create(:usa_address)) }
       let(:line_item) { order.line_items.first }
 

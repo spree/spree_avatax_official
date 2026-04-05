@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::AddressPresenter do
+describe SpreeAvataxOfficial::AddressPresenter, :avalara_integration do
   describe '#to_json' do
     context 'when serializing ShipTo address' do
       subject { described_class.new(address: address, address_type: address_type) }
@@ -29,7 +29,7 @@ describe SpreeAvataxOfficial::AddressPresenter do
     context 'when serializing ShipFrom address' do
       subject { described_class.new(address: address, address_type: address_type) }
 
-      let(:address) { SpreeAvataxOfficial::Config.ship_from_address }
+      let(:address) { avalara_integration.preferred_ship_from_address }
       let(:address_type) { 'ShipFrom' }
 
       let(:result) do

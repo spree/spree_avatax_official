@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::CreateService do
+describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration do
   describe '#call' do
     context 'with correct parameters' do
       let(:order) { create(:order_with_line_items, line_items_count: 1, ship_address: create(:usa_address)) }
@@ -197,25 +197,25 @@ describe SpreeAvataxOfficial::Transactions::CreateService do
           before { order.update(ship_address: europe_address) }
 
           it 'calculates VAT' do
-            SpreeAvataxOfficial::Config.ship_from_address = from_europe
+            update_avalara_setting(:ship_from_address, from_europe)
 
             VCR.use_cassette('spree_avatax_official/transactions/create/vat/europe_to_europe') do
               expect(tax_summary['taxName']).to eq 'GB VAT'
             end
 
-            SpreeAvataxOfficial::Config.ship_from_address = from_usa
+            update_avalara_setting(:ship_from_address, from_usa)
           end
         end
 
         context 'Europe to US sale' do
           it 'calculates US tax' do
-            SpreeAvataxOfficial::Config.ship_from_address = from_europe
+            update_avalara_setting(:ship_from_address, from_europe)
 
             VCR.use_cassette('spree_avatax_official/transactions/create/vat/europe_to_us') do
               expect(tax_summary['taxName']).to eq 'PA STATE TAX'
             end
 
-            SpreeAvataxOfficial::Config.ship_from_address = from_usa
+            update_avalara_setting(:ship_from_address, from_usa)
           end
         end
       end
@@ -235,25 +235,25 @@ describe SpreeAvataxOfficial::Transactions::CreateService do
           before { order.update(ship_address: canada_address) }
 
           it 'calculates GST/TPS' do
-            SpreeAvataxOfficial::Config.ship_from_address = from_canada
+            update_avalara_setting(:ship_from_address, from_canada)
 
             VCR.use_cassette('spree_avatax_official/transactions/create/gst/canada_to_canada') do
               expect(tax_summary['taxName']).to eq 'CANADA GST/TPS'
             end
 
-            SpreeAvataxOfficial::Config.ship_from_address = from_usa
+            update_avalara_setting(:ship_from_address, from_usa)
           end
         end
 
         context 'Canada to US sale' do
           it 'calculates US tax' do
-            SpreeAvataxOfficial::Config.ship_from_address = from_canada
+            update_avalara_setting(:ship_from_address, from_canada)
 
             VCR.use_cassette('spree_avatax_official/transactions/create/gst/canada_to_us') do
               expect(tax_summary['taxName']).to eq 'PA STATE TAX'
             end
 
-            SpreeAvataxOfficial::Config.ship_from_address = from_usa
+            update_avalara_setting(:ship_from_address, from_usa)
           end
         end
       end

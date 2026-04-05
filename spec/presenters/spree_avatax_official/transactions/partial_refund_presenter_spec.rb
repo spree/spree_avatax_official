@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::PartialRefundPresenter do
+describe SpreeAvataxOfficial::Transactions::PartialRefundPresenter, :avalara_integration do
+  before { allow(SpreeAvataxOfficial::CreateTaxAdjustmentsService).to receive(:call).and_return(Spree::ServiceModule::Result.new(true, true)) }
   subject do
     described_class.new(
       order:            order,
@@ -9,11 +10,11 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundPresenter do
     )
   end
 
-  let(:ship_from_address) { SpreeAvataxOfficial::Config.ship_from_address }
+  let(:ship_from_address) { avalara_integration.preferred_ship_from_address }
   let(:result) do
     {
       type:            'ReturnInvoice',
-      companyCode:     SpreeAvataxOfficial::Configuration.new.company_code,
+      companyCode:     order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code),
       referenceCode:   order.number,
       code:            "#{order.number}-1",
       date:            order.updated_at.strftime('%Y-%m-%d'),

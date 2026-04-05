@@ -1,4 +1,4 @@
-class AddUuidToSpreeLineItemsAndSpreeShipments < SpreeExtension::Migration[4.2]
+class AddUuidToSpreeLineItemsAndSpreeShipments < ActiveRecord::Migration[7.2]
   def change
     unless column_exists?(:spree_line_items, :avatax_uuid)
       add_column :spree_line_items, :avatax_uuid, :string

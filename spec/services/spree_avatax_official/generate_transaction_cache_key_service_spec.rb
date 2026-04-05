@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::GenerateTransactionCacheKeyService do
+describe SpreeAvataxOfficial::GenerateTransactionCacheKeyService, :avalara_integration do
   subject { described_class.call(order: order) }
 
   describe '#call' do

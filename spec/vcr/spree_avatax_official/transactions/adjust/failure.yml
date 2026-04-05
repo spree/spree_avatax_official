@@ -46,7 +46,6 @@ http_interactions:
       string: '{"error":{"code":"GetTaxError","message":"DocStatus is invalid for
         this operation.","target":"Unknown","details":[{"code":"GetTaxError","number":300,"message":"DocStatus
         is invalid for this operation.","description":"Expected Saved|Posted","faultCode":"GetTaxError","helpLink":"http://developer.avalara.com/avatax/errors/GetTaxError","refersTo":"DocStatus","severity":"Error"}]}}'
-    http_version: 
   recorded_at: Fri, 20 Sep 2019 09:03:08 GMT
 - request:
     method: post
@@ -96,6 +95,64 @@ http_interactions:
         request body did not contain valid JSON.","description":"At line 1 position
         22: Error converting value \"\" to type ''Avalara.AvaTax.Enums.AdjustmentReason''.
         Path ''adjustmentReason''","faultCode":"Client","helpLink":"http://developer.avalara.com/avatax/errors/JsonFormatError","severity":"Error"}]}}'
-    http_version: 
   recorded_at: Fri, 20 Sep 2019 09:03:09 GMT
-recorded_with: VCR 4.0.0
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesInvoice","code":"R680546408","referenceCode":"R680546408","companyCode":"test1","date":"2026-04-05","customerCode":"elden@lemke.ca","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"PA","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
+        112663","itemCode":"SKU-11"},{"number":"FR-baf0eae2-ee02-4635-97c6-5f3df38affa8","quantity":1,"amount":"100.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":true,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R680546408","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.3.2
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Sun, 05 Apr 2026 11:51:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 412feec5-0092-4cac-861d-268acef12ef1
+      X-Avalara-Uid:
+      - 412feec5-0092-4cac-861d-268acef12ef1
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
+  recorded_at: Sun, 05 Apr 2026 11:51:25 GMT
+recorded_with: VCR 6.4.0

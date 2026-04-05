@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Spree_Commerce_Docs_MCP__search_spree_commerce_documentation",
+      "mcp__claude_ai_Spree_Commerce_Docs_MCP__get_page_spree_commerce_documentation"
+    ]
+  }
+}

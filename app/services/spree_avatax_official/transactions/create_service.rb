@@ -40,7 +40,7 @@ module SpreeAvataxOfficial
 
         logger.info(create_transaction_model)
 
-        client.create_transaction(create_transaction_model, options)
+        client(order: order).create_transaction(create_transaction_model, options)
       end
     end
   end

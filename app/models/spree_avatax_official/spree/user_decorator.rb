@@ -8,4 +8,4 @@ module SpreeAvataxOfficial
   end
 end
 
-Spree.user_class.prepend ::SpreeAvataxOfficial::Spree::UserDecorator
+Spree.user_class.prepend(::SpreeAvataxOfficial::Spree::UserDecorator) if Spree.user_class

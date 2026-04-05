@@ -9,8 +9,6 @@ module SpreeAvataxOfficial
       private
 
       def recalculate_avatax_taxes
-        return yield unless SpreeAvataxOfficial::Config.enabled
-
         observed_fields_changed = self.class::OBSERVABLE_FIELDS & changed
 
         yield # around_save requires yield to perform save operation
