@@ -22,8 +22,9 @@ describe Spree::Admin::AvalaraEntityUseCodesController, type: :controller do
 
   describe '#create' do
     it 'creates a new entity use code' do
+      # Use a code outside the A–N range pre-populated by the seeder.
       expect {
-        post :create, params: { entity_use_code: { code: 'A', name: 'Federal Gov', description: 'Test' } }
+        post :create, params: { entity_use_code: { code: 'NEWCODE', name: 'New Use Code', description: 'Test' } }
       }.to change(SpreeAvataxOfficial::EntityUseCode, :count).by(1)
 
       expect(response).to redirect_to(admin_avalara_entity_use_codes_path)

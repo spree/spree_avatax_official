@@ -1,6 +1,99 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R557996806","referenceCode":"R557996806","companyCode":"test1","date":"2026-05-07","customerCode":"nila@nicolas.us","addresses":{"ShipFrom":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"19.99","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
+        8816","itemCode":"SKU-8"},{"number":"FR-2ca030c7-9f4f-4b1c-b7dd-6bd415b7f1fc","quantity":1,"amount":"100.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R557996806","entityUseCode":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.4.0
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 07 May 2026 13:09:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Location:
+      - "/api/v2/companies/848107/transactions/0"
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - ecc2b8be-f5d6-4ff9-8a6c-ed5cda2c9564
+      X-Avalara-Uid:
+      - ecc2b8be-f5d6-4ff9-8a6c-ed5cda2c9564
+      Serverduration:
+      - '00:00:00.0083469'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '9'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":0,"code":"R557996806","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"nila@nicolas.us","customerCode":"nila@nicolas.us","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R557996806","referenceCode":"R557996806","salespersonCode":"","totalAmount":119.99,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":9.6,"totalTaxable":119.99,"totalTaxCalculated":9.6,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T13:09:07.8894929Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        8816","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-8","lineAmount":19.99,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Destination","tax":1.6,"taxableAmount":19.99,"taxCalculated":1.6,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":1.2,"taxableAmount":19.99,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.2,"rateType":"General","rateTypeCode":"G","taxableUnits":19.9900,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":19.99,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.2,"reportingTaxCalculated":1.2,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Destination","tax":0.4,"taxableAmount":19.99,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.4,"rateType":"General","rateTypeCode":"G","taxableUnits":19.9900,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":19.99,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.4,"reportingTaxCalculated":0.4,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-2ca030c7-9f4f-4b1c-b7dd-6bd415b7f1fc","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":100.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":8.0,"taxableAmount":100.0,"taxCalculated":8.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-07","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":6.0,"taxableAmount":100.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":6.0,"rateType":"General","rateTypeCode":"G","taxableUnits":100.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":100.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":6.0,"reportingTaxCalculated":6.0,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":2.0,"taxableAmount":100.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":2.0,"rateType":"General","rateTypeCode":"G","taxableUnits":100.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":100.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":2.0,"reportingTaxCalculated":2.0,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
+        Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
+        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
+        STATE TAX","rateType":"General","taxable":119.99,"rate":0.060000,"tax":7.2,"taxCalculated":7.2,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
+        COUNTY TAX","rateType":"General","taxable":119.99,"rate":0.020000,"tax":2.4,"taxCalculated":2.4,"nonTaxable":0.0,"exemption":0.0}]}'
+  recorded_at: Thu, 07 May 2026 13:09:07 GMT
+- request:
     method: get
     uri: https://sandbox-rest.avatax.com/api/v2/addresses/resolve?city=Philadelphia&country=US&line1=822%20Reed%20St&line2=&postalCode=19147&region=PA
     body:
@@ -10,9 +103,9 @@ http_interactions:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 19.7.0
+      - AvaTax Ruby Gem 26.4.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;19.7.0;
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
       Authorization:
       - "<AVATAX_TOKEN>"
       Accept-Encoding:
@@ -23,22 +116,60 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 20 Sep 2019 09:02:15 GMT
+      - Thu, 07 May 2026 13:09:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - b9fec100-aecd-4298-be16-d3c2b80e1959
+      X-Avalara-Uid:
+      - b9fec100-aecd-4298-be16-d3c2b80e1959
       Serverduration:
-      - '00:00:00.0330400'
+      - '00:00:00.0018926'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '2'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"address":{"line1":"822 Reed St","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"},"validatedAddresses":[{"addressType":"StreetOrResidentialAddress","line1":"822
-        REED ST","line2":"","line3":"","city":"PHILADELPHIA","region":"PA","country":"US","postalCode":"19147-5736","latitude":39.931676,"longitude":-75.159051}],"coordinates":{"latitude":39.931676,"longitude":-75.159051},"resolutionQuality":"Intersection","taxAuthorities":[{"avalaraId":"49","jurisdictionName":"PENNSYLVANIA","jurisdictionType":"State","signatureCode":"BKTQ"},{"avalaraId":"2311","jurisdictionName":"PHILADELPHIA","jurisdictionType":"County","signatureCode":"BMWV"},{"avalaraId":"2001076561","jurisdictionName":"PHILADELPHIA","jurisdictionType":"City","signatureCode":"NMXX"}]}'
-  recorded_at: Fri, 20 Sep 2019 09:02:16 GMT
+        REED ST","line2":"","line3":"","city":"PHILADELPHIA","region":"PA","country":"US","postalCode":"19147-5736","latitude":39.93156,"longitude":-75.158483}],"coordinates":{"latitude":39.93156,"longitude":-75.158483},"resolutionQuality":"Intersection","taxAuthorities":[{"avalaraId":"2001060346","jurisdictionName":"UNITED
+        STATES","jurisdictionType":"Country","signatureCode":"USA0"},{"avalaraId":"2001076561","jurisdictionName":"PHILADELPHIA","jurisdictionType":"City","signatureCode":"NMXX"},{"avalaraId":"2311","jurisdictionName":"PHILADELPHIA","jurisdictionType":"County","signatureCode":"BMWV"},{"avalaraId":"49","jurisdictionName":"PENNSYLVANIA","jurisdictionType":"State","signatureCode":"BKTQ"}]}'
+  recorded_at: Thu, 07 May 2026 13:09:08 GMT
 - request:
     method: get
     uri: https://sandbox-rest.avatax.com/api/v2/addresses/resolve?city=Philadelphia&country=US&line1=822%20Reed%20St&line2=&postalCode=19147&region=PA
@@ -49,20 +180,20 @@ http_interactions:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 26.3.2
+      - AvaTax Ruby Gem 26.4.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
       Authorization:
       - "<AVATAX_TOKEN>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
     headers:
       Date:
-      - Fri, 03 Apr 2026 12:33:34 GMT
+      - Thu, 07 May 2026 13:09:09 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,6 +202,8 @@ http_interactions:
       - keep-alive
       Cache-Control:
       - private, no-cache, no-store
+      Vary:
+      - Accept-Encoding
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       X-Content-Type-Options:
@@ -84,129 +217,34 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - d8f9aeb8-034b-488f-8630-e11b33111632
+      - f36981f3-eebd-4e43-ab0e-03c7b02de9a9
       X-Avalara-Uid:
-      - d8f9aeb8-034b-488f-8630-e11b33111632
+      - f36981f3-eebd-4e43-ab0e-03c7b02de9a9
+      Serverduration:
+      - '00:00:00.0003037'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '1'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
     body:
-      encoding: UTF-8
-      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
-  recorded_at: Fri, 03 Apr 2026 12:33:34 GMT
-- request:
-    method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
-    body:
-      encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R217495920","referenceCode":"R217495920","companyCode":"test1","date":"2026-04-05","customerCode":"lorinda_hane@witting.com","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
-        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"PA","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
-        65091","itemCode":"SKU-6"},{"number":"FR-5c1b1bdd-8c44-40e4-8f0e-349f673dfe8c","quantity":1,"amount":"100.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R217495920","entityUseCode":null}'
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 26.3.2
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Date:
-      - Sun, 05 Apr 2026 12:03:37 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - private, no-cache, no-store
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - sameorigin
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - same-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Correlation-Id:
-      - 49aabe3b-bac0-4b25-b192-8fb6f2cf204f
-      X-Avalara-Uid:
-      - 49aabe3b-bac0-4b25-b192-8fb6f2cf204f
-    body:
-      encoding: UTF-8
-      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
-  recorded_at: Sun, 05 Apr 2026 12:03:37 GMT
-- request:
-    method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
-    body:
-      encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R217495920","referenceCode":"R217495920","companyCode":"test1","date":"2026-04-05","customerCode":"lorinda_hane@witting.com","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"19.99","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
-        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"PA","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
-        65091","itemCode":"SKU-6"},{"number":"FR-5c1b1bdd-8c44-40e4-8f0e-349f673dfe8c","quantity":1,"amount":"100.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R217495920","entityUseCode":null}'
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 26.3.2
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.3.2;
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Date:
-      - Sun, 05 Apr 2026 12:03:37 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - private, no-cache, no-store
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - sameorigin
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - same-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Correlation-Id:
-      - 94f1ec13-6de3-4aea-af62-47fe63ddaa2c
-      X-Avalara-Uid:
-      - 94f1ec13-6de3-4aea-af62-47fe63ddaa2c
-    body:
-      encoding: UTF-8
-      string: '{"error":{"code":"AuthenticationException","message":"BadRequest"}}'
-  recorded_at: Sun, 05 Apr 2026 12:03:37 GMT
+      encoding: ASCII-8BIT
+      string: '{"address":{"line1":"822 Reed St","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"},"validatedAddresses":[{"addressType":"StreetOrResidentialAddress","line1":"822
+        REED ST","line2":"","line3":"","city":"PHILADELPHIA","region":"PA","country":"US","postalCode":"19147-5736","latitude":39.93156,"longitude":-75.158483}],"coordinates":{"latitude":39.93156,"longitude":-75.158483},"resolutionQuality":"Intersection","taxAuthorities":[{"avalaraId":"2001060346","jurisdictionName":"UNITED
+        STATES","jurisdictionType":"Country","signatureCode":"USA0"},{"avalaraId":"2001076561","jurisdictionName":"PHILADELPHIA","jurisdictionType":"City","signatureCode":"NMXX"},{"avalaraId":"2311","jurisdictionName":"PHILADELPHIA","jurisdictionType":"County","signatureCode":"BMWV"},{"avalaraId":"49","jurisdictionName":"PENNSYLVANIA","jurisdictionType":"State","signatureCode":"BKTQ"}]}'
+  recorded_at: Thu, 07 May 2026 13:09:09 GMT
 recorded_with: VCR 6.4.0

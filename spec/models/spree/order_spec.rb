@@ -19,11 +19,8 @@ describe Spree::Order do
     let(:order) { create(:order, ship_address: create(:usa_address)) }
 
     before do
-      VCR.use_cassette('spree_order/simple_order_with_single_line_item') do
-        create(:line_item, price: 10.0, quantity: 1, order: order)
-        order.update(state: :complete, completed_at: Time.current)
-      end
-
+      create(:line_item, price: 10.0, quantity: 1, order: order)
+      order.update(state: :complete, completed_at: Time.current)
     end
 
     it 'calls void service' do
@@ -166,7 +163,7 @@ describe Spree::Order do
     end
   end
 
-  describe '#validate_tax_address' do
+  describe '#validate_tax_address', :avalara_integration do
     let(:order) { create(:order_with_line_items, ship_address: ship_address, state: :address) }
 
     before { update_avalara_setting(:address_validation_enabled, true) }
@@ -176,6 +173,12 @@ describe Spree::Order do
       let(:ship_address) { create(:invalid_usa_address) }
 
       it 'does not change order state to delivery and adds an error' do
+        # Suppress factory-chain tax recalc; only the address-validation
+        # call should be captured by the cassette.
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
         VCR.use_cassette('spree_avatax_official/address/validate_failure') do
           expect { order.next! }.to raise_error StateMachines::InvalidTransition
           expect(order.errors.count).to eq 1
@@ -188,6 +191,10 @@ describe Spree::Order do
       let(:ship_address) { create(:usa_address) }
 
       it 'changes state from address to delivery' do
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
         VCR.use_cassette('spree_avatax_official/address/validate_success') do
           expect { order.next! }.to change(order, :state).to 'delivery'
         end

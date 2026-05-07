@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::FindOrderTransactionService, :avatax_enabled do
+describe SpreeAvataxOfficial::Transactions::FindOrderTransactionService, :avalara_integration do
   describe '#call' do
     subject                 { described_class.call(order: order) }
 

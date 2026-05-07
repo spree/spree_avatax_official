@@ -13,10 +13,11 @@ describe Spree::LineItem do
     context 'with AvaTax tax calculcation', :avalara_integration do
       let(:order) { create(:avatax_order, ship_address: create(:usa_address)) }
       let(:line_item) { order.line_items.first }
+      let(:variant) { create(:variant, price: 10.0) }
 
       before do
         VCR.use_cassette('spree_order/update_tax_charge/create_line_item') do
-          create(:line_item, price: 10.0, quantity: 2, order: order)
+          create(:line_item, variant: variant, price: 10.0, quantity: 2, order: order)
 
           order.reload
           order.updater.update

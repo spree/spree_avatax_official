@@ -12,7 +12,14 @@ module TaxInclusiveHelper
         countries: [country],
         tax_inclusive: true
       )
+      # Link the new market to the order so order.market.tax_inclusive returns
+      # true when the AvaTax presenter builds the request payload.
+      order.update!(market: market)
     end
+
+    # Reload so any cached association (`order.market`) reflects the new value.
+    order.reload
+
     market
   end
 end

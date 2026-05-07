@@ -5,21 +5,21 @@ http_interactions:
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R822664378","referenceCode":"R822664378","companyCode":"test1","date":"2019-09-20","customerCode":"letha@cassin.info","addresses":{"ShipFrom":{"line1":"822
+      string: '{"type":"SalesOrder","code":"R324689204","referenceCode":"R324689204","companyCode":"test1","date":"2026-05-07","customerCode":"imogene@heaneyrenner.us","addresses":{"ShipFrom":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"Invalid
         street","line2":"","city":"Invalid city","region":"PA","country":"US","postalCode":"00000"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":false,"description":"Product
-        #55 - 8785","itemCode":"SKU-55"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R822664378"}'
+        1157","itemCode":"SKU-1"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R324689204","entityUseCode":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 19.7.0
+      - AvaTax Ruby Gem 26.4.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;19.7.0;
-      Authorization:
-      - "<AVATAX_TOKEN>"
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
       Content-Type:
       - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -28,45 +28,83 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Fri, 20 Sep 2019 09:03:50 GMT
+      - Thu, 07 May 2026 14:39:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 183ec7bc-41e9-4cd8-ae52-44f8c682d46a
+      X-Avalara-Uid:
+      - 183ec7bc-41e9-4cd8-ae52-44f8c682d46a
       Serverduration:
-      - '00:00:00.0384727'
+      - '00:00:00.0009170'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '2'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"error":{"code":"GetTaxError","message":"Tax calculation cannot be
         determined. Zip is not valid for the state.","target":"Unknown","details":[{"code":"GetTaxError","number":300,"message":"Tax
-        calculation cannot be determined. Zip is not valid for the state.","description":"Invalid
-        St, Invalid city, PA 00000 US (AddressLocationType: ShipTo)","faultCode":"GetTaxError","helpLink":"http://developer.avalara.com/avatax/errors/GetTaxError","refersTo":"Addresses[1]","severity":"Error"}]}}'
-    http_version: 
-  recorded_at: Fri, 20 Sep 2019 09:03:50 GMT
+        calculation cannot be determined. Zip is not valid for the state.","description":"The
+        provided address contains a postal code and state combination that is not
+        valid.","faultCode":"GetTaxError","faultSubCode":"InvalidZipForStateError","helpLink":"https://developer.avalara.com/avatax/errors/GetTaxError","refersTo":"Addresses[1];
+        Line[\"LI-a844605f-e114-4933-a0cf-7a434ac83cdf\"] : PA 00000","severity":"Error"}]}}'
+  recorded_at: Thu, 07 May 2026 14:39:10 GMT
 - request:
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R414996727","referenceCode":"R414996727","companyCode":"test1","date":"2019-09-20","customerCode":"aurea_boyer@langosh.biz","addresses":{"ShipFrom":{"line1":"822
+      string: '{"type":"SalesOrder","code":"R324689204","referenceCode":"R324689204","companyCode":"test1","date":"2026-05-07","customerCode":"imogene@heaneyrenner.us","addresses":{"ShipFrom":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"Invalid
         street","line2":"","city":"Invalid city","region":"PA","country":"US","postalCode":"00000"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":false,"description":"Product
-        #1 - 1580","itemCode":"SKU-1"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R414996727"}'
+        1157","itemCode":"SKU-1"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R324689204","entityUseCode":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 19.7.0
+      - AvaTax Ruby Gem 26.4.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;19.7.0;
-      Authorization:
-      - "<AVATAX_TOKEN>"
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
       Content-Type:
       - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -75,23 +113,61 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Fri, 20 Sep 2019 09:34:07 GMT
+      - Thu, 07 May 2026 14:39:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - d34a3b39-9800-4840-9ce4-2d848746f90e
+      X-Avalara-Uid:
+      - d34a3b39-9800-4840-9ce4-2d848746f90e
       Serverduration:
-      - '00:00:00.0432240'
+      - '00:00:00.0088290'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '10'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"error":{"code":"GetTaxError","message":"Tax calculation cannot be
         determined. Zip is not valid for the state.","target":"Unknown","details":[{"code":"GetTaxError","number":300,"message":"Tax
-        calculation cannot be determined. Zip is not valid for the state.","description":"Invalid
-        St, Invalid city, PA 00000 US (AddressLocationType: ShipTo)","faultCode":"GetTaxError","helpLink":"http://developer.avalara.com/avatax/errors/GetTaxError","refersTo":"Addresses[1]","severity":"Error"}]}}'
-    http_version: 
-  recorded_at: Fri, 20 Sep 2019 09:34:07 GMT
-recorded_with: VCR 4.0.0
+        calculation cannot be determined. Zip is not valid for the state.","description":"The
+        provided address contains a postal code and state combination that is not
+        valid.","faultCode":"GetTaxError","faultSubCode":"InvalidZipForStateError","helpLink":"https://developer.avalara.com/avatax/errors/GetTaxError","refersTo":"Addresses[1];
+        Line[\"LI-a844605f-e114-4933-a0cf-7a434ac83cdf\"] : PA 00000","severity":"Error"}]}}'
+  recorded_at: Thu, 07 May 2026 14:39:11 GMT
+recorded_with: VCR 6.4.0

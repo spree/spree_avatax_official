@@ -8,6 +8,10 @@ describe SpreeAvataxOfficial::GetTaxService, :avalara_integration do
 
     context 'with successed response from avatax' do
       it 'returns success with tax calculated' do
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
         VCR.use_cassette('spree_avatax_official/get_tax/sucsess') do
           result = subject
 
@@ -21,6 +25,10 @@ describe SpreeAvataxOfficial::GetTaxService, :avalara_integration do
       let(:order) { create(:order, ship_address: create(:usa_address)) }
 
       it 'returns failure with errors' do
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
         VCR.use_cassette('spree_avatax_official/get_tax/error') do
           result = subject
 

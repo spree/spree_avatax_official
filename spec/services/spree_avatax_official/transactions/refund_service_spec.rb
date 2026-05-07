@@ -21,6 +21,12 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
       let(:refund)        { create(:refund, amount: 10, reimbursement: reimbursement, payment: payment) }
 
       context 'with full refund' do
+        # FullRefundService is mocked — no AvaTax HTTP call. Inactive
+        # integration prevents factory chain (`:shipped_order`,
+        # `:return_authorization`, payment, reimbursement, refund) from
+        # firing real `update_tax_charge`/`commit_in_avatax` callbacks.
+        before { avalara_integration.update!(active: false) }
+
         it 'creates refund transaction' do
           order.inventory_units.each do |inventory_unit|
             reimbursement.return_items.create(inventory_unit: inventory_unit)
@@ -35,19 +41,24 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
       context 'with partial refund' do
         let(:inventory_unit) { order.inventory_units.first }
 
-        before do
+        it 'creates refund only for refunded lines' do
+          # Suppress the factory chain's tax-recalc HTTP (which would commit
+          # a SalesInvoice in Avalara that the refund then can't reference)
+          # AND the `Spree::Refund#refund_in_avatax` after-save callback
+          # (which would fire the same RefundService.call we test below).
+          avalara_integration.update!(active: false)
           reimbursement.return_items.create!(
             inventory_unit:    inventory_unit,
             pre_tax_amount:    10,
             acceptance_status: 'accepted'
           )
           order.update(completed_at: Time.current)
-        end
+          order.reload
+          refund # force factory eval while integration is inactive
 
-        it 'creates refund only for refunded lines' do
+          avalara_integration.update!(active: true)
+
           VCR.use_cassette('spree_avatax_official/transactions/refund/partial_refund_with_refund_success') do
-            order.reload
-
             line = described_class.call(refundable: refund).value['lines'].first
 
             expect(line['lineAmount']).to eq(-10)
@@ -59,7 +70,16 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
           let(:params)       { { order: order, transaction_code: "#{order.number}-#{refund.id}", refund_items: refund_items } }
           let(:refund_items) { { inventory_unit.line_item => [inventory_unit.try(:quantity) || 1, -10] } }
 
+          # PartialRefundService is mocked — no AvaTax HTTP call.
+          before { avalara_integration.update!(active: false) }
+
           it 'calls partial service with correct quantity' do
+            reimbursement.return_items.create!(
+              inventory_unit:    inventory_unit,
+              pre_tax_amount:    10,
+              acceptance_status: 'accepted'
+            )
+            order.update(completed_at: Time.current)
             inventory_unit.update(quantity: 5) if inventory_unit.respond_to?(:quantity)
 
             expect(SpreeAvataxOfficial::Transactions::PartialRefundService).to receive(:call).with(params)
