@@ -13,21 +13,23 @@ describe SpreeAvataxOfficial::Transactions::CreatePresenter, :avalara_integratio
 
     let(:result) do
       {
-        type:            transaction_type,
-        companyCode:     order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code),
-        code:            order.number,
-        referenceCode:   order.number,
-        date:            order.updated_at.strftime('%Y-%m-%d'),
-        customerCode:    order.email,
-        addresses:       SpreeAvataxOfficial::AddressPresenter.new(address: ship_from_address, address_type: 'ShipFrom').to_json.merge(
+        type:                     transaction_type,
+        companyCode:              order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code),
+        code:                     order.number,
+        referenceCode:            order.number,
+        date:                     order.updated_at.strftime('%Y-%m-%d'),
+        customerCode:             order.email,
+        addresses:                SpreeAvataxOfficial::AddressPresenter.new(address: ship_from_address, address_type: 'ShipFrom').to_json.merge(
           SpreeAvataxOfficial::AddressPresenter.new(address: order.ship_address, address_type: 'ShipTo').to_json
         ),
-        lines:           order_items.map { |item| SpreeAvataxOfficial::ItemPresenter.new(item: item).to_json },
-        commit:          false,
-        discount:        0.0,
-        currencyCode:    order.currency,
-        purchaseOrderNo: order.number,
-        entityUseCode:   order.try(:user).avatax_entity_use_code.try(:code)
+        lines:                    order_items.map { |item| SpreeAvataxOfficial::ItemPresenter.new(item: item).to_json },
+        commit:                   false,
+        discount:                 0.0,
+        currencyCode:             order.currency,
+        purchaseOrderNo:          order.number,
+        entityUseCode:            order.try(:user).avatax_entity_use_code.try(:code),
+        exemptionNo:              nil,
+        businessIdentificationNo: nil
       }
     end
 
@@ -107,7 +109,25 @@ describe SpreeAvataxOfficial::Transactions::CreatePresenter, :avalara_integratio
       before { order.update(user: nil) }
 
       it 'serializes the object' do
-        expect(subject.to_json['entityUseCode']).to eq nil
+        expect(subject.to_json[:entityUseCode]).to eq nil
+        expect(subject.to_json[:exemptionNo]).to eq nil
+        expect(subject.to_json[:businessIdentificationNo]).to eq nil
+      end
+    end
+
+    context 'with user exemption number' do
+      it 'sends exemptionNo' do
+        order.user.update!(exemption_number: 'CERT-12345')
+
+        expect(subject.to_json[:exemptionNo]).to eq 'CERT-12345'
+      end
+    end
+
+    context 'with user VAT id' do
+      it 'sends businessIdentificationNo' do
+        order.user.update!(vat_id: 'GB123456789')
+
+        expect(subject.to_json[:businessIdentificationNo]).to eq 'GB123456789'
       end
     end
   end
