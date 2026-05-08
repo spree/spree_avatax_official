@@ -9,7 +9,7 @@ describe Spree::Admin::AvalaraEntityUseCodesController, type: :controller do
     it 'returns 200 and lists use codes' do
       get :index
       expect(response).to have_http_status(:ok)
-      expect(assigns(:use_codes)).to include(use_code)
+      expect(assigns(:collection)).to include(use_code)
     end
   end
 
@@ -24,10 +24,10 @@ describe Spree::Admin::AvalaraEntityUseCodesController, type: :controller do
     it 'creates a new entity use code' do
       # Use a code outside the A–N range pre-populated by the seeder.
       expect {
-        post :create, params: { entity_use_code: { code: 'NEWCODE', name: 'New Use Code', description: 'Test' } }
+        post :create, params: { avalara_entity_use_code: { code: 'NEWCODE', name: 'New Use Code', description: 'Test' } }
       }.to change(SpreeAvataxOfficial::EntityUseCode, :count).by(1)
 
-      expect(response).to redirect_to(admin_avalara_entity_use_codes_path)
+      expect(response).to redirect_to(edit_admin_avalara_entity_use_code_path(SpreeAvataxOfficial::EntityUseCode.last))
     end
   end
 
@@ -44,9 +44,9 @@ describe Spree::Admin::AvalaraEntityUseCodesController, type: :controller do
     let!(:use_code) { create(:avalara_entity_use_code) }
 
     it 'updates the entity use code' do
-      put :update, params: { id: use_code.id, entity_use_code: { code: 'updated_code' } }
+      put :update, params: { id: use_code.id, avalara_entity_use_code: { code: 'updated_code' } }
       expect(use_code.reload.code).to eq 'updated_code'
-      expect(response).to redirect_to(admin_avalara_entity_use_codes_path)
+      expect(response).to redirect_to(edit_admin_avalara_entity_use_code_path(use_code))
     end
   end
 

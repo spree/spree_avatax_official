@@ -3,6 +3,7 @@
 
 en:
   spree:
+    new_avalara_entity_use_code: New Entity Use Code
     spree_avatax_official:
       void_service:
         missing_sales_invoice_transaction: Order is missing SalesInvoice transaction
@@ -15,26 +16,8 @@ en:
         tax_calculation_failed: AvaTax failed to calculate tax
         line_item_tax_adjustment_default_label: Sales %{included_label}Tax
         shipment_tax_adjustment_default_label: Shipping %{included_label}Tax
-      avatax_credentials: Avatax Credentials
-      company_code: Company code
-      account_number: Account number
-      license_key: License key
-      endpoint_urls: Avatax Endpoint urls
-      endpoint: Endpoint
-      settings: Avatax Settings
-      ship_from_address: Ship from address
-      address_validation: Address validation
-      enable_address_validation: Enable address validation
-      settings_updated: Updated AvaTax configuration
-      save_preferences: Save AvaTax preferences
-      commit_transaction_enabled: Enable commiting transactions
-      connected_successful: Connected successfully
-      unauthorized: Connected but unauthorized
-      connection_rejected: Avatax rejected connection
-      entity_use_code_created: Entity use code created
-      entity_use_code_updated: Entity use code updated
-      entity_use_code_removed: Entity use code removed
-      information_url: Avalara Information
       avalara_entity_use_code: Avalara Entity Use Code
-      ping_avatax: Ping AvaTax
-      wrong_endpoint_url: Endpoint URL seems to be invalid
+      avalara_entity_use_code_settings: Avalara Entity Use Codes
+      avalara_settings: Avalara Tax Settings
+      vat_identification_number: VAT identification number
+      exemption_number: Exemption number

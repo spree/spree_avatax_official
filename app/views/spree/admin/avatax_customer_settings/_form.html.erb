@@ -1,0 +1,18 @@
+<div class="card mb-6">
+  <div class="card-body">
+    <%= f.spree_select :avatax_entity_use_code_id,
+            options_from_collection_for_select(
+              @entity_use_codes,
+              :id,
+              ->(c) { "#{c.code} — #{c.name}" },
+              @user.avatax_entity_use_code_id
+            ),
+            { include_blank: true, label: Spree.t('spree_avatax_official.avalara_entity_use_code') } %>
+
+    <%= f.spree_text_field :exemption_number,
+            label: Spree.t('spree_avatax_official.exemption_number') %>
+
+    <%= f.spree_text_field :vat_id,
+            label: Spree.t('spree_avatax_official.vat_identification_number') %>
+  </div>
+</div>

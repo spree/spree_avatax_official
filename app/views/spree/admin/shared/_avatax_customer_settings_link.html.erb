@@ -1,0 +1,12 @@
+<%# Registered as a body_start partial so it can append to
+    `content_for(:page_actions_dropdown)` from spree/admin/users/show.html.erb.
+    Spree 5.4 has no per-customer-page injection point %>
+<% if controller_name == 'users' && action_name == 'show' && @user %>
+  <% content_for(:page_actions_dropdown) do %>
+    <%= link_to_with_icon 'receipt-tax',
+                          Spree.t('spree_avatax_official.avalara_settings'),
+                          spree.edit_admin_user_avatax_customer_settings_path(@user),
+                          class: 'text-left dropdown-item',
+                          data: { turbo_frame: :drawer, action: 'drawer#open' } %>
+  <% end %>
+<% end %>
