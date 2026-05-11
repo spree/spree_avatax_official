@@ -2,6 +2,13 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activerecord:
+    errors:
+      models:
+        spree/integrations/avalara:
+          attributes:
+            base:
+              unable_to_connect: "Unable to connect to AvaTax: %{error_message}"
   spree:
     new_avalara_entity_use_code: New Entity Use Code
     spree_avatax_official:
@@ -21,3 +28,21 @@ en:
       avalara_settings: Avalara Tax Settings
       vat_identification_number: VAT identification number
       exemption_number: Exemption number
+      endpoint_sandbox: Sandbox
+      endpoint_production: Production
+      origin_address: Default origin address
+      origin_address_help: >-
+        Used as the origin address for tax calculation when an order's stock
+        location does not have its own address configured. Stock-location
+        addresses always take precedence when present.
+    admin:
+      integrations:
+        avalara:
+          description: Real-time tax calculation and filing via Avalara AvaTax.
+          account_number: Account number
+          license_key: License key
+          endpoint: Environment
+          company_code: Company code
+          address_validation_enabled: Validate ship addresses (US/CA only)
+          commit_transaction_enabled: Commit transactions to Avalara
+          show_rate_in_label: Show tax rate in adjustment label

@@ -1,0 +1,128 @@
+<%
+  ship_from        = avalara_ship_from(@integration)
+  selected_country = avalara_selected_country(@integration)
+
+  ship_from_field_name = ->(key) { "integration[preferred_ship_from_address][#{key}]" }
+  ship_from_field_id   = ->(key) { "integration_preferred_ship_from_address_#{key}" }
+%>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <%= preference_field(@integration, form, 'account_number', i18n_scope: 'admin.integrations.avalara') %>
+    <%= preference_field(@integration, form, 'license_key',    i18n_scope: 'admin.integrations.avalara') %>
+
+    <%= form.spree_select :preferred_endpoint,
+            options_for_select(avalara_endpoint_options, @integration.preferred_endpoint),
+            { include_blank: false, label: Spree.t('admin.integrations.avalara.endpoint') } %>
+
+    <%= preference_field(@integration, form, 'company_code', i18n_scope: 'admin.integrations.avalara') %>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <%= preference_field(@integration, form, 'address_validation_enabled', i18n_scope: 'admin.integrations.avalara') %>
+    <%= preference_field(@integration, form, 'commit_transaction_enabled', i18n_scope: 'admin.integrations.avalara') %>
+    <%= preference_field(@integration, form, 'show_rate_in_label',         i18n_scope: 'admin.integrations.avalara') %>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h6 class="mb-1"><%= Spree.t('spree_avatax_official.origin_address') %></h6>
+    <p class="text-muted mb-4"><%= Spree.t('spree_avatax_official.origin_address_help') %></p>
+
+    <div class="inner"
+         data-controller="address-form address-autocomplete"
+         <% cache address_form_countries_states_cache_key do %>
+           data-address-form-countries-value="<%= available_countries.to_json %>"
+           data-address-form-states-value="<%= available_states.to_json %>"
+         <% end %>
+         data-address-form-current-state-id-value="<%= @integration.ship_from_state&.id %>">
+
+      <div class="form-group">
+        <%= label_tag ship_from_field_id.call('country_id'), Spree.t(:country) %>
+        <%= select_tag ship_from_field_name.call('country_id'),
+                       options_for_select(available_countries.map { |c| [c.name, c.id, { data: { iso: c.iso } }] }, selected_country&.id),
+                       id: ship_from_field_id.call('country_id'),
+                       class: 'form-select',
+                       data: {
+                         'address-form-target': 'country',
+                         'action': 'change->address-form#changeCountry',
+                         'address-autocomplete-target': 'country'
+                       } %>
+      </div>
+
+      <div class="form-group" data-address-autocomplete-target="autocompleteInputContainer">
+        <%= label_tag ship_from_field_id.call('address1'), I18n.t('activerecord.attributes.spree/address.address1') %>
+        <div class="position-relative">
+          <%= text_field_tag ship_from_field_name.call('address1'),
+                             ship_from[:line1],
+                             id: ship_from_field_id.call('address1'),
+                             class: 'form-input',
+                             autocomplete: 'shipping-address-line1',
+                             autocorrect: 'off',
+                             data: { 'address-autocomplete-target': 'address1' } %>
+          <%= render 'spree/addresses/suggestions_box' %>
+        </div>
+        <span class="text-sm hidden alert alert-info mt-2 static" data-address-autocomplete-target="addressWarning">
+          <%= Spree.t('address_book.add_house_number') %>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag ship_from_field_id.call('address2'), I18n.t('activerecord.attributes.spree/address.address2') %>
+        <%= text_field_tag ship_from_field_name.call('address2'),
+                           ship_from[:line2],
+                           id: ship_from_field_id.call('address2'),
+                           class: 'form-input' %>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 address-form max-w-full d-flex row">
+        <div class="form-group">
+          <%= label_tag ship_from_field_id.call('city'), Spree.t(:city) %>
+          <%= text_field_tag ship_from_field_name.call('city'),
+                             ship_from[:city],
+                             id: ship_from_field_id.call('city'),
+                             class: 'form-input',
+                             data: { 'address-autocomplete-target': 'city' } %>
+        </div>
+
+        <div class="form-group">
+          <span class="state-select">
+            <%= label_tag ship_from_field_id.call('state_id'),
+                          Spree.t(:state),
+                          data: { 'address-form-target': 'stateLabel' } %>
+            <%= select_tag ship_from_field_name.call('state_id'),
+                           options_from_collection_for_select(selected_country ? checkout_zone_applicable_states_for(selected_country).sort_by(&:name) : [], :id, :name, @integration.ship_from_state&.id),
+                           id: ship_from_field_id.call('state_id'),
+                           class: 'form-select',
+                           prompt: Spree.t(:state),
+                           data: {
+                             'address-form-target': 'state',
+                             'address-autocomplete-target': 'state'
+                           } %>
+            <%= text_field_tag ship_from_field_name.call('state_name'),
+                               @integration.ship_from_state_name,
+                               id: ship_from_field_id.call('state_name'),
+                               class: 'form-input mt-2',
+                               placeholder: Spree.t(:state),
+                               data: { 'address-form-target': 'stateName' } %>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag ship_from_field_id.call('zipcode'), Spree.t(:zipcode) %>
+          <%= text_field_tag ship_from_field_name.call('zipcode'),
+                             ship_from[:postalCode],
+                             id: ship_from_field_id.call('zipcode'),
+                             class: 'form-input',
+                             data: {
+                               'address-form-target': 'zipcode',
+                               'address-autocomplete-target': 'zipcode'
+                             } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

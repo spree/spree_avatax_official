@@ -16,28 +16,32 @@ module Spree
 
       validates :preferred_account_number, :preferred_license_key, presence: true
 
+      before_validation :normalize_ship_from_address_keys
+
       def self.integration_group
         'tax'
       end
 
       def self.icon_path
-        'integration_icons/avalara-logo.svg'
+        'integration_icons/avalara-logo.png'
       end
 
       def can_connect?
-        client = avatax_client
-        response = client.ping
+        response = avatax_client.ping
+        body     = response.respond_to?(:body) ? response.body : response
 
-        if response.is_a?(Hash) && response['authenticated']
-          true
-        else
-          @connection_error_message = if response.is_a?(Hash) && response['authenticated'] == false
-                                        'Invalid credentials'
-                                      else
-                                        'Could not connect to AvaTax'
-                                      end
-          false
-        end
+        return true if body.is_a?(Hash) && body['authenticated']
+
+        @connection_error_message =
+          if body.is_a?(Hash) && body.key?('authenticated')
+            'Invalid credentials'
+          elsif body.is_a?(Hash) && body['error'].is_a?(Hash)
+            body['error']['message'].presence || 'Could not connect to AvaTax'
+          else
+            'Could not connect to AvaTax'
+          end
+
+        false
       rescue StandardError => e
         @connection_error_message = e.message
         false
@@ -54,6 +58,63 @@ module Spree
           username:           preferred_account_number,
           password:           preferred_license_key
         )
+      end
+
+      # Reverse-lookups used by the admin form so the country/state selects
+      # can preselect the right record from the stored ISO/abbr values.
+      def ship_from_country
+        @ship_from_country ||= begin
+          iso = preferred_ship_from_address[:country]
+          iso.present? ? ::Spree::Country.find_by(iso: iso) : nil
+        end
+      end
+
+      def ship_from_state
+        @ship_from_state ||= begin
+          abbr    = preferred_ship_from_address[:region]
+          country = ship_from_country
+
+          ::Spree::State.find_by(country_id: country.id, abbr: abbr) if abbr.present? && country.present?
+        end
+      end
+
+      def ship_from_state_name
+        @ship_from_state_name ||= preferred_ship_from_address[:region] if ship_from_state.blank?
+      end
+
+      private
+
+      # The admin form posts a Spree address attributes
+      # (country_id / state_id / state_name / address1 / city / zipcode);
+      # the stored shape mirrors Avalara's AddressLocationInfo
+      # (country / region / line1 / line2 / city / postalCode). This
+      # callback turns the former into the latter, and leaves an
+      # already-stored hash alone.
+      def normalize_ship_from_address_keys
+        value = preferred_ship_from_address
+        return unless value.is_a?(Hash)
+
+        attributes = value.symbolize_keys
+
+        if attributes.key?(:country_id) || attributes.key?(:state_id) || attributes.key?(:address1) || attributes.key?(:zipcode)
+          self.preferred_ship_from_address = parse_ship_from_address(attributes)
+        else
+          self.preferred_ship_from_address = attributes
+        end
+      end
+
+      def parse_ship_from_address(attributes)
+        country = ::Spree::Country.find_by(id: attributes[:country_id]) if attributes[:country_id].present?
+        state   = ::Spree::State.find_by(id: attributes[:state_id])     if attributes[:state_id].present?
+
+        {
+          line1:      attributes[:address1].presence,
+          line2:      attributes[:address2].presence,
+          city:       attributes[:city].presence,
+          region:     state&.abbr.presence || attributes[:state_name].presence,
+          country:    country&.iso,
+          postalCode: attributes[:zipcode].presence
+        }.compact
       end
     end
   end
