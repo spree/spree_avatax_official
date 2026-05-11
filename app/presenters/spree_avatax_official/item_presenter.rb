@@ -59,8 +59,16 @@ module SpreeAvataxOfficial
       end
     end
 
+    # Only emit a line-level ShipFrom when the stock location has a full
+    # address. Avalara rejects requests with a country-only ShipFrom, and
+    # an empty `addresses: {}` makes Avalara fall back to the order-level
+    # ShipFrom (the integration's preferred_ship_from_address) — which is
+    # the desired behaviour for incomplete stock locations.
     def with_addresses?
-      item.class.name.demodulize == 'LineItem' && inventory_units.any?
+      return false unless item.class.name.demodulize == 'LineItem'
+      return false unless inventory_units.any?
+
+      stock_location_address.values_at(:line1, :city, :region, :country, :postalCode).all?(&:present?)
     end
 
     # TODO: Handle the case where line item belongs to multiple stock locations - it may involve line items splitting
