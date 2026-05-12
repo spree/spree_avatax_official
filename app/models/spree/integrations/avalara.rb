@@ -14,7 +14,7 @@ module Spree
       preference :show_rate_in_label, :boolean, default: false
       preference :ship_from_address, :hash, default: {}
 
-      validates :preferred_account_number, :preferred_license_key, presence: true
+      validates :preferred_account_number, :preferred_license_key, :preferred_company_code, presence: true
 
       before_validation :normalize_ship_from_address_keys
 

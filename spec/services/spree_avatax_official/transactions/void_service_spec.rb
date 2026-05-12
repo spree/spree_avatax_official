@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe SpreeAvataxOfficial::Transactions::VoidService, :avalara_integration do
-  # `number:` is baked into the cassette URL (`/transactions/<number>/void`).
-  # Bump when re-recording — AvaTax rejects voiding the same code twice.
   let(:order) { create(:completed_order_with_totals, number: 'R555111222', ship_address: create(:usa_address)) }
 
   describe '#call' do

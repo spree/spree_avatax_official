@@ -13,6 +13,12 @@ RSpec.describe Spree::Integrations::Avalara do
       expect(integration).not_to be_valid
       expect(integration.errors[:preferred_license_key]).to include(/can't be blank/)
     end
+
+    it 'requires preferred_company_code' do
+      integration = build(:avalara_integration, preferred_company_code: nil)
+      expect(integration).not_to be_valid
+      expect(integration.errors[:preferred_company_code]).to include(/can't be blank/)
+    end
   end
 
   describe '#preferred_ship_from_address=' do

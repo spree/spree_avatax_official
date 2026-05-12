@@ -15,9 +15,6 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundService, :avalara_integ
     let(:line_item)   { order.line_items.first }
 
     it 'creates ReturnInvoice' do
-      # Suppress factory + state-transition HTTP. We want exactly one HTTP
-      # call recorded — the PartialRefundService.call from `subject`, which
-      # produces the only Transaction row the assertion expects.
       avalara_integration.update!(active: false)
       order.update(state: :complete, completed_at: Time.current)
       avalara_integration.update!(active: true)

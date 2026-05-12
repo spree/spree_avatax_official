@@ -21,10 +21,6 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
       let(:refund)        { create(:refund, amount: 10, reimbursement: reimbursement, payment: payment) }
 
       context 'with full refund' do
-        # FullRefundService is mocked — no AvaTax HTTP call. Inactive
-        # integration prevents factory chain (`:shipped_order`,
-        # `:return_authorization`, payment, reimbursement, refund) from
-        # firing real `update_tax_charge`/`commit_in_avatax` callbacks.
         before { avalara_integration.update!(active: false) }
 
         it 'creates refund transaction' do
@@ -42,10 +38,6 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
         let(:inventory_unit) { order.inventory_units.first }
 
         it 'creates refund only for refunded lines' do
-          # Suppress the factory chain's tax-recalc HTTP (which would commit
-          # a SalesInvoice in Avalara that the refund then can't reference)
-          # AND the `Spree::Refund#refund_in_avatax` after-save callback
-          # (which would fire the same RefundService.call we test below).
           avalara_integration.update!(active: false)
           reimbursement.return_items.create!(
             inventory_unit:    inventory_unit,
