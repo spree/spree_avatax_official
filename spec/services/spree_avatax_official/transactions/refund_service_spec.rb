@@ -34,6 +34,63 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
         end
       end
 
+      context 'with standalone refund (no reimbursement)' do
+        let(:order) { create(:shipped_order, line_items_count: 2, ship_address: create(:usa_address), number: 'R100000003') }
+        let(:payment) do
+          p = order.payments.new(payment_method: create(:check_payment_method), amount: order.total)
+          p.state = :completed
+          p.save!(validate: false)
+          p
+        end
+        let(:refund) { create(:refund, amount: amount, reimbursement: nil, payment: payment) }
+
+        let(:amount) { (order.total / 5).round(2) }
+
+        before do
+          avalara_integration.update!(active: false)
+          order.update(completed_at: Time.current)
+          refund # force factory eval while integration is inactive
+          avalara_integration.update!(active: true)
+        end
+
+        it 'creates a ReturnInvoice via the amount refund endpoint' do
+          VCR.use_cassette('spree_avatax_official/transactions/refund/amount_refund_success') do
+            SpreeAvataxOfficial::Transactions::CreateService.call(order: order)
+
+            expect {
+              described_class.call(refundable: refund)
+            }.to change { order.avatax_transactions.where(transaction_type: 'ReturnInvoice').count }.by(1)
+          end
+        end
+
+        context 'when amount is a fraction of the order total' do
+          let(:amount) { (order.total / 5).round(2) }
+
+          it 'calls AmountRefundService with the refund amount' do
+            expect(SpreeAvataxOfficial::Transactions::AmountRefundService).to receive(:call).with(
+              order:            refund.order,
+              transaction_code: "#{refund.order_number}-#{refund.id}",
+              amount:           amount
+            )
+
+            described_class.call(refundable: refund)
+          end
+        end
+
+        context 'when amount equals the order total' do
+          let(:amount) { order.total }
+
+          it 'falls through to FullRefundService' do
+            expect(SpreeAvataxOfficial::Transactions::FullRefundService).to receive(:call).with(
+              order:            refund.order,
+              transaction_code: "#{refund.order_number}-#{refund.id}"
+            )
+
+            described_class.call(refundable: refund)
+          end
+        end
+      end
+
       context 'with partial refund' do
         let(:inventory_unit) { order.inventory_units.first }
 
