@@ -5,10 +5,11 @@ http_interactions:
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R522791097","referenceCode":"R522791097","companyCode":"test1","date":"2026-05-07","customerCode":"chere_mayer@reilly.info","addresses":{"ShipFrom":{"line1":"822
+      string: '{"type":"SalesOrder","code":"R918731998","referenceCode":"R918731998","companyCode":"test1","date":"2026-05-12","customerCode":"thersa@lockman.ca","addresses":{"ShipFrom":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":2,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        2995","itemCode":"SKU-2"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R522791097","entityUseCode":null}'
+        57587","itemCode":"SKU-5"},{"number":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        64139","itemCode":"SKU-6"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":true}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R918731998","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -28,7 +29,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Thu, 07 May 2026 14:39:12 GMT
+      - Tue, 12 May 2026 11:17:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -54,15 +55,15 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - 57c8e295-9f06-43e6-b979-c7eb88969ae0
+      - 458cfc8e-4f40-428d-adcd-1cd0b6078e90
       X-Avalara-Uid:
-      - 57c8e295-9f06-43e6-b979-c7eb88969ae0
+      - 458cfc8e-4f40-428d-adcd-1cd0b6078e90
       Serverduration:
-      - '00:00:00.0054096'
+      - '00:00:00.0137347'
       Api-Supported-Versions:
       - '2.0'
       X-Envoy-Upstream-Service-Time:
-      - '6'
+      - '14'
       Content-Security-Policy:
       - frame-ancestors 'self';
       X-Download-Options:
@@ -80,204 +81,29 @@ http_interactions:
       - sbx
     body:
       encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R522791097","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"chere_mayer@reilly.info","customerCode":"chere_mayer@reilly.info","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R522791097","referenceCode":"R522791097","salespersonCode":"","totalAmount":18.52,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":1.48,"totalTaxable":18.52,"totalTaxCalculated":1.48,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T14:39:12.0648475Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        2995","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-2","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.11,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.11,"reportingTaxCalculated":1.11,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.37,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.37,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.37,"reportingTaxCalculated":0.37,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
-        Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
-        STATE TAX","rateType":"General","taxable":18.52,"rate":0.060000,"tax":1.11,"taxCalculated":1.11,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
-        COUNTY TAX","rateType":"General","taxable":18.52,"rate":0.020000,"tax":0.37,"taxCalculated":0.37,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Thu, 07 May 2026 14:39:12 GMT
-- request:
-    method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
-    body:
-      encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R522791097","referenceCode":"R522791097","companyCode":"test1","date":"2026-05-07","customerCode":"chere_mayer@reilly.info","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":2,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        2995","itemCode":"SKU-2"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R522791097","entityUseCode":null}'
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 26.4.0
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Thu, 07 May 2026 14:39:12 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - private, no-cache, no-store
-      Location:
-      - "/api/v2/companies/848107/transactions/0"
-      Vary:
-      - Accept-Encoding
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - sameorigin
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - same-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Correlation-Id:
-      - 5bedfb2e-c1f1-4241-967a-7842befe607b
-      X-Avalara-Uid:
-      - 5bedfb2e-c1f1-4241-967a-7842befe607b
-      Serverduration:
-      - '00:00:00.0044207'
-      Api-Supported-Versions:
-      - '2.0'
-      X-Envoy-Upstream-Service-Time:
-      - '5'
-      Content-Security-Policy:
-      - frame-ancestors 'self';
-      X-Download-Options:
-      - noopen
-      X-Dns-Prefetch-Control:
-      - 'off'
-      Permissions-Policy:
-      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
-        'none';speaker 'none';usb 'none';
-      X-Cip-Engine:
-      - containers
-      X-Cip-Site:
-      - gcp_us-west3
-      X-Cip-Environment:
-      - sbx
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R522791097","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"chere_mayer@reilly.info","customerCode":"chere_mayer@reilly.info","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R522791097","referenceCode":"R522791097","salespersonCode":"","totalAmount":18.52,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":1.48,"totalTaxable":18.52,"totalTaxCalculated":1.48,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T14:39:12.6437323Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        2995","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-2","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.11,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.11,"reportingTaxCalculated":1.11,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.37,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.37,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.37,"reportingTaxCalculated":0.37,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
-        Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
-        STATE TAX","rateType":"General","taxable":18.52,"rate":0.060000,"tax":1.11,"taxCalculated":1.11,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
-        COUNTY TAX","rateType":"General","taxable":18.52,"rate":0.020000,"tax":0.37,"taxCalculated":0.37,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Thu, 07 May 2026 14:39:12 GMT
-- request:
-    method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
-    body:
-      encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R522791097","referenceCode":"R522791097","companyCode":"test1","date":"2026-05-07","customerCode":"chere_mayer@reilly.info","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":2,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        2995","itemCode":"SKU-2"},{"number":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        38101","itemCode":"SKU-3"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R522791097","entityUseCode":null}'
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 26.4.0
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Thu, 07 May 2026 14:39:13 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - private, no-cache, no-store
-      Location:
-      - "/api/v2/companies/848107/transactions/0"
-      Vary:
-      - Accept-Encoding
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - sameorigin
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - same-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Correlation-Id:
-      - 90fe4401-f55a-49de-ab6f-c5a537ba830d
-      X-Avalara-Uid:
-      - 90fe4401-f55a-49de-ab6f-c5a537ba830d
-      Serverduration:
-      - '00:00:00.0096002'
-      Api-Supported-Versions:
-      - '2.0'
-      X-Envoy-Upstream-Service-Time:
-      - '10'
-      Content-Security-Policy:
-      - frame-ancestors 'self';
-      X-Download-Options:
-      - noopen
-      X-Dns-Prefetch-Control:
-      - 'off'
-      Permissions-Policy:
-      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
-        'none';speaker 'none';usb 'none';
-      X-Cip-Engine:
-      - containers
-      X-Cip-Site:
-      - gcp_us-west3
-      X-Cip-Environment:
-      - sbx
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R522791097","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"chere_mayer@reilly.info","customerCode":"chere_mayer@reilly.info","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R522791097","referenceCode":"R522791097","salespersonCode":"","totalAmount":46.29,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":3.71,"totalTaxable":46.29,"totalTaxCalculated":3.71,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T14:39:13.4126988Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        2995","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-2","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+      string: '{"id":0,"code":"R918731998","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"thersa@lockman.ca","customerCode":"thersa@lockman.ca","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R918731998","referenceCode":"R918731998","salespersonCode":"","totalAmount":50.92,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":4.08,"totalTaxable":50.92,"totalTaxCalculated":4.08,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:17:24.9512041Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        57587","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-5","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.11,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.11,"reportingTaxCalculated":1.11,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.37,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.37,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.37,"reportingTaxCalculated":0.37,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","customerUsageType":"","entityUseCode":"","description":"Product
-        38101","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-3","lineAmount":27.77,"quantity":3.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":2.23,"taxableAmount":27.77,"taxCalculated":2.23,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.67,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        64139","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-6","lineAmount":27.77,"quantity":3.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Origin","tax":2.23,"taxableAmount":27.77,"taxCalculated":2.23,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.67,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.67,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.67,"reportingTaxCalculated":1.67,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.56,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.56,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.56,"reportingTaxCalculated":0.56,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.56,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.56,"reportingTaxCalculated":0.56,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":4.63,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Origin","tax":0.37,"taxableAmount":4.63,"taxCalculated":0.37,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":0.28,"taxableAmount":4.63,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":0.28,"rateType":"General","rateTypeCode":"G","taxableUnits":4.6300,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":4.63,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.28,"reportingTaxCalculated":0.28,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.09,"taxableAmount":4.63,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.09,"rateType":"General","rateTypeCode":"G","taxableUnits":4.6300,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":4.63,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.09,"reportingTaxCalculated":0.09,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
         Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
-        STATE TAX","rateType":"General","taxable":46.29,"rate":0.060000,"tax":2.78,"taxCalculated":2.78,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
-        COUNTY TAX","rateType":"General","taxable":46.29,"rate":0.020000,"tax":0.93,"taxCalculated":0.93,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Thu, 07 May 2026 14:39:13 GMT
+        STATE TAX","rateType":"General","taxable":50.92,"rate":0.060000,"tax":3.06,"taxCalculated":3.06,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
+        COUNTY TAX","rateType":"General","taxable":50.92,"rate":0.020000,"tax":1.02,"taxCalculated":1.02,"nonTaxable":0.0,"exemption":0.0}]}'
+  recorded_at: Tue, 12 May 2026 11:17:25 GMT
 - request:
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R522791097","referenceCode":"R522791097","companyCode":"test1","date":"2026-05-07","customerCode":"chere_mayer@reilly.info","addresses":{"ShipFrom":{"line1":"822
+      string: '{"type":"SalesOrder","code":"R918731998","referenceCode":"R918731998","companyCode":"test1","date":"2026-05-12","customerCode":"thersa@lockman.ca","addresses":{"ShipFrom":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":2,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        2995","itemCode":"SKU-2"},{"number":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        38101","itemCode":"SKU-3"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R522791097","entityUseCode":null}'
+        57587","itemCode":"SKU-5"},{"number":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
+        64139","itemCode":"SKU-6"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":true}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R918731998","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -297,7 +123,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Thu, 07 May 2026 14:39:14 GMT
+      - Tue, 12 May 2026 11:17:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -323,15 +149,15 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - 06624b38-78c6-48dd-b623-966bfc83dd57
+      - f79fd0eb-051c-4d48-9250-06ee6bef0da3
       X-Avalara-Uid:
-      - 06624b38-78c6-48dd-b623-966bfc83dd57
+      - f79fd0eb-051c-4d48-9250-06ee6bef0da3
       Serverduration:
-      - '00:00:00.0076214'
+      - '00:00:00.0200459'
       Api-Supported-Versions:
       - '2.0'
       X-Envoy-Upstream-Service-Time:
-      - '8'
+      - '21'
       Content-Security-Policy:
       - frame-ancestors 'self';
       X-Download-Options:
@@ -349,199 +175,17 @@ http_interactions:
       - sbx
     body:
       encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R522791097","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"chere_mayer@reilly.info","customerCode":"chere_mayer@reilly.info","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R522791097","referenceCode":"R522791097","salespersonCode":"","totalAmount":46.29,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":3.71,"totalTaxable":46.29,"totalTaxCalculated":3.71,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T14:39:14.0148555Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        2995","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-2","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+      string: '{"id":0,"code":"R918731998","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"thersa@lockman.ca","customerCode":"thersa@lockman.ca","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R918731998","referenceCode":"R918731998","salespersonCode":"","totalAmount":50.92,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":4.08,"totalTaxable":50.92,"totalTaxCalculated":4.08,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:17:25.8102123Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        57587","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-5","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.11,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.11,"reportingTaxCalculated":1.11,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.37,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.37,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.37,"reportingTaxCalculated":0.37,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","customerUsageType":"","entityUseCode":"","description":"Product
-        38101","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-3","lineAmount":27.77,"quantity":3.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":2.23,"taxableAmount":27.77,"taxCalculated":2.23,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.67,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        64139","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-6","lineAmount":27.77,"quantity":3.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Origin","tax":2.23,"taxableAmount":27.77,"taxCalculated":2.23,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.67,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.67,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.67,"reportingTaxCalculated":1.67,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.56,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.56,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.56,"reportingTaxCalculated":0.56,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.56,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.56,"reportingTaxCalculated":0.56,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":4.63,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Origin","tax":0.37,"taxableAmount":4.63,"taxCalculated":0.37,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":0.28,"taxableAmount":4.63,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":0.28,"rateType":"General","rateTypeCode":"G","taxableUnits":4.6300,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":4.63,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.28,"reportingTaxCalculated":0.28,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.09,"taxableAmount":4.63,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.09,"rateType":"General","rateTypeCode":"G","taxableUnits":4.6300,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":4.63,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.09,"reportingTaxCalculated":0.09,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
         Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
-        STATE TAX","rateType":"General","taxable":46.29,"rate":0.060000,"tax":2.78,"taxCalculated":2.78,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
-        COUNTY TAX","rateType":"General","taxable":46.29,"rate":0.020000,"tax":0.93,"taxCalculated":0.93,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Thu, 07 May 2026 14:39:14 GMT
-- request:
-    method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
-    body:
-      encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R522791097","referenceCode":"R522791097","companyCode":"test1","date":"2026-05-07","customerCode":"chere_mayer@reilly.info","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":2,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        2995","itemCode":"SKU-2"},{"number":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        38101","itemCode":"SKU-3"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R522791097","entityUseCode":null}'
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 26.4.0
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Thu, 07 May 2026 14:39:14 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - private, no-cache, no-store
-      Location:
-      - "/api/v2/companies/848107/transactions/0"
-      Vary:
-      - Accept-Encoding
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - sameorigin
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - same-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Correlation-Id:
-      - 3a264e88-b627-4685-ac8e-4f93ebabf3f9
-      X-Avalara-Uid:
-      - 3a264e88-b627-4685-ac8e-4f93ebabf3f9
-      Serverduration:
-      - '00:00:00.0091934'
-      Api-Supported-Versions:
-      - '2.0'
-      X-Envoy-Upstream-Service-Time:
-      - '10'
-      Content-Security-Policy:
-      - frame-ancestors 'self';
-      X-Download-Options:
-      - noopen
-      X-Dns-Prefetch-Control:
-      - 'off'
-      Permissions-Policy:
-      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
-        'none';speaker 'none';usb 'none';
-      X-Cip-Engine:
-      - containers
-      X-Cip-Site:
-      - gcp_us-west3
-      X-Cip-Environment:
-      - sbx
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R522791097","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"chere_mayer@reilly.info","customerCode":"chere_mayer@reilly.info","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R522791097","referenceCode":"R522791097","salespersonCode":"","totalAmount":46.29,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":3.71,"totalTaxable":46.29,"totalTaxCalculated":3.71,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T14:39:14.7359124Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        2995","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-2","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.11,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.11,"reportingTaxCalculated":1.11,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.37,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.37,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.37,"reportingTaxCalculated":0.37,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","customerUsageType":"","entityUseCode":"","description":"Product
-        38101","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-3","lineAmount":27.77,"quantity":3.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":2.23,"taxableAmount":27.77,"taxCalculated":2.23,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.67,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.67,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.67,"reportingTaxCalculated":1.67,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.56,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.56,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.56,"reportingTaxCalculated":0.56,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
-        Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
-        STATE TAX","rateType":"General","taxable":46.29,"rate":0.060000,"tax":2.78,"taxCalculated":2.78,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
-        COUNTY TAX","rateType":"General","taxable":46.29,"rate":0.020000,"tax":0.93,"taxCalculated":0.93,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Thu, 07 May 2026 14:39:14 GMT
-- request:
-    method: post
-    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
-    body:
-      encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R522791097","referenceCode":"R522791097","companyCode":"test1","date":"2026-05-07","customerCode":"chere_mayer@reilly.info","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":2,"amount":"20.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        2995","itemCode":"SKU-2"},{"number":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","quantity":3,"amount":"30.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":true,"description":"Product
-        38101","itemCode":"SKU-3"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R522791097","entityUseCode":null}'
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 26.4.0
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
-      Content-Type:
-      - application/json
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Thu, 07 May 2026 14:39:15 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - private, no-cache, no-store
-      Location:
-      - "/api/v2/companies/848107/transactions/0"
-      Vary:
-      - Accept-Encoding
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - sameorigin
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - same-origin
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      X-Correlation-Id:
-      - a821098a-baa3-4033-b6d5-a2ef908ff4e4
-      X-Avalara-Uid:
-      - a821098a-baa3-4033-b6d5-a2ef908ff4e4
-      Serverduration:
-      - '00:00:00.0057953'
-      Api-Supported-Versions:
-      - '2.0'
-      X-Envoy-Upstream-Service-Time:
-      - '7'
-      Content-Security-Policy:
-      - frame-ancestors 'self';
-      X-Download-Options:
-      - noopen
-      X-Dns-Prefetch-Control:
-      - 'off'
-      Permissions-Policy:
-      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
-        'none';speaker 'none';usb 'none';
-      X-Cip-Engine:
-      - containers
-      X-Cip-Site:
-      - gcp_us-west3
-      X-Cip-Environment:
-      - sbx
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R522791097","companyId":848107,"date":"2026-05-07","paymentDate":"2026-05-07","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"chere_mayer@reilly.info","customerCode":"chere_mayer@reilly.info","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R522791097","referenceCode":"R522791097","salespersonCode":"","totalAmount":46.29,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":3.71,"totalTaxable":46.29,"totalTaxCalculated":3.71,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-07","exchangeRate":1.0,"modifiedDate":"2026-05-07T14:39:15.5489594Z","modifiedUserId":429316,"taxDate":"2026-05-07","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        2995","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-2","lineAmount":18.52,"quantity":2.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":1.48,"taxableAmount":18.52,"taxCalculated":1.48,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.11,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.11,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.11,"reportingTaxCalculated":1.11,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.37,"taxableAmount":18.52,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.37,"rateType":"General","rateTypeCode":"G","taxableUnits":18.5200,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":18.52,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.37,"reportingTaxCalculated":0.37,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"LI-50f0c7ba-0c5f-4479-a24a-3de192354004","customerUsageType":"","entityUseCode":"","description":"Product
-        38101","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-3","lineAmount":27.77,"quantity":3.0,"ref1":"","ref2":"","reportingDate":"2026-05-07","revAccount":"","sourcing":"Origin","tax":2.23,"taxableAmount":27.77,"taxCalculated":2.23,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-07","taxIncluded":true,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Origin","tax":1.67,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":1.67,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":1.67,"reportingTaxCalculated":1.67,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Origin","tax":0.56,"taxableAmount":27.77,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.56,"rateType":"General","rateTypeCode":"G","taxableUnits":27.7700,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":27.77,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.56,"reportingTaxCalculated":0.56,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
-        Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
-        STATE TAX","rateType":"General","taxable":46.29,"rate":0.060000,"tax":2.78,"taxCalculated":2.78,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
-        COUNTY TAX","rateType":"General","taxable":46.29,"rate":0.020000,"tax":0.93,"taxCalculated":0.93,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Thu, 07 May 2026 14:39:15 GMT
+        STATE TAX","rateType":"General","taxable":50.92,"rate":0.060000,"tax":3.06,"taxCalculated":3.06,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
+        COUNTY TAX","rateType":"General","taxable":50.92,"rate":0.020000,"tax":1.02,"taxCalculated":1.02,"nonTaxable":0.0,"exemption":0.0}]}'
+  recorded_at: Tue, 12 May 2026 11:17:25 GMT
 recorded_with: VCR 6.4.0

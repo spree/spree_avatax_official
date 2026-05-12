@@ -52,7 +52,7 @@ module Spree
           app_name:           SpreeAvataxOfficial::Base::APP_NAME,
           app_version:        SpreeAvataxOfficial::Base::APP_VERSION,
           connection_options: SpreeAvataxOfficial::Base::CONNECTION_OPTIONS,
-          logger:             true,
+          logger:             SpreeAvataxOfficial::Config.log,
           faraday_response:   true,
           endpoint:           preferred_endpoint,
           username:           preferred_account_number,

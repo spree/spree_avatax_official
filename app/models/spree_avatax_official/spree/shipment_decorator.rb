@@ -18,6 +18,13 @@ module SpreeAvataxOfficial
       def avatax_tax_code
         tax_category.try(:tax_code).presence || ::Spree::TaxCategory::DEFAULT_TAX_CODES['Shipment']
       end
+
+      def selected_shipping_rate_id=(id)
+        super
+        return if order.nil? || order.completed?
+
+        order.recalculate_avatax_taxes
+      end
     end
   end
 end

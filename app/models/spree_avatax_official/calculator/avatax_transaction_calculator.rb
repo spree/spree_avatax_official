@@ -9,9 +9,6 @@ module SpreeAvataxOfficial
         raise 'Tax adjustments should be calculated on line item or shipment level'
       end
 
-      # Following lines require this recalculation:
-      # https://github.com/spree/spree/blob/master/core/app/models/spree/adjustment.rb#L104
-      # https://github.com/spree/spree/blob/master/core/app/models/spree/line_item.rb#L159
       def compute_line_item(line_item)
         line_item.adjustments.tax.sum(:amount)
       end

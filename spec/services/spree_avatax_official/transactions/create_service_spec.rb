@@ -137,10 +137,20 @@ describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration 
       end
     end
 
+    context 'when delivery is required but shipments are missing' do
+      subject { described_class.call(order: order) }
+
+      let(:order) { create(:avatax_order, line_items_count: 1, ship_address: create(:usa_address)) }
+
+      it 'returns negative result without hitting Avalara' do
+        expect(subject.success?).to eq false
+      end
+    end
+
     context 'Non US taxes' do
       subject { described_class.call(order: order) }
 
-      let(:order)          { create(:avatax_order, line_items_count: 1) }
+      let(:order)          { create(:avatax_order, with_shipment: true, line_items_count: 1) }
       let(:canada_address) { create(:canada_address) }
       let(:europe_address) { create(:europe_address) }
       let(:tax_summary)    { subject.value['summary'].first }

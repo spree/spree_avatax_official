@@ -11,12 +11,6 @@ module SpreeAvataxOfficial
         order.market&.tax_inclusive || false
       end
 
-      def update_tax_charge
-        return super unless order.avatax_enabled?
-
-        SpreeAvataxOfficial::CreateTaxAdjustmentsService.call(order: order)
-      end
-
       def avatax_tax_code
         tax_category.try(:tax_code).presence || ::Spree::TaxCategory::DEFAULT_TAX_CODES['LineItem']
       end

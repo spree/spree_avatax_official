@@ -7,51 +7,6 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
 
   describe '#call' do
     context 'with external tax' do
-      context 'with single line item order' do
-        let(:order) { create(:avatax_order, line_items_count: 1, ship_address: usa_address) }
-        let(:line_item) { order.line_items.first }
-        let(:tax_adjustment) { line_item.adjustments.tax.first }
-
-        context 'with_tax_excluded' do
-          it 'creates tax rates and tax adjustments for all taxable items' do
-            result = nil
-
-            VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/single_line_item') do
-              result = subject
-
-              order.updater.update
-            end
-
-            expect(result.success?).to eq true
-            expect(order.total).to eq 10.8
-            expect(order.additional_tax_total).to eq 0.8
-            expect(line_item.reload.additional_tax_total).to eq 0.8
-            expect(tax_adjustment.amount).to eq 0.8
-            expect(tax_adjustment.source_type).to eq 'Spree::TaxRate'
-          end
-        end
-
-        context 'with_tax_included' do
-          it 'creates tax rates and tax adjustments for all taxable items' do
-            result = nil
-
-            VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/single_line_item') do
-              enable_tax_inclusive_for_order(order)
-              result = subject
-
-              order.updater.update
-            end
-
-            expect(result.success?).to eq true
-            expect(order.total).to eq 10
-            expect(order.included_tax_total).to eq 0.75
-            expect(line_item.reload.included_tax_total).to eq 0.75
-            expect(tax_adjustment.amount).to eq 0.75
-            expect(tax_adjustment.source_type).to eq 'Spree::TaxRate'
-          end
-        end
-      end
-
       context 'with single line item and and shipment' do
         let(:shipment) { order.shipments.first }
         let(:tax_adjustment) { shipment.adjustments.tax.first }
@@ -61,40 +16,34 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
 
           context 'with tax excluded' do
             it 'creates tax rates and tax adjustments' do
-              result = nil
-
               VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/line_item_and_shipment') do
                 result = subject
-
                 order.updater.update
-              end
 
-              expect(result.success?).to eq true
-              expect(order.total).to eq 16.2
-              expect(order.additional_tax_total).to eq 1.2
-              expect(shipment.reload.additional_tax_total).to eq 0.4
-              expect(tax_adjustment.amount).to eq 0.4
-              expect(tax_adjustment.source_type).to eq 'Spree::TaxRate'
+                expect(result.success?).to eq true
+                expect(order.total).to eq 16.2
+                expect(order.additional_tax_total).to eq 1.2
+                expect(shipment.reload.additional_tax_total).to eq 0.4
+                expect(tax_adjustment.amount).to eq 0.4
+                expect(tax_adjustment.source_type).to eq 'Spree::TaxRate'
+              end
             end
           end
 
           context 'with tax included' do
             it 'creates tax rates and tax adjustments' do
-              result = nil
-
               VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/line_item_and_shipment') do
                 enable_tax_inclusive_for_order(order)
                 result = subject
-
                 order.updater.update
-              end
 
-              expect(result.success?).to eq true
-              expect(order.total).to eq 15.0
-              expect(order.included_tax_total).to eq 1.12
-              expect(order.additional_tax_total).to eq 0
-              expect(shipment.reload.included_tax_total).to eq 0.37
-              expect(tax_adjustment.source_type).to eq 'Spree::TaxRate'
+                expect(result.success?).to eq true
+                expect(order.total).to eq 15.0
+                expect(order.included_tax_total).to eq 1.12
+                expect(order.additional_tax_total).to eq 0
+                expect(shipment.reload.included_tax_total).to eq 0.37
+                expect(tax_adjustment.source_type).to eq 'Spree::TaxRate'
+              end
             end
           end
         end
@@ -103,18 +52,15 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
           let(:order) { create(:avatax_order, with_shipment: true, with_shipping_tax_category: false, line_items_count: 1, ship_address: usa_address) } # rubocop:disable Metrics/LineLength
 
           it 'creates tax rates and tax adjustments only for line items' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/line_item_and_shipment') do
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(order.total).to eq 15.8
-            expect(order.additional_tax_total).to eq 0.8
-            expect(shipment.reload.additional_tax_total).to eq 0
+              expect(result.success?).to eq true
+              expect(order.total).to eq 15.8
+              expect(order.additional_tax_total).to eq 0.8
+              expect(shipment.reload.additional_tax_total).to eq 0
+            end
           end
         end
 
@@ -127,19 +73,16 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
           after { update_avalara_setting(:show_rate_in_label, false) }
 
           it 'sets adjustments labels with percentage tax amount' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/line_item_and_shipment') do
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(line_item_tax_adjustment.source.amount).to eq 0.08
-            expect(line_item_tax_adjustment.label).to eq 'Sales Tax (8%)'
-            expect(shipment_tax_adjustment.source.amount).to eq 0.08
-            expect(shipment_tax_adjustment.label).to eq 'Shipping Tax (8%)'
+              expect(result.success?).to eq true
+              expect(line_item_tax_adjustment.source.amount).to eq 0.08
+              expect(line_item_tax_adjustment.label).to eq 'Sales Tax (8%)'
+              expect(shipment_tax_adjustment.source.amount).to eq 0.08
+              expect(shipment_tax_adjustment.label).to eq 'Shipping Tax (8%)'
+            end
           end
         end
 
@@ -151,8 +94,6 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
           let(:shipment_tax_adjustment)  { order.shipments.first.adjustments.tax.first }
 
           it 'creates tax rates and tax adjustments' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/californian_stock_location') do
               line_item.inventory_units.first.shipment.stock_location.update(
                 name:     'California Warehouse',
@@ -164,48 +105,44 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
               )
 
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(order.total).to eq 16.2
-            expect(order.additional_tax_total).to eq 1.2
+              expect(result.success?).to eq true
+              expect(order.total).to eq 16.2
+              expect(order.additional_tax_total).to eq 1.2
+            end
           end
         end
       end
 
       context 'with multiple line items with multiple quantity' do
-        let(:order) { create(:avatax_order, ship_address: usa_address) }
+        let(:order) { create(:avatax_order, with_shipment: true, ship_address: usa_address) }
         let(:first_line_item) { order.line_items.first }
         let(:second_line_item) { order.line_items.second }
+        let(:shipment) { order.shipments.first }
 
         context 'with tax excluded' do
           it 'creates tax rates and tax adjustments' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/multiple_line_items_multiple_quantity') do
               create(:line_item, id: 1, price: 10.0, quantity: 2, order: order)
               create(:line_item, id: 2, price: 10.0, quantity: 3, order: order, avatax_uuid: '50f0c7ba-0c5f-4479-a24a-3de192354004')
 
               order.reload
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(order.total).to eq 54.0
-            expect(order.additional_tax_total).to eq 4.0
-            expect(first_line_item.reload.additional_tax_total).to eq 1.6
-            expect(second_line_item.reload.additional_tax_total).to eq 2.4
+              expect(result.success?).to eq true
+              expect(order.total).to eq 59.4
+              expect(order.additional_tax_total).to eq 4.4
+              expect(first_line_item.reload.additional_tax_total).to eq 1.6
+              expect(second_line_item.reload.additional_tax_total).to eq 2.4
+              expect(shipment.reload.additional_tax_total).to eq 0.4
+            end
           end
         end
 
         context 'with tax included' do
           it 'creates tax rates and tax adjustments' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/multiple_line_items_multiple_quantity') do
               enable_tax_inclusive_for_order(order)
               create(:line_item, id: 1, price: 10.0, quantity: 2, order: order)
@@ -213,29 +150,28 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
 
               order.reload
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(order.total).to eq 50.0
-            expect(order.included_tax_total).to eq 3.71
-            expect(first_line_item.reload.included_tax_total).to eq 1.48
-            expect(second_line_item.reload.included_tax_total).to eq 2.23
+              expect(result.success?).to eq true
+              expect(order.total).to eq 55.0
+              expect(order.included_tax_total).to eq 4.08
+              expect(first_line_item.reload.included_tax_total).to eq 1.48
+              expect(second_line_item.reload.included_tax_total).to eq 2.23
+              expect(shipment.reload.included_tax_total).to eq 0.37
+            end
           end
         end
       end
 
       context 'with promotion that adjusts line items' do
-        let(:order) { create(:avatax_order, ship_address: usa_address) }
+        let(:order) { create(:avatax_order, with_shipment: true, ship_address: usa_address) }
         let(:first_line_item) { order.line_items.first }
         let(:second_line_item) { order.line_items.second }
+        let(:shipment) { order.shipments.first }
         let(:promotion) { create(:promotion, :with_line_item_adjustment, adjustment_rate: 10, code: 'promotion_code') }
 
         context 'with tax excluded' do
           it 'creates tax rates and tax adjustments' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/line_item_adjustment_promotion') do
               create(:line_item, id: 1, price: 10.0, quantity: 4, order: order)
               create(:line_item, id: 2, price: 10.0, quantity: 3, order: order, avatax_uuid: 'bf57f52a-2ab3-44bc-8be3-8f99ecccd196')
@@ -246,22 +182,20 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
               Spree::PromotionHandler::Coupon.new(order).apply
 
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(order.total).to eq 54.0
-            expect(order.additional_tax_total).to eq 4.0
-            expect(first_line_item.reload.additional_tax_total).to eq 2.4
-            expect(second_line_item.reload.additional_tax_total).to eq 1.6
+              expect(result.success?).to eq true
+              expect(order.total).to eq 59.4
+              expect(order.additional_tax_total).to eq 4.4
+              expect(first_line_item.reload.additional_tax_total).to eq 2.4
+              expect(second_line_item.reload.additional_tax_total).to eq 1.6
+              expect(shipment.reload.additional_tax_total).to eq 0.4
+            end
           end
         end
 
         context 'with tax included' do
           it 'creates tax rates and tax adjustments' do
-            result = nil
-
             VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_included/line_item_adjustment_promotion') do
               enable_tax_inclusive_for_order(order)
               create(:line_item, id: 1, price: 10.0, quantity: 4, order: order)
@@ -273,15 +207,15 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
               Spree::PromotionHandler::Coupon.new(order).apply
 
               result = subject
-
               order.updater.update
-            end
 
-            expect(result.success?).to eq true
-            expect(order.total).to eq 50.0
-            expect(order.included_tax_total).to eq 3.71
-            expect(first_line_item.reload.included_tax_total).to eq 2.23
-            expect(second_line_item.reload.included_tax_total).to eq 1.48
+              expect(result.success?).to eq true
+              expect(order.total).to eq 55.0
+              expect(order.included_tax_total).to eq 4.08
+              expect(first_line_item.reload.included_tax_total).to eq 2.23
+              expect(second_line_item.reload.included_tax_total).to eq 1.48
+              expect(shipment.reload.included_tax_total).to eq 0.37
+            end
           end
         end
       end
@@ -293,23 +227,19 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
         let(:promotion) { create(:free_shipping_promotion, code: 'promotion_code') }
 
         it 'creates tax rates and tax adjustments' do
-          result = nil
-
           VCR.use_cassette('spree_avatax_official/create_tax_adjustments/shipment_adjustment_promotion') do
             order.coupon_code = promotion.code
             Spree::PromotionHandler::Coupon.new(order).apply
 
             result = subject
-
             order.updater.update
+
+            expect(result.success?).to eq true
+            expect(order.total).to eq 10.8
+            expect(order.additional_tax_total).to eq 0.8
+            expect(shipment.additional_tax_total).to eq 0.0
+            expect(shipment.discounted_cost).to eq 0.0
           end
-
-          expect(result.success?).to eq true
-
-          expect(order.total).to eq 10.8
-          expect(order.additional_tax_total).to eq 0.8
-          expect(shipment.additional_tax_total).to eq 0.0
-          expect(shipment.discounted_cost).to eq 0.0
         end
       end
 
@@ -321,8 +251,6 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
         let(:promotion) { create(:promotion, :avatax_with_order_adjustment, weighted_order_adjustment_amount: 20.0, code: 'promotion_code') }
 
         it 'creates tax rates and tax adjustments' do
-          result = nil
-
           VCR.use_cassette('spree_avatax_official/create_tax_adjustments/order_adjustment_promotion') do
             create(:line_item, id: 1, price: 10.0, quantity: 4, order: order)
             create(:line_item, id: 2, price: 10.0, quantity: 3, order: order, avatax_uuid: 'be393e03-c530-4d31-bea7-f01b39496568')
@@ -332,16 +260,15 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
             Spree::PromotionHandler::Coupon.new(order).apply
 
             result = subject
-
             order.updater.update
-          end
 
-          expect(result.success?).to eq true
-          expect(order.total).to eq 59.4
-          expect(order.additional_tax_total).to eq 4.4
-          expect(first_line_item.reload.additional_tax_total).to eq 2.28 # I would expect 2.4 but AvaTax applies discount proportionaly to price
-          expect(second_line_item.reload.additional_tax_total).to eq 1.72 # I would expect 1.6 but AvaTax applies discount proportionaly to price
-          expect(shipment.reload.additional_tax_total).to eq 0.4 # Shipment tax is not affected by order level promotions
+            expect(result.success?).to eq true
+            expect(order.total).to eq 59.4
+            expect(order.additional_tax_total).to eq 4.4
+            expect(first_line_item.reload.additional_tax_total).to eq 2.28 # I would expect 2.4 but AvaTax applies discount proportionaly to price
+            expect(second_line_item.reload.additional_tax_total).to eq 1.72 # I would expect 1.6 but AvaTax applies discount proportionaly to price
+            expect(shipment.reload.additional_tax_total).to eq 0.4 # Shipment tax is not affected by order level promotions
+          end
         end
       end
     end
@@ -366,16 +293,15 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
         expect(order.total).to eq 21.6
         expect(order.additional_tax_total).to eq 1.6
 
-        result = nil
         VCR.use_cassette('spree_avatax_official/create_tax_adjustments/completed_order_line_item_update') do
           line_item.update(quantity: 2)
           result = subject
           order.updater.update
-        end
 
-        expect(result.success?).to eq true
-        expect(order.total).to eq 32.4
-        expect(order.additional_tax_total).to eq 2.4
+          expect(result.success?).to eq true
+          expect(order.total).to eq 32.4
+          expect(order.additional_tax_total).to eq 2.4
+        end
       end
     end
 
@@ -392,17 +318,16 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
 
     context 'with incorrect address' do
       let(:invalid_address) { create(:usa_address, address1: 'Invalid street', city: 'Invalid city', zipcode: '00000') }
-      let(:order) { create(:avatax_order, line_items_count: 1, ship_address: invalid_address) }
+      let(:order) { create(:avatax_order, with_shipment: true, line_items_count: 1, ship_address: invalid_address) }
 
       it 'returns failure' do
-        result = nil
         VCR.use_cassette('spree_avatax_official/create_tax_adjustments/with_incorrect_address') do
           result = subject
-        end
 
-        expect(result.failure?).to eq true
-        expect(result.value).to eq '300 - Tax calculation cannot be determined. Zip is not valid for the state. - ' \
-                                   'The provided address contains a postal code and state combination that is not valid..'
+          expect(result.failure?).to eq true
+          expect(result.value).to eq '300 - Tax calculation cannot be determined. Zip is not valid for the state. - ' \
+                                     'The provided address contains a postal code and state combination that is not valid..'
+        end
       end
     end
 
@@ -416,6 +341,14 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
 
           expect(subject.success?).to eq false
         end
+      end
+    end
+
+    context 'when delivery is required but shipments are missing' do
+      let(:order) { create(:avatax_order, line_items_count: 1, ship_address: usa_address) }
+
+      it 'returns failure without hitting Avalara' do
+        expect(subject.failure?).to eq true
       end
     end
 

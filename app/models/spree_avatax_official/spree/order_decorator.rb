@@ -13,6 +13,9 @@ module SpreeAvataxOfficial
         base.state_machine.before_transition to: :delivery, do: :validate_tax_address, if: :address_validation_enabled?
         base.state_machine.after_transition to: :canceled, do: :void_in_avatax
         base.state_machine.after_transition to: :complete, do: :commit_in_avatax
+
+        # Recalculate when the order's address changes (selecting an existing address from the address book).
+        base.after_update :recalculate_avatax_taxes_on_address_change
       end
 
       def avalara_integration
@@ -28,7 +31,11 @@ module SpreeAvataxOfficial
       end
 
       def avatax_tax_calculation_required?
-        tax_address&.persisted? && line_items.any?
+        return false unless tax_address&.persisted?
+        return false unless line_items.any?
+        return false if delivery_required? && shipments.empty?
+
+        true
       end
 
       def avatax_discount_amount
@@ -47,10 +54,12 @@ module SpreeAvataxOfficial
         ::Spree::Config.tax_using_ship_address ? :ship_address : :bill_address
       end
 
+      # We need to override this so the default Spree tax calculation is not triggered.
+      # The actual tax calculation by Avalara is done in #recalculate_avatax_taxes
       def create_tax_charge!
-        return super unless avatax_enabled?
+        return if avatax_enabled?
 
-        SpreeAvataxOfficial::CreateTaxAdjustmentsService.call(order: self)
+        super
       end
 
       def recalculate_avatax_taxes
@@ -82,6 +91,13 @@ module SpreeAvataxOfficial
       end
 
       private
+
+      def recalculate_avatax_taxes_on_address_change
+        return unless avatax_enabled?
+        return unless (%w[ship_address_id bill_address_id] & saved_changes.keys).any?
+
+        recalculate_avatax_taxes
+      end
 
       def commit_in_avatax
         return unless avatax_enabled? && avalara_integration.preferred_commit_transaction_enabled
