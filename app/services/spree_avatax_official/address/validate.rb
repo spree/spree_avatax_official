@@ -1,7 +1,12 @@
 module SpreeAvataxOfficial
   module Address
     class Validate < SpreeAvataxOfficial::Base
+      # Avalara's address validation API only supports US and Canadian addresses.
+      SUPPORTED_COUNTRIES = %w[US CA].freeze
+
       def call(address:, order:)
+        return success(nil) unless supported_country?(address)
+
         response = send_request(address, order)
 
         return failure(response) if errors?(response)
@@ -10,6 +15,10 @@ module SpreeAvataxOfficial
       end
 
       private
+
+      def supported_country?(address)
+        SUPPORTED_COUNTRIES.include?(address.country&.iso)
+      end
 
       def errors?(response)
         response.body['messages'] || response.body['error']

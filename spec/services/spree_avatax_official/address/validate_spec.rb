@@ -45,5 +45,32 @@ describe SpreeAvataxOfficial::Address::Validate, :avalara_integration do
         end
       end
     end
+
+    context 'when the address country is not US or Canada' do
+      let(:gb)      { Spree::Country.find_by(iso: 'GB') || create(:country, name: 'United Kingdom', iso: 'GB', iso3: 'GBR') }
+      let(:address) { create(:address, country: gb, zipcode: 'EC4M 7LS', state: nil) }
+
+      it 'returns success without hitting Avalara' do
+        expect_any_instance_of(AvaTax::Client).not_to receive(:resolve_address) # rubocop:disable RSpec/AnyInstance
+
+        response = subject
+
+        expect(response.success?).to eq true
+        expect(response.value).to be_nil
+      end
+    end
+
+    context 'when the address has no country' do
+      let(:address) { build(:address, country: nil) }
+
+      it 'returns success without hitting Avalara' do
+        expect_any_instance_of(AvaTax::Client).not_to receive(:resolve_address) # rubocop:disable RSpec/AnyInstance
+
+        response = subject
+
+        expect(response.success?).to eq true
+        expect(response.value).to be_nil
+      end
+    end
   end
 end
