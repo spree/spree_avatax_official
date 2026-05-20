@@ -2,7 +2,6 @@ require_relative 'configuration'
 
 module SpreeAvataxOfficial
   class Engine < Rails::Engine
-    require 'spree/core'
     require 'avatax'
 
     isolate_namespace SpreeAvataxOfficial
@@ -25,7 +24,7 @@ module SpreeAvataxOfficial
 
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
+        Rails.configuration.eager_load ? require(c) : load(c)
       end
     end
 

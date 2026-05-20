@@ -1,9 +1,3 @@
-FACTORY_BOT_CLASS = defined?(FactoryGirl) ? FactoryGirl : FactoryBot
-
-FACTORY_BOT_CLASS.define do
-  GEM_ROOT = File.dirname(File.dirname(File.dirname(__FILE__)))
-
-  Dir[File.join(GEM_ROOT, 'spec', 'factories', '**', '*.rb')].each do |factory|
-    require(factory)
-  end
+Dir["#{File.dirname(__FILE__)}/testing_support/factories/**"].each do |f|
+  load File.expand_path(f)
 end

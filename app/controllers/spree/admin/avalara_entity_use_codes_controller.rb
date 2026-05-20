@@ -1,60 +1,24 @@
 module Spree
   module Admin
-    class AvalaraEntityUseCodesController < Spree::Admin::BaseController
-      before_action :load_use_code, only: %i[edit update destroy]
-
-      def index
-        @use_codes = SpreeAvataxOfficial::EntityUseCode.all.order(code: :asc)
-        respond_with(@use_codes)
-      end
-
-      def new
-        @use_code = SpreeAvataxOfficial::EntityUseCode.new
-      end
-
-      def edit; end
-
-      def update
-        if @use_code.update(entity_use_codes_params)
-          redirect_to admin_avalara_entity_use_codes_path, success: Spree.t('spree_avatax_official.entity_use_code_updated')
-        else
-          redirect_to edit_admin_avalara_entity_use_code_path(@use_code), error: @use_code.errors.full_messages.to_sentence
-        end
-      end
-
-      def create
-        @use_code = SpreeAvataxOfficial::EntityUseCode.new(entity_use_codes_params)
-        if @use_code.save
-          redirect_to admin_avalara_entity_use_codes_path, success: Spree.t('spree_avatax_official.entity_use_code_created')
-        else
-          redirect_to new_admin_avalara_entity_use_code_path, error: @use_code.errors.full_messages.to_sentence
-        end
-      end
-
-      def destroy
-        if @use_code.destroy
-          flash[:success] = Spree.t('spree_avatax_official.entity_use_code_removed')
-        else
-          flash[:error] = @use_code.errors.full_messages.to_sentence
-        end
-
-        respond_with(@use_code) do |format|
-          format.html { redirect_to admin_avalara_entity_use_codes_path }
-          format.js   { render_js_for_destroy }
-        end
-      end
+    class AvalaraEntityUseCodesController < ResourceController
+      include Spree::Admin::SettingsConcern
 
       private
 
-      def load_use_code
-        @use_code ||= SpreeAvataxOfficial::EntityUseCode.find(params[:id])
-      rescue ActiveRecord::RecordNotFound => e
-        flash[:error] = e.message
-        redirect_to admin_avalara_entity_use_codes_path
+      def model_class
+        SpreeAvataxOfficial::EntityUseCode
       end
 
-      def entity_use_codes_params
-        params.require(:entity_use_code).permit(:code, :name, :description)
+      def permitted_resource_params
+        params.require(:avalara_entity_use_code).permit(:code, :name, :description)
+      end
+
+      def collection_url(options = {})
+        spree.admin_avalara_entity_use_codes_url(options)
+      end
+
+      def new_object_url(options = {})
+        spree.new_admin_avalara_entity_use_code_url(options)
       end
     end
   end

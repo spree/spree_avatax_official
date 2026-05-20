@@ -5,22 +5,23 @@ http_interactions:
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R625837711","referenceCode":"R625837711","companyCode":"test1","date":"2019-09-20","customerCode":"bernita.schmeler@ryan.biz","addresses":{"ShipFrom":{"line1":"298
+      string: '{"type":"SalesOrder","code":"R643971684","referenceCode":"R643971684","companyCode":"test1","date":"2026-05-12","customerCode":"paris_ruecker@kohlerdach.name","addresses":{"ShipFrom":{"line1":"298
         Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CAN","postalCode":"H9W
-        5E1"},"ShipTo":{"line1":"298 Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CA","postalCode":"H9W
-        5E1"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{},"taxIncluded":false,"description":"Product
-        #2 - 271","itemCode":"SKU-2"}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R625837711"}'
+        5E1"},"ShipTo":{"line1":"822 Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
+        79182","itemCode":"SKU-7"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R643971684","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 19.7.0
+      - AvaTax Ruby Gem 26.4.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;19.7.0;
-      Authorization:
-      - "<AVATAX_TOKEN>"
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
       Content-Type:
       - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -29,27 +30,265 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Fri, 20 Sep 2019 14:44:12 GMT
+      - Tue, 12 May 2026 11:25:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
       Location:
       - "/api/v2/companies/848107/transactions/0"
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 6b4cb5c4-239d-47e2-8da6-42d9d75364c0
+      X-Avalara-Uid:
+      - 6b4cb5c4-239d-47e2-8da6-42d9d75364c0
       Serverduration:
-      - '00:00:00.0364743'
+      - '00:00:00.0347584'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '36'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":0,"code":"R643971684","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"paris_ruecker@kohlerdach.name","customerCode":"paris_ruecker@kohlerdach.name","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R643971684","referenceCode":"R643971684","salespersonCode":"","totalAmount":15.0,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":1.2,"totalTaxable":15.0,"totalTaxCalculated":1.2,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":3,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:25:56.5744781Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        79182","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-7","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.8,"taxableAmount":10.0,"taxCalculated":0.8,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":0.6,"taxableAmount":10.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":0.6,"rateType":"General","rateTypeCode":"G","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.6,"reportingTaxCalculated":0.6,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Destination","tax":0.2,"taxableAmount":10.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.2,"rateType":"General","rateTypeCode":"G","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.2,"reportingTaxCalculated":0.2,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":3,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.4,"taxableAmount":5.0,"taxCalculated":0.4,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":0.3,"taxableAmount":5.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        STATE TAX","taxAuthorityTypeId":45,"taxCalculated":0.3,"rateType":"General","rateTypeCode":"G","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.3,"reportingTaxCalculated":0.3,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Destination","tax":0.1,"taxableAmount":5.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.1,"rateType":"General","rateTypeCode":"G","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.1,"reportingTaxCalculated":0.1,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":3,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
+        Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
+        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"},{"id":3,"transactionId":0,"boundaryLevel":"Address","line1":"298
+        Pinetree Cres","line2":"","line3":"","city":"Beaconsfield","region":"QC","postalCode":"H9W
+        5E1","country":"CA","taxRegionId":4030216,"taxRegionIdAv":0,"latitude":"45.423065","longitude":"-73.864346"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":3,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
+        STATE TAX","rateType":"General","taxable":15.0,"rate":0.060000,"tax":0.9,"taxCalculated":0.9,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
+        COUNTY TAX","rateType":"General","taxable":15.0,"rate":0.020000,"tax":0.3,"taxCalculated":0.3,"nonTaxable":0.0,"exemption":0.0}]}'
+  recorded_at: Tue, 12 May 2026 11:25:56 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"id":0,"code":"R625837711","companyId":848107,"date":"2019-09-20","paymentDate":"2019-09-20","status":"Temporary","type":"SalesOrder","currencyCode":"USD","customerVendorCode":"bernita.schmeler@ryan.biz","customerCode":"bernita.schmeler@ryan.biz","reconciled":false,"purchaseOrderNo":"R625837711","referenceCode":"R625837711","totalAmount":10.0,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":0.5,"totalTaxable":10.0,"totalTaxCalculated":0.5,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"exchangeRateEffectiveDate":"2019-09-20","exchangeRate":1.0,"modifiedDate":"2019-09-20T14:44:30.4657908Z","modifiedUserId":356147,"taxDate":"2019-09-20T00:00:00","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","description":"Product
-        #2 - 271","discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"isItemTaxable":true,"itemCode":"SKU-2","lineAmount":10.0,"quantity":1.0,"reportingDate":"2019-09-20","tax":0.5,"taxableAmount":10.0,"taxCalculated":0.5,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2019-09-20","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"CA","region":"CA","exemptAmount":0.0,"jurisCode":"CA","jurisName":"CANADA","stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":0.0,"rate":0.050000,"tax":0.5,"taxableAmount":10.0,"taxType":"Output","taxSubTypeId":"O","taxName":"CANADA
-        GST/TPS","taxAuthorityTypeId":45,"taxCalculated":0.5,"rateType":"Standard","rateTypeCode":"S","unitOfBasis":"PerCurrencyUnit","isNonPassThru":false}],"nonPassthroughDetails":[],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":0,"transactionId":0,"boundaryLevel":"Zip5","line1":"298
-        Pinetree","line2":"","line3":"","city":"BEACONSFIELD","region":"QC","postalCode":"H9W
-        5E1","country":"CA","taxRegionId":0,"latitude":"0","longitude":"0"}],"summary":[{"country":"CA","region":"CA","jurisType":"Country","jurisCode":"CA","jurisName":"CANADA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"CANADA
-        GST/TPS","rateType":"Standard","taxable":10.0,"rate":0.050000,"tax":0.5,"taxCalculated":0.5,"nonTaxable":0.0,"exemption":0.0}]}'
-    http_version:
-  recorded_at: Fri, 20 Sep 2019 14:44:12 GMT
-recorded_with: VCR 4.0.0
+      string: '{"type":"SalesOrder","code":"R643971684","referenceCode":"R643971684","companyCode":"test1","date":"2026-05-12","customerCode":"paris_ruecker@kohlerdach.name","addresses":{"ShipFrom":{"line1":"298
+        Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CAN","postalCode":"H9W
+        5E1"},"ShipTo":{"line1":"298 Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CA","postalCode":"H9W
+        5E1"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"298
+        Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CA","postalCode":"H9W
+        5E1"}},"taxIncluded":false,"description":"Product 79182","itemCode":"SKU-7"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R643971684","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.4.0
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 12 May 2026 11:25:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Location:
+      - "/api/v2/companies/848107/transactions/0"
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 843ef1e3-77ed-48cb-a344-a193c0c3b790
+      X-Avalara-Uid:
+      - 843ef1e3-77ed-48cb-a344-a193c0c3b790
+      Serverduration:
+      - '00:00:00.0404600'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '41'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":0,"code":"R643971684","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"paris_ruecker@kohlerdach.name","customerCode":"paris_ruecker@kohlerdach.name","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R643971684","referenceCode":"R643971684","salespersonCode":"","totalAmount":15.0,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":0.0,"totalTaxable":15.0,"totalTaxCalculated":0.0,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:25:57.2930206Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        79182","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-7","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":10.0,"taxCalculated":0.0,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"CA","region":"CA","stateFIPS":"CA","exemptAmount":0.0,"jurisCode":"CA","jurisName":"CANADA","jurisdictionId":200064,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":0.0,"rate":0.000000,"sourcing":"Destination","tax":0.0,"taxableAmount":10.0,"taxType":"Output","taxSubTypeId":"O","taxName":"CANADA
+        GST/TPS","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":5.0,"taxCalculated":0.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"CA","region":"CA","stateFIPS":"CA","exemptAmount":0.0,"jurisCode":"CA","jurisName":"CANADA","jurisdictionId":200064,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":0.0,"rate":0.050000,"sourcing":"Destination","tax":0.0,"taxableAmount":5.0,"taxType":"Output","taxSubTypeId":"O","taxName":"CANADA
+        GST/TPS","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Standard","rateTypeCode":"S","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Address","line1":"298
+        Pinetree Cres","line2":"","line3":"","city":"Beaconsfield","region":"QC","postalCode":"H9W
+        5E1","country":"CA","taxRegionId":4030216,"taxRegionIdAv":0,"latitude":"45.423065","longitude":"-73.864346"},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
+        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"CA","region":"CA","jurisType":"Country","jurisCode":"CA","jurisName":"CANADA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"CANADA
+        GST/TPS","rateType":"Zero","taxable":10.0,"rate":0.000000,"tax":0.0,"taxCalculated":0.0,"nonTaxable":0.0,"exemption":0.0},{"country":"CA","region":"CA","jurisType":"Country","jurisCode":"CA","jurisName":"CANADA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"CANADA
+        GST/TPS","rateType":"Standard","taxable":5.0,"rate":0.050000,"tax":0.0,"taxCalculated":0.0,"nonTaxable":0.0,"exemption":0.0}],"messages":[{"summary":"Shipment
+        does not meet CA VAT de minimis threshold ((((((ShipFromCountry NOT IN (''US'',''MX''))
+        OR HasMultipleShipFromForCA) AND VATTaxableAmount > 20) OR (ShipFromCountry
+        IN (''US'',''MX'') AND VATTaxableAmount > 40)) AND (CIRODeminimisException
+        IS NULL OR CIRODeminimisException = FALSE)) OR CIRODeminimisException = TRUE).
+        Therefore, VAT does not apply.","details":"","refersTo":"VAT","severity":"Success","source":"Avalara.AvaTax.TaxEngine"}]}'
+  recorded_at: Tue, 12 May 2026 11:25:57 GMT
+- request:
+    method: post
+    uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
+    body:
+      encoding: UTF-8
+      string: '{"type":"SalesOrder","code":"R643971684","referenceCode":"R643971684","companyCode":"test1","date":"2026-05-12","customerCode":"paris_ruecker@kohlerdach.name","addresses":{"ShipFrom":{"line1":"298
+        Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CAN","postalCode":"H9W
+        5E1"},"ShipTo":{"line1":"298 Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CA","postalCode":"H9W
+        5E1"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"298
+        Pinetree","line2":"","city":"BEACONSFIELD","region":"QC","country":"CA","postalCode":"H9W
+        5E1"}},"taxIncluded":false,"description":"Product 79182","itemCode":"SKU-7"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R643971684","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.4.0
+      X-Avalara-Client:
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
+      Content-Type:
+      - application/json
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 12 May 2026 11:25:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Location:
+      - "/api/v2/companies/848107/transactions/0"
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 15aede01-9174-4bff-9508-669208bc7942
+      X-Avalara-Uid:
+      - 15aede01-9174-4bff-9508-669208bc7942
+      Serverduration:
+      - '00:00:00.0389514'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '40'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":0,"code":"R643971684","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"paris_ruecker@kohlerdach.name","customerCode":"paris_ruecker@kohlerdach.name","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R643971684","referenceCode":"R643971684","salespersonCode":"","totalAmount":15.0,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":0.0,"totalTaxable":15.0,"totalTaxCalculated":0.0,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:25:57.9503578Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        79182","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-7","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":10.0,"taxCalculated":0.0,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"CA","region":"CA","stateFIPS":"CA","exemptAmount":0.0,"jurisCode":"CA","jurisName":"CANADA","jurisdictionId":200064,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":0.0,"rate":0.000000,"sourcing":"Destination","tax":0.0,"taxableAmount":10.0,"taxType":"Output","taxSubTypeId":"O","taxName":"CANADA
+        GST/TPS","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":5.0,"taxCalculated":0.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"CA","region":"CA","stateFIPS":"CA","exemptAmount":0.0,"jurisCode":"CA","jurisName":"CANADA","jurisdictionId":200064,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":0.0,"rate":0.050000,"sourcing":"Destination","tax":0.0,"taxableAmount":5.0,"taxType":"Output","taxSubTypeId":"O","taxName":"CANADA
+        GST/TPS","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Standard","rateTypeCode":"S","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Address","line1":"298
+        Pinetree Cres","line2":"","line3":"","city":"Beaconsfield","region":"QC","postalCode":"H9W
+        5E1","country":"CA","taxRegionId":4030216,"taxRegionIdAv":0,"latitude":"45.423065","longitude":"-73.864346"},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
+        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"CA","region":"CA","jurisType":"Country","jurisCode":"CA","jurisName":"CANADA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"CANADA
+        GST/TPS","rateType":"Zero","taxable":10.0,"rate":0.000000,"tax":0.0,"taxCalculated":0.0,"nonTaxable":0.0,"exemption":0.0},{"country":"CA","region":"CA","jurisType":"Country","jurisCode":"CA","jurisName":"CANADA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"CANADA
+        GST/TPS","rateType":"Standard","taxable":5.0,"rate":0.050000,"tax":0.0,"taxCalculated":0.0,"nonTaxable":0.0,"exemption":0.0}],"messages":[{"summary":"Shipment
+        does not meet CA VAT de minimis threshold ((((((ShipFromCountry NOT IN (''US'',''MX''))
+        OR HasMultipleShipFromForCA) AND VATTaxableAmount > 20) OR (ShipFromCountry
+        IN (''US'',''MX'') AND VATTaxableAmount > 40)) AND (CIRODeminimisException
+        IS NULL OR CIRODeminimisException = FALSE)) OR CIRODeminimisException = TRUE).
+        Therefore, VAT does not apply.","details":"","refersTo":"VAT","severity":"Success","source":"Avalara.AvaTax.TaxEngine"}]}'
+  recorded_at: Tue, 12 May 2026 11:25:58 GMT
+recorded_with: VCR 6.4.0

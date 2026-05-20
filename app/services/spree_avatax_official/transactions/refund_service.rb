@@ -2,7 +2,9 @@ module SpreeAvataxOfficial
   module Transactions
     class RefundService < SpreeAvataxOfficial::Base
       def call(refundable:)
-        if full_refund?(refundable)
+        if standalone_refund?(refundable)
+          create_amount_refund(refundable)
+        elsif full_refund?(refundable)
           create_full_refund(refundable)
         else
           create_partial_refund(refundable)
@@ -10,6 +12,20 @@ module SpreeAvataxOfficial
       end
 
       private
+
+      def standalone_refund?(refundable)
+        refundable.is_a?(::Spree::Refund) && refundable.reimbursement.blank?
+      end
+
+      def create_amount_refund(refundable)
+        if refundable.amount >= refundable.order.total
+          create_full_refund(refundable)
+        else
+          SpreeAvataxOfficial::Transactions::AmountRefundService.call(
+            **refundable_params(refundable).merge(amount: refundable.amount)
+          )
+        end
+      end
 
       def full_refund?(refundable)
         refundable.order_inventory_units == inventory_units(refundable)
@@ -79,7 +95,7 @@ module SpreeAvataxOfficial
 
       def create_full_refund(refundable)
         SpreeAvataxOfficial::Transactions::FullRefundService.call(
-          refundable_params(refundable)
+          **refundable_params(refundable)
         )
       end
     end

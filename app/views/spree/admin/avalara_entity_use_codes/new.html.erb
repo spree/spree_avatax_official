@@ -1,12 +1,1 @@
-<% content_for :page_title do %>
-  <%= Spree.t('avalara_entity_use_codes') %>
-<% end %>
-
-<%= render 'spree/admin/shared/error_messages', target: @use_code %>
-
-<%= form_for @use_code, url: admin_avalara_entity_use_codes_path, html: { multipart: true } do |f| %>
-  <fieldset>
-    <%= render partial: 'form', locals: { f: f } %>
-    <%= render partial: 'spree/admin/shared/new_resource_links', locals: { collection_url: admin_avalara_entity_use_codes_path } %>
-  </fieldset>
-<% end %>
+<%= render 'spree/admin/shared/new_resource' %>

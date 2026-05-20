@@ -19,7 +19,8 @@ module SpreeAvataxOfficial
         tax_address_cache_key(order.tax_address),
         line_items_cache_key(order),
         shipments_cache_key(order.shipments),
-        avatax_preferences_cache_key(order)
+        avalara_integration_cache_key(order),
+        market_cache_key(order)
       ].join('-')
 
       # Cache key length has to be compressed as max_length is 250:
@@ -81,14 +82,23 @@ module SpreeAvataxOfficial
       ].join('-')
     end
 
-    def avatax_preferences_cache_key(order)
-      ship_from_address_timestamp = ship_from_address_preference.try(:updated_at).try(:utc).try(:to_i)
+    def avalara_integration_cache_key(order)
+      integration = order.avalara_integration
 
-      "#{company_code(order)}-#{ship_from_address_timestamp}"
+      [
+        integration&.id,
+        integration&.updated_at&.utc&.to_f,
+        company_code(order)
+      ].join('-')
     end
 
-    def ship_from_address_preference
-      ::Spree::Preference.find_by(key: 'spree_avatax_official/configuration/ship_from_address')
+    def market_cache_key(order)
+      market = order.market
+
+      [
+        market&.id,
+        market&.tax_inclusive
+      ].join('-')
     end
   end
 end

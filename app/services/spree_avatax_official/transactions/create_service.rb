@@ -20,7 +20,7 @@ module SpreeAvataxOfficial
       private
 
       def can_send_order_to_avatax?(order)
-        # We need to ensure that order would not be commited multiple of times
+        # We need to ensure that order would not be committed multiple of times
         order.avatax_tax_calculation_required? && order.avatax_sales_invoice_transaction.blank?
       end
 
@@ -40,7 +40,7 @@ module SpreeAvataxOfficial
 
         logger.info(create_transaction_model)
 
-        client.create_transaction(create_transaction_model, options)
+        client(order: order).create_transaction(create_transaction_model, options)
       end
     end
   end

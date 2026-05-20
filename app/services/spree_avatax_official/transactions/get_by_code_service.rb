@@ -14,7 +14,7 @@ module SpreeAvataxOfficial
       def get_by_code(code, order)
         logger.info(code)
 
-        client.get_transaction_by_code(
+        client(order: order).get_transaction_by_code(
           company_code(order),
           code
         )

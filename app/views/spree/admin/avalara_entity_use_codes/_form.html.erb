@@ -1,20 +1,7 @@
-<div>
-  <div class="form-group">
-    <%= f.field_container :code do %>
-      <%= f.label :code %>
-      <%= f.text_field :code, class: 'form-control' %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= f.field_container :name do %>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= f.field_container :description do %>
-      <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control' %>
-    <% end %>
+<div class="card mb-6">
+  <div class="card-body">
+    <%= f.spree_text_field :code, autofocus: f.object.new_record?, required: true %>
+    <%= f.spree_text_field :name, required: true %>
+    <%= f.spree_text_area :description %>
   </div>
 </div>

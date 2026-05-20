@@ -3,33 +3,11 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to Spree.t('spree_avatax_official.avalara entity_use_code'),
-                     new_admin_avalara_entity_use_code_url,
-                     class: 'btn-success',
-                     icon: 'add',
-                     id: 'admin_new_avalara_entity_use_code_link' %>
+  <%= link_to_with_icon 'plus',
+                        Spree.t(:new_avalara_entity_use_code),
+                        new_admin_avalara_entity_use_code_path,
+                        class: 'btn btn-primary',
+                        id: 'admin_new_avalara_entity_use_code_link' if can?(:create, SpreeAvataxOfficial::EntityUseCode) %>
 <% end %>
 
-<table class="table" id="listing_sale_events" data-hook>
-  <thead>
-  <tr data-hook="admin_sale_events_index_headers">
-    <th><%= Spree.t(:code) %></th>
-    <th><%= Spree.t(:name) %></th>
-    <th><%= Spree.t(:description) %></th>
-    <th data-hook="admin_sale_events_index_header_actions"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @use_codes.each do |use_code| %>
-    <tr id="<%= dom_id use_code %>" data-hook="admin_sale_events_index_rows">
-      <td><%= use_code.code %></td>
-      <td><%= use_code.name %></td>
-      <td><%= use_code.description %></td>
-      <td data-hook="admin_avalara_entity_use_codes_index_row_actions">
-        <%= link_to_edit(use_code, url: edit_admin_avalara_entity_use_code_path(use_code)) %>
-        <%= link_to_delete(use_code,  { url: admin_avalara_entity_use_code_path(use_code) }) %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render_table @collection, :avalara_entity_use_codes %>

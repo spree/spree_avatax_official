@@ -3,11 +3,9 @@ require 'spec_helper'
 describe SpreeAvataxOfficial::ItemPresenter do
   subject     { described_class.new(item: item) }
 
-  let(:zone)  { create(:zone, included_in_price: false) }
-
   describe '#to_json' do
     before do
-      allow(item.order).to receive(:tax_zone).and_return zone
+      allow(item).to receive(:included_in_price).and_return false
     end
 
     context 'with line item' do
@@ -108,13 +106,32 @@ describe SpreeAvataxOfficial::ItemPresenter do
             expect(subject.to_json[:addresses]['ShipFrom'][:line1]).to eq very_long_address.first(50)
           end
         end
+
+        # Regression: a StockLocation with only a country set (no line1/city/
+        # state/zip) used to emit a half-empty line-level ShipFrom that
+        # Avalara rejects with 400 Bad Request. The presenter now treats an
+        # incomplete stock_location address as "no line-level address" so
+        # Avalara falls back to the order-level ShipFrom.
+        context 'when the stock location address is incomplete' do
+          %i[address1 city zipcode].each do |missing_field|
+            it "omits line-level addresses when #{missing_field} is blank" do
+              stock_location.update_column(missing_field, nil)
+
+              expect(subject.to_json[:addresses]).to eq({})
+            end
+          end
+
+          it 'omits line-level addresses when only the country is set' do
+            stock_location.update_columns(address1: nil, address2: nil, city: nil, zipcode: nil, state_id: nil)
+
+            expect(subject.to_json[:addresses]).to eq({})
+          end
+        end
       end
 
       context 'with tax included in price' do
-        let(:zone) { create(:zone, included_in_price: true) }
-
         it 'serializes the object' do
-          allow(item).to receive(:tax_zone).and_return zone
+          allow(item).to receive(:included_in_price).and_return true
 
           result[:taxIncluded] = true
 

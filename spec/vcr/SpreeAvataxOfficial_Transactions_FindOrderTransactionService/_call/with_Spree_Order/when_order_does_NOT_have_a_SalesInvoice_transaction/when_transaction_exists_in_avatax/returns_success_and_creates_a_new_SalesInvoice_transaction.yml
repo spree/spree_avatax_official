@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sandbox-rest.avatax.com/api/v2/companies/test1/transactions/test123
+    uri: https://sandbox-rest.avatax.com/api/v2/companies/test1/transactions/TEST123
     body:
       encoding: US-ASCII
       string: ''
@@ -44,49 +44,4 @@ http_interactions:
         Main Street","line2":"","line3":"","city":"Irvine","region":"CA","postalCode":"92615","country":"US","taxRegionId":2127863,"latitude":"33.657808","longitude":"-117.968489"}],"locationTypes":[{"documentLocationTypeId":10848111441,"documentId":4810140820,"documentAddressId":11594662439,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":4644330636,"documentId":4810140820,"documentAddressId":9389168836,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"CA","jurisType":"State","jurisCode":"06","jurisName":"CALIFORNIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"CA
         STATE TAX","rateType":"General","taxable":0.00,"rate":0.000000,"tax":0.00,"taxCalculated":0.00,"nonTaxable":120.00,"exemption":0.00}]}'
   recorded_at: Fri, 20 Sep 2019 09:03:59 GMT
-- request:
-    method: get
-    uri: https://sandbox-rest.avatax.com/api/v2/companies/test1/transactions/TEST123
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - AvaTax Ruby Gem 24.4.2
-      X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;24.4.2;
-      Authorization:
-      - "<AVATAX_TOKEN>"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Date:
-      - Wed, 24 Apr 2024 18:01:03 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      X-Correlation-Id:
-      - ab04f5ef-e37e-429f-bf3c-b83abce27784
-      X-Avalara-Uid:
-      - ab04f5ef-e37e-429f-bf3c-b83abce27784
-    body:
-      encoding: UTF-8
-      string: '{"error": {"code": "AuthenticationException","message": "Authentication
-        failed.","details": [{"code": "AuthenticationException","message": "Authentication
-        failed.","description": "Missing authentication or unable to authenticate
-        the user or the account.","faultCode": "Client","helpLink": "http://developer.avalara.com/avatax/errors/AuthenticationException"}]}}'
-  recorded_at: Wed, 24 Apr 2024 18:01:03 GMT
-recorded_with: VCR 6.2.0
+recorded_with: VCR 6.4.0

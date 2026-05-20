@@ -8,13 +8,7 @@ module SpreeAvataxOfficial
       end
 
       def included_in_price
-        tax_zone.try(:included_in_price) || false
-      end
-
-      def update_tax_charge
-        return super unless SpreeAvataxOfficial::Config.enabled
-
-        SpreeAvataxOfficial::CreateTaxAdjustmentsService.call(order: order)
+        order.market&.tax_inclusive || false
       end
 
       def avatax_tax_code

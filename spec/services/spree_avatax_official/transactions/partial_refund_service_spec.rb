@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SpreeAvataxOfficial::Transactions::PartialRefundService do
+describe SpreeAvataxOfficial::Transactions::PartialRefundService, :avalara_integration do
   describe '#call' do
     subject do
       described_class.call(
@@ -15,9 +15,11 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundService do
     let(:line_item)   { order.line_items.first }
 
     it 'creates ReturnInvoice' do
-      VCR.use_cassette('spree_avatax_official/transactions/refund/partial_refund_success') do
-        order.update(state: :complete, completed_at: Time.current)
+      avalara_integration.update!(active: false)
+      order.update(state: :complete, completed_at: Time.current)
+      avalara_integration.update!(active: true)
 
+      VCR.use_cassette('spree_avatax_official/transactions/refund/partial_refund_success') do
         result   = subject
         response = result.value
 

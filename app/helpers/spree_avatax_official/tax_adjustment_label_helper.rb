@@ -10,7 +10,8 @@ module SpreeAvataxOfficial
 
       format_adjustment_label(
         ::Spree.t("spree_avatax_official.create_tax_adjustments.#{item_class}_tax_adjustment_default_label", included_label: included_label(item)),
-        rate
+        rate,
+        item.order
       )
     end
 
@@ -18,13 +19,14 @@ module SpreeAvataxOfficial
       item.included_in_price ? 'Included ' : ''
     end
 
-    def format_adjustment_label(adjustment_default_label, rate)
+    def format_adjustment_label(adjustment_default_label, rate, order)
       rate_in_percents = number_to_percentage(
         rate * 100.0,
         precision:                 PRECISION_OF_PERCENT_VALUE,
         strip_insignificant_zeros: STRIP_INSIGNIFICANT_ZEROS
       )
-      SpreeAvataxOfficial::Config.show_rate_in_label ? "#{adjustment_default_label} (#{rate_in_percents})" : adjustment_default_label
+      show_rate = order.avalara_integration&.preferred_show_rate_in_label || false
+      show_rate ? "#{adjustment_default_label} (#{rate_in_percents})" : adjustment_default_label
     end
   end
 end

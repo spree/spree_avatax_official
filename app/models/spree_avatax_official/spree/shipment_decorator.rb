@@ -8,7 +8,7 @@ module SpreeAvataxOfficial
       end
 
       def included_in_price
-        tax_zone.try(:included_in_price) || false
+        order.market&.tax_inclusive || false
       end
 
       def tax_category
@@ -17,6 +17,13 @@ module SpreeAvataxOfficial
 
       def avatax_tax_code
         tax_category.try(:tax_code).presence || ::Spree::TaxCategory::DEFAULT_TAX_CODES['Shipment']
+      end
+
+      def selected_shipping_rate_id=(id)
+        super
+        return if order.nil? || order.completed?
+
+        order.recalculate_avatax_taxes
       end
     end
   end

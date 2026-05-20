@@ -1,4 +1,4 @@
-class AddExemptionNumberToSpreeUsers < SpreeExtension::Migration[4.2]
+class AddExemptionNumberToSpreeUsers < ActiveRecord::Migration[7.2]
   def change
     return if column_exists?(:spree_users, :exemption_number)
 

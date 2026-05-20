@@ -14,21 +14,17 @@ describe Spree::Order do
     end
   end
 
-  describe '#cancel', :avatax_enabled do
+  describe '#cancel', :avalara_integration do
     let!(:avatax_tax_rate) { create(:avatax_tax_rate) }
     let(:order) { create(:order, ship_address: create(:usa_address)) }
 
     before do
-      VCR.use_cassette('spree_order/simple_order_with_single_line_item') do
-        create(:line_item, price: 10.0, quantity: 1, order: order)
-        order.update(state: :complete, completed_at: Time.current)
-      end
-
-      allow(Spree::OrderMailer).to receive_message_chain(:cancel_email, :deliver_later)
+      create(:line_item, price: 10.0, quantity: 1, order: order)
+      order.update(state: :complete, completed_at: Time.current)
     end
 
     it 'calls void service' do
-      expect(SpreeAvataxOfficial::Transactions::VoidService).to receive(:call)
+      expect(SpreeAvataxOfficial::Transactions::VoidService).to receive(:call).at_least(:once)
 
       order.cancel
     end
@@ -42,7 +38,7 @@ describe Spree::Order do
     end
   end
 
-  describe '#complete', :avatax_enabled do
+  describe '#complete', :avalara_integration do
     let(:order) do
       VCR.use_cassette('spree_order/order_transition_to_completed') do
         create(:avatax_order, line_items_count: 1, ship_address: create(:usa_address)).tap do |order|
@@ -59,12 +55,8 @@ describe Spree::Order do
       end
     end
 
-    before do
-      allow(Spree::OrderMailer).to receive_message_chain(:confirm_email, :deliver_later)
-    end
-
     context 'commit transaction enabled' do
-      before { SpreeAvataxOfficial::Config.commit_transaction_enabled = true }
+      before { update_avalara_setting(:commit_transaction_enabled, true) }
 
       it 'creates a commited SalesInvoice transaction' do
         expect(order.state).to eq 'confirm'
@@ -76,11 +68,8 @@ describe Spree::Order do
     end
 
     context 'commit transaction disabled' do
-      around do |example|
-        SpreeAvataxOfficial::Config.commit_transaction_enabled = false
-        example.run
-        SpreeAvataxOfficial::Config.commit_transaction_enabled = true
-      end
+      before { update_avalara_setting(:commit_transaction_enabled, false) }
+      after { update_avalara_setting(:commit_transaction_enabled, true) }
 
       it 'doesnt create a commited SalesInvoice transaction' do
         expect(order.state).to eq 'confirm'
@@ -92,7 +81,7 @@ describe Spree::Order do
     end
   end
 
-  describe 'tax estimation triggering', :avatax_enabled do
+  describe 'tax estimation triggering', :avalara_integration do
     let(:order) { create(:avatax_order, with_shipment: true, ship_address: create(:usa_address)) }
     let(:line_item) { order.line_items.first }
     let(:shipment) { order.shipments.first }
@@ -174,21 +163,22 @@ describe Spree::Order do
     end
   end
 
-  describe '#validate_tax_address' do
+  describe '#validate_tax_address', :avalara_integration do
     let(:order) { create(:order_with_line_items, ship_address: ship_address, state: :address) }
 
-    around do |example|
-      SpreeAvataxOfficial::Config.address_validation_enabled = true
-
-      example.run
-
-      SpreeAvataxOfficial::Config.address_validation_enabled = false
-    end
+    before { update_avalara_setting(:address_validation_enabled, true) }
+    after { update_avalara_setting(:address_validation_enabled, false) }
 
     context 'when address is invalid' do
       let(:ship_address) { create(:invalid_usa_address) }
 
       it 'does not change order state to delivery and adds an error' do
+        # Suppress factory-chain tax recalc; only the address-validation
+        # call should be captured by the cassette.
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
         VCR.use_cassette('spree_avatax_official/address/validate_failure') do
           expect { order.next! }.to raise_error StateMachines::InvalidTransition
           expect(order.errors.count).to eq 1
@@ -201,6 +191,10 @@ describe Spree::Order do
       let(:ship_address) { create(:usa_address) }
 
       it 'changes state from address to delivery' do
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
         VCR.use_cassette('spree_avatax_official/address/validate_success') do
           expect { order.next! }.to change(order, :state).to 'delivery'
         end

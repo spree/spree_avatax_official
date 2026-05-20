@@ -18,7 +18,7 @@ module SpreeAvataxOfficial
       def create_refund(order, transaction_code)
         logger.info(refund_model(order, transaction_code))
 
-        client.refund_transaction(
+        client(order: order).refund_transaction(
           company_code(order),
           order.number,
           refund_model(order, transaction_code)

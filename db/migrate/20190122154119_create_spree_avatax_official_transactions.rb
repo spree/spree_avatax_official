@@ -1,4 +1,4 @@
-class CreateSpreeAvataxOfficialTransactions < SpreeExtension::Migration[4.2]
+class CreateSpreeAvataxOfficialTransactions < ActiveRecord::Migration[7.2]
   def change
     create_table :spree_avatax_official_transactions do |t|
       t.references :order,             null: false, index: true

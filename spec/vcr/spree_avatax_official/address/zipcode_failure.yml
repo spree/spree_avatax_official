@@ -10,9 +10,9 @@ http_interactions:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 19.7.0
+      - AvaTax Ruby Gem 26.4.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;19.7.0;
+      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
       Authorization:
       - "<AVATAX_TOKEN>"
       Accept-Encoding:
@@ -23,23 +23,59 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Fri, 20 Sep 2019 09:03:04 GMT
+      - Thu, 07 May 2026 13:07:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
       X-Content-Type-Options:
       - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - 2de4ef80-28e5-45e0-8c8e-e07a08041f47
+      X-Avalara-Uid:
+      - 2de4ef80-28e5-45e0-8c8e-e07a08041f47
       Serverduration:
-      - '00:00:00.0005632'
+      - '00:00:00.0003944'
+      Api-Supported-Versions:
+      - '2.0'
+      X-Envoy-Upstream-Service-Time:
+      - '1'
+      Content-Security-Policy:
+      - frame-ancestors 'self';
+      X-Download-Options:
+      - noopen
+      X-Dns-Prefetch-Control:
+      - 'off'
+      Permissions-Policy:
+      - camera 'none';microphone 'none';geolocation 'none';encrypted-media 'none';payment
+        'none';speaker 'none';usb 'none';
+      X-Cip-Engine:
+      - containers
+      X-Cip-Site:
+      - gcp_us-west3
+      X-Cip-Environment:
+      - sbx
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"error":{"code":"StringLengthError","message":"Field ''postalCode''
         has an invalid length.","target":"IncorrectData","details":[{"code":"StringLengthError","number":13,"message":"Field
         ''postalCode'' has an invalid length.","description":"Field ''postalCode''
-        must be between 0 and 11 characters in length.","faultCode":"Client","helpLink":"http://developer.avalara.com/avatax/errors/StringLengthError","severity":"Error"}]}}'
-    http_version: 
-  recorded_at: Fri, 20 Sep 2019 09:03:04 GMT
-recorded_with: VCR 4.0.0
+        must be between 0 and 11 characters in length.","faultCode":"Client","helpLink":"https://developer.avalara.com/avatax/errors/StringLengthError","severity":"Error"}]}}'
+  recorded_at: Thu, 07 May 2026 13:07:04 GMT
+recorded_with: VCR 6.4.0

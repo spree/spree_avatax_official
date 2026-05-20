@@ -14,7 +14,7 @@ module SpreeAvataxOfficial
         transaction_type: SpreeAvataxOfficial::Transaction::SALES_ORDER
       ).to_json
 
-      client.create_transaction(create_transaction_model, options)
+      client(order: order).create_transaction(create_transaction_model, options)
     end
   end
 end

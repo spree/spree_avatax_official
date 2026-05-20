@@ -6,20 +6,26 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails-controller-testing'
-gem 'spree', github: 'spree/spree', branch: 'main'
-gem 'spree_backend', github: 'spree/spree_backend', branch: 'main'
-gem 'spree_emails', github: 'spree/spree', branch: 'main'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'main'
+
+spree_opts = if ENV['SPREE_PATH']
+               { 'path': ENV['SPREE_PATH'] }
+             else
+               { 'github': 'spree/spree', 'branch': 'main', 'glob': 'spree/**/*.gemspec' }
+             end
+gem 'spree', spree_opts
+gem 'spree_core', spree_opts
+gem 'spree_admin', spree_opts
+
 
 if ENV['DB'] == 'mysql'
   gem 'mysql2'
 elsif ENV['DB'] == 'postgres'
   gem 'pg'
 else
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3'
 end
 
-gem 'webdrivers'
+gem 'propshaft'
 gem 'pry'
 
 gemspec
