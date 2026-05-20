@@ -10,7 +10,7 @@ module SpreeAvataxOfficial
 
     def create_default_tax_category
       ::Spree::TaxCategory.find_or_create_by!(name: 'Clothing')
-                          .update!(tax_code: ::Spree::TaxCategory::DEFAULT_TAX_CODES['LineItem'], is_default: true)
+                          .update!(tax_code: ::Spree::TaxCategory::DEFAULT_TAX_CODES['LineItem'])
     end
 
     def create_and_assign_shipping_tax_category

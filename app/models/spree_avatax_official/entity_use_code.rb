@@ -1,9 +1,8 @@
 module SpreeAvataxOfficial
-  class EntityUseCode < ::Spree::Base
+  class EntityUseCode < ::Spree.base_class
     self.whitelisted_ransackable_attributes = %w[code name description]
 
-    with_options presence: true do
-      validates :code, :name, uniqueness: true
-    end
+    validates :code, presence: true, uniqueness: { scope: spree_base_uniqueness_scope }
+    validates :name, presence: true, uniqueness: { scope: spree_base_uniqueness_scope }
   end
 end
