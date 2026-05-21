@@ -1,5 +1,5 @@
 module SpreeAvataxOfficial
-  class Transaction < ActiveRecord::Base
+  class Transaction < ::Spree.base_class
     SALES_ORDER               = 'SalesOrder'.freeze
     SALES_INVOICE             = 'SalesInvoice'.freeze
     RETURN_INVOICE            = 'ReturnInvoice'.freeze
@@ -12,8 +12,9 @@ module SpreeAvataxOfficial
 
     belongs_to :order, class_name: 'Spree::Order'
 
+    validates :code, presence: true, uniqueness: { scope: spree_base_uniqueness_scope }
+
     with_options presence: true do
-      validates :code, uniqueness: true
       validates :order
       validates :transaction_type
     end
