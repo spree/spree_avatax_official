@@ -5,9 +5,7 @@ http_interactions:
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R465812990","referenceCode":"R465812990","companyCode":"test1","date":"2026-05-07","customerCode":"marg_streich@rath.name","addresses":{"ShipFrom":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"USA","postalCode":"19147"},"ShipTo":{"line1":"822
-        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R465812990","entityUseCode":null}'
+      string: '{"type":"SalesOrder","code":"R476241772","referenceCode":"R476241772","companyCode":"test1","date":"2026-05-26","customerCode":"tora.stark@hermann.ca","lines":[],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R476241772","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -27,7 +25,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Thu, 07 May 2026 13:01:42 GMT
+      - Tue, 26 May 2026 11:59:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -51,11 +49,11 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - a96ecd94-f008-4b7e-bfcc-cf64cb7eae93
+      - 83b9c24b-6e5b-47f4-8962-ece23387bfae
       X-Avalara-Uid:
-      - a96ecd94-f008-4b7e-bfcc-cf64cb7eae93
+      - 83b9c24b-6e5b-47f4-8962-ece23387bfae
       Serverduration:
-      - '00:00:00.0002963'
+      - '00:00:00.0001286'
       Api-Supported-Versions:
       - '2.0'
       X-Envoy-Upstream-Service-Time:
@@ -81,5 +79,5 @@ http_interactions:
         least one line.","target":"HttpRequestHeaders","details":[{"code":"MissingLine","number":311,"message":"Transactions
         must have at least one line.","description":"The CreateTransactionModel object
         must have an element called ''lines'', with at least one valid line record.","faultCode":"Client","helpLink":"https://developer.avalara.com/avatax/errors/MissingLine","severity":"Error"}]}}'
-  recorded_at: Thu, 07 May 2026 13:01:42 GMT
+  recorded_at: Tue, 26 May 2026 11:59:34 GMT
 recorded_with: VCR 6.4.0

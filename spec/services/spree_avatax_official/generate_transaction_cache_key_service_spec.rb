@@ -33,7 +33,7 @@ describe SpreeAvataxOfficial::GenerateTransactionCacheKeyService, :avalara_integ
     end
 
     describe 'cache key sensitivity' do
-      let(:order) { create(:avatax_order, line_items_count: 1, ship_address: create(:usa_address)) }
+      let(:order) { create(:avatax_order, with_shipment: true, line_items_count: 1, ship_address: create(:usa_address)) }
 
       # `order.avalara_integration` is scoped to `.active`, so we need the
       # integration active for the cache key to incorporate its preferences.
@@ -44,10 +44,10 @@ describe SpreeAvataxOfficial::GenerateTransactionCacheKeyService, :avalara_integ
         avalara_integration.update!(active: true)
       end
 
-      it 'changes when the integration is updated (e.g. ship-from address)' do
+      it 'changes when a shipment stock location address is updated' do
         original_key = described_class.call(order: order).value
 
-        avalara_integration.update!(preferred_ship_from_address: { line1: '1 Different St' })
+        order.shipments.first.stock_location.update!(address1: '1 Different St')
 
         expect(described_class.call(order: order).value).not_to eq original_key
       end

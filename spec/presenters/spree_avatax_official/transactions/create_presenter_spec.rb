@@ -8,7 +8,6 @@ describe SpreeAvataxOfficial::Transactions::CreatePresenter, :avalara_integratio
 
     let(:order) { create(:order_with_line_items) }
     let(:order_items) { order.taxable_items }
-    let(:ship_from_address) { avalara_integration.preferred_ship_from_address }
     let(:transaction_type) { 'SalesOrder' }
 
     let(:result) do
@@ -19,9 +18,6 @@ describe SpreeAvataxOfficial::Transactions::CreatePresenter, :avalara_integratio
         referenceCode:            order.number,
         date:                     order.updated_at.strftime('%Y-%m-%d'),
         customerCode:             order.email,
-        addresses:                SpreeAvataxOfficial::AddressPresenter.new(address: ship_from_address, address_type: 'ShipFrom').to_json.merge(
-          SpreeAvataxOfficial::AddressPresenter.new(address: order.ship_address, address_type: 'ShipTo').to_json
-        ),
         lines:                    order_items.map { |item| SpreeAvataxOfficial::ItemPresenter.new(item: item).to_json },
         commit:                   false,
         discount:                 0.0,

@@ -16,8 +16,6 @@ module SpreeAvataxOfficial
       end
     end
 
-    delegate :inventory_units, to: :item
-
     private
 
     attr_reader :item, :custom_quantity, :custom_amount
@@ -59,22 +57,26 @@ module SpreeAvataxOfficial
       end
     end
 
-    # Only emit a line-level ShipFrom when the stock location has a full
-    # address. Avalara rejects requests with a country-only ShipFrom, and
-    # an empty `addresses: {}` makes Avalara fall back to the order-level
-    # ShipFrom (the integration's preferred_ship_from_address) — which is
-    # the desired behaviour for incomplete stock locations.
-    def with_addresses?
-      return false unless item.class.name.demodulize == 'LineItem'
-      return false unless inventory_units.any?
+    # Per-line addresses are the only source of ShipFrom/ShipTo for the AvaTax request.
+    # Each line emits both ShipFrom (from its stock location) and ShipTo (from the order's tax address).
+    def line_item_addresses_payload
+      return {} if stock_location.nil?
 
-      stock_location_address.values_at(:line1, :city, :region, :country, :postalCode).all?(&:present?)
+      ship_from_payload.merge(ship_to_payload)
     end
 
     # TODO: Handle the case where line item belongs to multiple stock locations - it may involve line items splitting
-    def stock_location_address
-      stock_location = inventory_units.first.shipment.stock_location
+    def stock_location
+      @stock_location ||=
+        case item.class.name.demodulize
+        when 'Shipment'
+          item.stock_location
+        when 'LineItem'
+          item.inventory_units.first&.shipment&.stock_location || item.order.shipments.first&.stock_location
+        end
+    end
 
+    def stock_location_address
       {
         line1:      stock_location.address1.try(:first, 50),
         line2:      stock_location.address2.try(:first, 50),
@@ -91,10 +93,6 @@ module SpreeAvataxOfficial
 
     def ship_to_payload
       SpreeAvataxOfficial::AddressPresenter.new(address: item.order.tax_address, address_type: 'ShipTo').to_json
-    end
-
-    def line_item_addresses_payload
-      with_addresses? ? ship_from_payload.merge(ship_to_payload) : {}
     end
   end
 end

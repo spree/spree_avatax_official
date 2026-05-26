@@ -30,11 +30,6 @@ en:
       exemption_number: Exemption number
       endpoint_sandbox: Sandbox
       endpoint_production: Production
-      origin_address: Default origin address
-      origin_address_help: >-
-        Used as the origin address for tax calculation when an order's stock
-        location does not have its own address configured. Stock-location
-        addresses always take precedence when present.
     admin:
       integrations:
         avalara:

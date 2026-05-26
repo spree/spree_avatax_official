@@ -29,7 +29,16 @@ describe SpreeAvataxOfficial::AddressPresenter, :avalara_integration do
     context 'when serializing ShipFrom address' do
       subject { described_class.new(address: address, address_type: address_type) }
 
-      let(:address) { avalara_integration.preferred_ship_from_address }
+      let(:address) do
+        {
+          line1:      '822 Reed St',
+          line2:      '',
+          city:       'Philadelphia',
+          region:     'PA',
+          country:    'US',
+          postalCode: '19147'
+        }
+      end
       let(:address_type) { 'ShipFrom' }
 
       let(:result) do

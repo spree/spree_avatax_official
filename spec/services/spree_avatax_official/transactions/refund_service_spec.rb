@@ -35,7 +35,7 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
       end
 
       context 'with standalone refund (no reimbursement)' do
-        let(:order) { create(:shipped_order, line_items_count: 2, ship_address: create(:usa_address), number: 'R100000003') }
+        let(:order) { create(:shipped_order, line_items_count: 2, ship_address: create(:usa_address), number: 'R100000004') }
         let(:payment) do
           p = order.payments.new(payment_method: create(:check_payment_method), amount: order.total)
           p.state = :completed

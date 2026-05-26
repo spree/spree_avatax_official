@@ -10,7 +10,6 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundPresenter, :avalara_int
     )
   end
 
-  let(:ship_from_address) { avalara_integration.preferred_ship_from_address }
   let(:result) do
     {
       type:                     'ReturnInvoice',
@@ -19,9 +18,6 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundPresenter, :avalara_int
       code:                     "#{order.number}-1",
       date:                     order.updated_at.strftime('%Y-%m-%d'),
       customerCode:             order.email,
-      addresses:                SpreeAvataxOfficial::AddressPresenter.new(address: ship_from_address, address_type: 'ShipFrom').to_json.merge(
-        SpreeAvataxOfficial::AddressPresenter.new(address: order.ship_address, address_type: 'ShipTo').to_json
-      ),
       lines:                    [SpreeAvataxOfficial::ItemPresenter.new(item: line_item, custom_quantity: quantity, custom_amount: amount).to_json],
       commit:                   true,
       discount:                 0.0,

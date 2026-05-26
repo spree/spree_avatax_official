@@ -28,7 +28,7 @@ module SpreeAvataxOfficial
           amount:      -amount.to_f,
           taxCode:     refund_tax_code,
           discounted:  false,
-          addresses:   {},
+          addresses:   refund_addresses_payload,
           taxIncluded: true,
           description: 'Refund'
         }]
@@ -37,6 +37,32 @@ module SpreeAvataxOfficial
       def refund_tax_code
         order.line_items.first&.avatax_tax_code ||
           ::Spree::TaxCategory::DEFAULT_TAX_CODES['LineItem']
+      end
+
+      # The refund isn't tied to a specific shipment, so it carries the order's first
+      # shipment's stock location as ShipFrom. There is no order-level fallback in the request.
+      def refund_addresses_payload
+        stock_location = order.shipments.first&.stock_location
+        return {} if stock_location.nil?
+
+        ship_from = SpreeAvataxOfficial::AddressPresenter.new(
+          address:      {
+            line1:      stock_location.address1.try(:first, 50),
+            line2:      stock_location.address2.try(:first, 50),
+            city:       stock_location.city,
+            region:     stock_location.state.try(:abbr),
+            country:    stock_location.country.try(:iso),
+            postalCode: stock_location.zipcode
+          },
+          address_type: 'ShipFrom'
+        ).to_json
+
+        ship_to = SpreeAvataxOfficial::AddressPresenter.new(
+          address:      order.tax_address,
+          address_type: 'ShipTo'
+        ).to_json
+
+        ship_from.merge(ship_to)
       end
     end
   end
