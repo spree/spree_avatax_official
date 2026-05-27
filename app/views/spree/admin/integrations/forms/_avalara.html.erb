@@ -1,3 +1,16 @@
+<div class="alert alert-info">
+  <div>
+    <%= Spree.t(
+          'admin.integrations.avalara.stock_location_address_info',
+          stock_location_link: link_to(
+            Spree.t('admin.integrations.avalara.stock_location_link_label'),
+            spree.admin_stock_locations_path,
+            class: 'text-blue-500 no-underline hover:text-blue-600'
+          )
+        ).html_safe %>
+  </div>
+</div>
+
 <div class="card mb-4">
   <div class="card-body">
     <%= preference_field(@integration, form, 'account_number', i18n_scope: 'admin.integrations.avalara') %>
