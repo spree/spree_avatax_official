@@ -4,8 +4,6 @@ module SpreeAvataxOfficial
       def call(refundable:)
         if standalone_refund?(refundable)
           create_amount_refund(refundable)
-        elsif full_refund?(refundable)
-          create_full_refund(refundable)
         else
           create_partial_refund(refundable)
         end
@@ -25,10 +23,6 @@ module SpreeAvataxOfficial
             **refundable_params(refundable).merge(amount: refundable.amount)
           )
         end
-      end
-
-      def full_refund?(refundable)
-        refundable.order_inventory_units == inventory_units(refundable)
       end
 
       def refundable_class(refundable)

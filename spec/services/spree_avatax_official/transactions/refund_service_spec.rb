@@ -20,15 +20,16 @@ describe SpreeAvataxOfficial::Transactions::RefundService, :avalara_integration 
       let(:reimbursement) { order.reimbursements.create }
       let(:refund)        { create(:refund, amount: 10, reimbursement: reimbursement, payment: payment) }
 
-      context 'with full refund' do
+      context 'when all line items are returned (shipping retained)' do
         before { avalara_integration.update!(active: false) }
 
-        it 'creates refund transaction' do
+        it 'creates a return invoice transaction' do
           order.inventory_units.each do |inventory_unit|
             reimbursement.return_items.create(inventory_unit: inventory_unit)
           end
 
-          expect(SpreeAvataxOfficial::Transactions::FullRefundService).to receive(:call)
+          expect(SpreeAvataxOfficial::Transactions::FullRefundService).not_to receive(:call)
+          expect(SpreeAvataxOfficial::Transactions::PartialRefundService).to receive(:call)
 
           described_class.call(refundable: refund)
         end

@@ -5,7 +5,7 @@ module SpreeAvataxOfficial
         base.after_create :refund_in_avatax
 
         base.delegate :order,                    to: :payment
-        base.delegate :inventory_units, :number, to: :order, prefix: true
+        base.delegate :number, to: :order, prefix: true
       end
 
       private
