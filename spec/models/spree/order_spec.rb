@@ -200,5 +200,19 @@ describe Spree::Order do
         end
       end
     end
+
+    context 'when there is no address' do
+      let(:ship_address) { nil }
+
+      it 'returns truthy without raising' do
+        avalara_integration.update!(active: false)
+        order
+        avalara_integration.update!(active: true)
+
+        expect(order.tax_address).to be_nil
+        expect { order.validate_tax_address }.not_to raise_error
+        expect(order.errors).to be_empty
+      end
+    end
   end
 end

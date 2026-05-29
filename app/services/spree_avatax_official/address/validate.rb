@@ -5,7 +5,7 @@ module SpreeAvataxOfficial
       SUPPORTED_COUNTRIES = %w[US CA].freeze
 
       def call(address:, order:)
-        return success(nil) unless supported_country?(address)
+        return success(nil) if address.nil? || !supported_country?(address)
 
         response = send_request(address, order)
 
