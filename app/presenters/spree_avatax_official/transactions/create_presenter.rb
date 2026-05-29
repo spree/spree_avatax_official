@@ -16,7 +16,6 @@ module SpreeAvataxOfficial
           companyCode:              company_code,
           date:                     formatted_date(order_date),
           customerCode:             customer_code,
-          addresses:                addresses_payload,
           lines:                    items_payload,
           commit:                   completed?(order),
           discount:                 order.avatax_discount_amount,
@@ -28,7 +27,7 @@ module SpreeAvataxOfficial
         }
       end
 
-      delegate :avatax_ship_from_address, :user, to: :order
+      delegate :user, to: :order
 
       private
 
@@ -67,18 +66,6 @@ module SpreeAvataxOfficial
 
       def customer_code
         user.try(:email) || order.email
-      end
-
-      def ship_from_payload
-        SpreeAvataxOfficial::AddressPresenter.new(address: avatax_ship_from_address, address_type: 'ShipFrom').to_json
-      end
-
-      def ship_to_payload
-        SpreeAvataxOfficial::AddressPresenter.new(address: order.tax_address, address_type: 'ShipTo').to_json
-      end
-
-      def addresses_payload
-        ship_from_payload.merge(ship_to_payload)
       end
 
       def items_payload

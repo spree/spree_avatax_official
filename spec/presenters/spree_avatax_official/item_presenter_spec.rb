@@ -107,24 +107,16 @@ describe SpreeAvataxOfficial::ItemPresenter do
           end
         end
 
-        # Regression: a StockLocation with only a country set (no line1/city/
-        # state/zip) used to emit a half-empty line-level ShipFrom that
-        # Avalara rejects with 400 Bad Request. The presenter now treats an
-        # incomplete stock_location address as "no line-level address" so
-        # Avalara falls back to the order-level ShipFrom.
+        # Stock-location addresses are emitted as-is, even when some fields
+        # are blank. There is no longer an order-level ShipFrom fallback, so
+        # an incomplete stock location surfaces as an Avalara
+        # NotEnoughAddressesInfo error rather than silently using a default.
         context 'when the stock location address is incomplete' do
-          %i[address1 city zipcode].each do |missing_field|
-            it "omits line-level addresses when #{missing_field} is blank" do
-              stock_location.update_column(missing_field, nil)
+          it 'still emits a line-level ShipFrom with the blank field as nil' do
+            stock_location.update_column(:address1, nil)
 
-              expect(subject.to_json[:addresses]).to eq({})
-            end
-          end
-
-          it 'omits line-level addresses when only the country is set' do
-            stock_location.update_columns(address1: nil, address2: nil, city: nil, zipcode: nil, state_id: nil)
-
-            expect(subject.to_json[:addresses]).to eq({})
+            expect(subject.to_json[:addresses]['ShipFrom'][:line1]).to be_nil
+            expect(subject.to_json[:addresses]['ShipFrom'][:city]).to eq stock_location.city
           end
         end
       end
@@ -155,6 +147,19 @@ describe SpreeAvataxOfficial::ItemPresenter do
 
     context 'with shipment' do
       let(:item) { create(:avatax_shipment) }
+      let(:stock_location) { item.stock_location }
+      let(:stock_location_address) do
+        {
+          line1:      stock_location.address1,
+          line2:      stock_location.address2,
+          city:       stock_location.city,
+          region:     stock_location.state.try(:abbr),
+          country:    stock_location.country.try(:iso),
+          postalCode: stock_location.zipcode
+        }
+      end
+      let(:ship_from_address) { SpreeAvataxOfficial::AddressPresenter.new(address: stock_location_address, address_type: 'ShipFrom').to_json }
+      let(:ship_to_address)   { SpreeAvataxOfficial::AddressPresenter.new(address: item.order.tax_address, address_type: 'ShipTo').to_json }
 
       let(:result) do
         {
@@ -163,12 +168,14 @@ describe SpreeAvataxOfficial::ItemPresenter do
           amount:      item.discounted_amount,
           taxCode:     'FR',
           discounted:  false,
-          addresses:   {},
+          addresses:   ship_from_address.merge(ship_to_address),
           taxIncluded: false
         }
       end
 
-      it 'serializes the object' do
+      before { item.order.update(ship_address: create(:usa_address)) }
+
+      it 'serializes the object with the shipment stock location as ShipFrom' do
         expect(subject.to_json).to eq result
       end
     end

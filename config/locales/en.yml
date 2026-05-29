@@ -30,15 +30,12 @@ en:
       exemption_number: Exemption number
       endpoint_sandbox: Sandbox
       endpoint_production: Production
-      origin_address: Default origin address
-      origin_address_help: >-
-        Used as the origin address for tax calculation when an order's stock
-        location does not have its own address configured. Stock-location
-        addresses always take precedence when present.
     admin:
       integrations:
         avalara:
           description: Real-time tax calculation and filing via Avalara AvaTax.
+          stock_location_address_info: To correctly calculate tax, each %{stock_location_link} must have a complete address - AvaTax uses it as the origin address to calculate tax.
+          stock_location_link_label: stock location
           account_number: Account number
           license_key: License key
           endpoint: Environment

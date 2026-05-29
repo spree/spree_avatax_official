@@ -8,16 +8,6 @@ FactoryBot.define do
     preferred_commit_transaction_enabled { true }
     preferred_address_validation_enabled { false }
     preferred_show_rate_in_label { false }
-    preferred_ship_from_address do
-      {
-        line1: '822 Reed St',
-        line2: '',
-        city: 'Philadelphia',
-        region: 'PA',
-        country: 'USA',
-        postalCode: '19147'
-      }
-    end
     store { Spree::Store.default || create(:store) }
   end
 end

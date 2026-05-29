@@ -5,12 +5,12 @@ http_interactions:
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R678338155","referenceCode":"R678338155","companyCode":"test1","date":"2026-05-12","customerCode":"carolyne@kulaskshlerin.us","addresses":{"ShipFrom":{"line1":"10
-        Paternoster Sq","line2":"","city":"London","region":"","country":"GBR","postalCode":"EC4M
-        7LS"},"ShipTo":{"line1":"822 Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+      string: '{"type":"SalesOrder","code":"R563488518","referenceCode":"R563488518","companyCode":"test1","date":"2026-05-26","customerCode":"lourdes@torphy.name","lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
         Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
         Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false,"description":"Product
-        118797","itemCode":"SKU-11"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R678338155","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
+        33035","itemCode":"SKU-3"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
+        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"822
+        Reed St","line2":"","city":"Philadelphia","region":"PA","country":"US","postalCode":"19147"}},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R563488518","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -30,7 +30,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 12 May 2026 11:26:05 GMT
+      - Tue, 26 May 2026 12:25:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -56,11 +56,11 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - 798e8698-8516-408c-ac1d-bec9d2101397
+      - 127fca07-b454-404f-8ffb-208408f6d6e7
       X-Avalara-Uid:
-      - 798e8698-8516-408c-ac1d-bec9d2101397
+      - 127fca07-b454-404f-8ffb-208408f6d6e7
       Serverduration:
-      - '00:00:00.0085535'
+      - '00:00:00.0080003'
       Api-Supported-Versions:
       - '2.0'
       X-Envoy-Upstream-Service-Time:
@@ -82,31 +82,29 @@ http_interactions:
       - sbx
     body:
       encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R678338155","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"carolyne@kulaskshlerin.us","customerCode":"carolyne@kulaskshlerin.us","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R678338155","referenceCode":"R678338155","salespersonCode":"","totalAmount":15.0,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":1.2,"totalTaxable":15.0,"totalTaxCalculated":1.2,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":3,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:26:05.4242513Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        118797","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-11","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.8,"taxableAmount":10.0,"taxCalculated":0.8,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":0.6,"taxableAmount":10.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+      string: '{"id":0,"code":"R563488518","companyId":848107,"date":"2026-05-26","paymentDate":"2026-05-26","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"lourdes@torphy.name","customerCode":"lourdes@torphy.name","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R563488518","referenceCode":"R563488518","salespersonCode":"","totalAmount":15.0,"totalExempt":0.0,"totalDiscount":0.0,"totalTax":1.2,"totalTaxable":15.0,"totalTaxCalculated":1.2,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":0,"destinationAddressId":0,"exchangeRateEffectiveDate":"2026-05-26","exchangeRate":1.0,"modifiedDate":"2026-05-26T12:25:27.9993332Z","modifiedUserId":429316,"taxDate":"2026-05-26","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        33035","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"SKU-3","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-26","revAccount":"","sourcing":"Destination","tax":0.8,"taxableAmount":10.0,"taxCalculated":0.8,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-26","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":0.6,"taxableAmount":10.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         STATE TAX","taxAuthorityTypeId":45,"taxCalculated":0.6,"rateType":"General","rateTypeCode":"G","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.6,"reportingTaxCalculated":0.6,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Destination","tax":0.2,"taxableAmount":10.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.2,"rateType":"General","rateTypeCode":"G","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.2,"reportingTaxCalculated":0.2,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":3,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.4,"taxableAmount":5.0,"taxCalculated":0.4,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":0.3,"taxableAmount":5.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.2,"rateType":"General","rateTypeCode":"G","taxableUnits":10.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":10.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.2,"reportingTaxCalculated":0.2,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":0.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":true,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-26","revAccount":"","sourcing":"Destination","tax":0.4,"taxableAmount":5.0,"taxCalculated":0.4,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-26","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"42","jurisName":"PENNSYLVANIA","jurisdictionId":49,"stateAssignedNo":"","jurisType":"STA","jurisdictionType":"State","nonTaxableAmount":0.0,"rate":0.060000,"sourcing":"Destination","tax":0.3,"taxableAmount":5.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
         STATE TAX","taxAuthorityTypeId":45,"taxCalculated":0.3,"rateType":"General","rateTypeCode":"G","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.3,"reportingTaxCalculated":0.3,"liabilityType":"Seller","chargedTo":"Buyer"},{"id":0,"transactionLineId":0,"transactionId":0,"country":"US","region":"PA","stateFIPS":"42","exemptAmount":0.0,"jurisCode":"101","jurisName":"PHILADELPHIA","jurisdictionId":2311,"stateAssignedNo":"51","jurisType":"CTY","jurisdictionType":"County","nonTaxableAmount":0.0,"rate":0.020000,"sourcing":"Destination","tax":0.1,"taxableAmount":5.0,"taxType":"Sales","taxSubTypeId":"S","taxName":"PA
-        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.1,"rateType":"General","rateTypeCode":"G","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.1,"reportingTaxCalculated":0.1,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":3,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
+        COUNTY TAX","taxAuthorityTypeId":45,"taxCalculated":0.1,"rateType":"General","rateTypeCode":"G","taxableUnits":5.0000,"nonTaxableUnits":0.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":5.0,"reportingNonTaxableUnits":0.0,"reportingExemptUnits":0.0,"reportingTax":0.1,"reportingTaxCalculated":0.1,"liabilityType":"Seller","chargedTo":"Buyer"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"822
         Reed St","line2":"","line3":"","city":"Philadelphia","region":"PA","postalCode":"19147-5736","country":"US","taxRegionId":4014900,"taxRegionIdAv":0,"latitude":"39.93156","longitude":"-75.158483"},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
-        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"},{"id":3,"transactionId":0,"boundaryLevel":"Zip5","line1":"10
-        Paternoster Sq","line2":"","line3":"","city":"London","region":"","postalCode":"EC4M
-        7LS","country":"GB","taxRegionId":205085,"taxRegionIdAv":0,"latitude":"","longitude":""}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":3,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
+        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"}],"locationTypes":[],"summary":[{"country":"US","region":"PA","jurisType":"State","jurisCode":"42","jurisName":"PENNSYLVANIA","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Sales","taxSubType":"S","taxName":"PA
         STATE TAX","rateType":"General","taxable":15.0,"rate":0.060000,"tax":0.9,"taxCalculated":0.9,"nonTaxable":0.0,"exemption":0.0},{"country":"US","region":"PA","jurisType":"County","jurisCode":"101","jurisName":"PHILADELPHIA","taxAuthorityType":45,"stateAssignedNo":"51","taxType":"Sales","taxSubType":"S","taxName":"PA
         COUNTY TAX","rateType":"General","taxable":15.0,"rate":0.020000,"tax":0.3,"taxCalculated":0.3,"nonTaxable":0.0,"exemption":0.0}]}'
-  recorded_at: Tue, 12 May 2026 11:26:05 GMT
+  recorded_at: Tue, 26 May 2026 12:25:28 GMT
 - request:
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R678338155","referenceCode":"R678338155","companyCode":"test1","date":"2026-05-12","customerCode":"carolyne@kulaskshlerin.us","addresses":{"ShipFrom":{"line1":"10
-        Paternoster Sq","line2":"","city":"London","region":"","country":"GBR","postalCode":"EC4M
-        7LS"},"ShipTo":{"line1":"10 Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
-        7LS"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
-        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"10
+      string: '{"type":"SalesOrder","code":"R563488518","referenceCode":"R563488518","companyCode":"test1","date":"2026-05-26","customerCode":"lourdes@torphy.name","lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"10
         Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
-        7LS"}},"taxIncluded":false,"description":"Product 118797","itemCode":"SKU-11"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R678338155","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
+        7LS"},"ShipTo":{"line1":"10 Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
+        7LS"}},"taxIncluded":false,"description":"Product 33035","itemCode":"SKU-3"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{"ShipFrom":{"line1":"10
+        Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
+        7LS"},"ShipTo":{"line1":"10 Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
+        7LS"}},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R563488518","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -126,7 +124,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 12 May 2026 11:26:06 GMT
+      - Tue, 26 May 2026 12:25:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -152,15 +150,15 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - 92aa5459-a0de-4b1c-9fa4-d0cde76af115
+      - 04510f6c-d410-4644-81d9-1646379b7031
       X-Avalara-Uid:
-      - 92aa5459-a0de-4b1c-9fa4-d0cde76af115
+      - 04510f6c-d410-4644-81d9-1646379b7031
       Serverduration:
-      - '00:00:00.0097331'
+      - '00:00:00.0067140'
       Api-Supported-Versions:
       - '2.0'
       X-Envoy-Upstream-Service-Time:
-      - '11'
+      - '7'
       Content-Security-Policy:
       - frame-ancestors 'self';
       X-Download-Options:
@@ -178,30 +176,29 @@ http_interactions:
       - sbx
     body:
       encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R678338155","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"carolyne@kulaskshlerin.us","customerCode":"carolyne@kulaskshlerin.us","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R678338155","referenceCode":"R678338155","salespersonCode":"","totalAmount":15.0,"totalExempt":15.0,"totalDiscount":0.0,"totalTax":0.0,"totalTaxable":0.0,"totalTaxCalculated":0.0,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:26:06.1336788Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        118797","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":10.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"SKU-11","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
+      string: '{"id":0,"code":"R563488518","companyId":848107,"date":"2026-05-26","paymentDate":"2026-05-26","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"lourdes@torphy.name","customerCode":"lourdes@torphy.name","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R563488518","referenceCode":"R563488518","salespersonCode":"","totalAmount":15.0,"totalExempt":15.0,"totalDiscount":0.0,"totalTax":0.0,"totalTaxable":0.0,"totalTaxCalculated":0.0,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":0,"destinationAddressId":0,"exchangeRateEffectiveDate":"2026-05-26","exchangeRate":1.0,"modifiedDate":"2026-05-26T12:25:28.697172Z","modifiedUserId":429316,"taxDate":"2026-05-26","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        33035","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":10.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"SKU-3","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-26","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-26","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
         KINGDOM","jurisdictionId":200085,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":10.0,"rate":0.000000,"sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxType":"Output","taxSubTypeId":"O","taxName":"GB
-        VAT","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":0.0000,"nonTaxableUnits":10.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":0.0,"reportingNonTaxableUnits":10.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer","vatCode":"GB_S_-_000_C"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"GBS-000C","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":5.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
+        VAT","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":0.0000,"nonTaxableUnits":10.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":0.0,"reportingNonTaxableUnits":10.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer","vatCode":"GB_S_-_000_C"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"GBS-000C","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":5.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-26","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-26","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
         KINGDOM","jurisdictionId":200085,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":5.0,"rate":0.000000,"sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxType":"Output","taxSubTypeId":"O","taxName":"GB
         VAT","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":0.0000,"nonTaxableUnits":5.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":0.0,"reportingNonTaxableUnits":5.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer","vatCode":"GB_S_-_000_D"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"GBS-000D","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"10
         Paternoster Sq","line2":"","line3":"","city":"London","region":"","postalCode":"EC4M
-        7LS","country":"GB","taxRegionId":205085,"taxRegionIdAv":0,"latitude":"","longitude":""},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
-        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"GB","region":"GB","jurisType":"Country","jurisCode":"GB","jurisName":"UNITED
+        7LS","country":"GB","taxRegionId":205085,"taxRegionIdAv":0,"latitude":"","longitude":""}],"locationTypes":[],"summary":[{"country":"GB","region":"GB","jurisType":"Country","jurisCode":"GB","jurisName":"UNITED
         KINGDOM","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"GB
         VAT","rateType":"Zero","taxable":0.0,"rate":0.000000,"tax":0.0,"taxCalculated":0.0,"nonTaxable":15.0,"exemption":0.0}]}'
-  recorded_at: Tue, 12 May 2026 11:26:06 GMT
+  recorded_at: Tue, 26 May 2026 12:25:28 GMT
 - request:
     method: post
     uri: https://sandbox-rest.avatax.com/api/v2/transactions/create
     body:
       encoding: UTF-8
-      string: '{"type":"SalesOrder","code":"R678338155","referenceCode":"R678338155","companyCode":"test1","date":"2026-05-12","customerCode":"carolyne@kulaskshlerin.us","addresses":{"ShipFrom":{"line1":"10
-        Paternoster Sq","line2":"","city":"London","region":"","country":"GBR","postalCode":"EC4M
-        7LS"},"ShipTo":{"line1":"10 Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
-        7LS"}},"lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"1600
-        Pennsylvania Ave NW","line2":null,"city":"Washington","region":"NY","country":"US","postalCode":"20500"},"ShipTo":{"line1":"10
+      string: '{"type":"SalesOrder","code":"R563488518","referenceCode":"R563488518","companyCode":"test1","date":"2026-05-26","customerCode":"lourdes@torphy.name","lines":[{"number":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","quantity":1,"amount":"10.0","taxCode":"P0000000","discounted":false,"addresses":{"ShipFrom":{"line1":"10
         Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
-        7LS"}},"taxIncluded":false,"description":"Product 118797","itemCode":"SKU-11"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R678338155","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
+        7LS"},"ShipTo":{"line1":"10 Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
+        7LS"}},"taxIncluded":false,"description":"Product 33035","itemCode":"SKU-3"},{"number":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","quantity":1,"amount":"5.0","taxCode":"FR","discounted":false,"addresses":{"ShipFrom":{"line1":"10
+        Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
+        7LS"},"ShipTo":{"line1":"10 Paternoster Sq","line2":"","city":"London","region":null,"country":"GB","postalCode":"EC4M
+        7LS"}},"taxIncluded":false}],"commit":false,"discount":"0.0","currencyCode":"USD","purchaseOrderNo":"R563488518","entityUseCode":null,"exemptionNo":null,"businessIdentificationNo":null}'
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -221,7 +218,7 @@ http_interactions:
       message: Created
     headers:
       Date:
-      - Tue, 12 May 2026 11:26:06 GMT
+      - Tue, 26 May 2026 12:25:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -247,15 +244,15 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - ae2a8d62-cdcb-4887-a3c4-2c1d15c78a9a
+      - c4870ce4-36ff-4a2a-81fa-756a0061c555
       X-Avalara-Uid:
-      - ae2a8d62-cdcb-4887-a3c4-2c1d15c78a9a
+      - c4870ce4-36ff-4a2a-81fa-756a0061c555
       Serverduration:
-      - '00:00:00.0098452'
+      - '00:00:00.0058287'
       Api-Supported-Versions:
       - '2.0'
       X-Envoy-Upstream-Service-Time:
-      - '11'
+      - '6'
       Content-Security-Policy:
       - frame-ancestors 'self';
       X-Download-Options:
@@ -273,16 +270,15 @@ http_interactions:
       - sbx
     body:
       encoding: ASCII-8BIT
-      string: '{"id":0,"code":"R678338155","companyId":848107,"date":"2026-05-12","paymentDate":"2026-05-12","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"carolyne@kulaskshlerin.us","customerCode":"carolyne@kulaskshlerin.us","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R678338155","referenceCode":"R678338155","salespersonCode":"","totalAmount":15.0,"totalExempt":15.0,"totalDiscount":0.0,"totalTax":0.0,"totalTaxable":0.0,"totalTaxCalculated":0.0,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":1,"destinationAddressId":1,"exchangeRateEffectiveDate":"2026-05-12","exchangeRate":1.0,"modifiedDate":"2026-05-12T11:26:06.770675Z","modifiedUserId":429316,"taxDate":"2026-05-12","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
-        118797","destinationAddressId":1,"originAddressId":2,"discountAmount":0.0,"exemptAmount":10.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"SKU-11","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
+      string: '{"id":0,"code":"R563488518","companyId":848107,"date":"2026-05-26","paymentDate":"2026-05-26","status":"Temporary","type":"SalesOrder","batchCode":"","currencyCode":"USD","exchangeRateCurrencyCode":"USD","customerUsageType":"","entityUseCode":"","customerVendorCode":"lourdes@torphy.name","customerCode":"lourdes@torphy.name","exemptNo":"","reconciled":false,"locationCode":"","reportingLocationCode":"","purchaseOrderNo":"R563488518","referenceCode":"R563488518","salespersonCode":"","totalAmount":15.0,"totalExempt":15.0,"totalDiscount":0.0,"totalTax":0.0,"totalTaxable":0.0,"totalTaxCalculated":0.0,"adjustmentReason":"NotAdjusted","locked":false,"version":1,"originAddressId":0,"destinationAddressId":0,"exchangeRateEffectiveDate":"2026-05-26","exchangeRate":1.0,"modifiedDate":"2026-05-26T12:25:29.3225779Z","modifiedUserId":429316,"taxDate":"2026-05-26","lines":[{"id":0,"transactionId":0,"lineNumber":"LI-a844605f-e114-4933-a0cf-7a434ac83cdf","customerUsageType":"","entityUseCode":"","description":"Product
+        33035","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":10.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"SKU-3","lineAmount":10.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-26","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"P0000000","taxCodeId":8087,"taxDate":"2026-05-26","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
         KINGDOM","jurisdictionId":200085,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":10.0,"rate":0.000000,"sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxType":"Output","taxSubTypeId":"O","taxName":"GB
-        VAT","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":0.0000,"nonTaxableUnits":10.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":0.0,"reportingNonTaxableUnits":10.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer","vatCode":"GB_S_-_000_C"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":2,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"GBS-000C","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":5.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-12","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-12","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
+        VAT","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":0.0000,"nonTaxableUnits":10.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":0.0,"reportingNonTaxableUnits":10.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer","vatCode":"GB_S_-_000_C"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"GBS-000C","vatNumberTypeId":0},{"id":0,"transactionId":0,"lineNumber":"FR-6a9efefa-0c6c-4e63-ab43-f43f1d7b2e22","customerUsageType":"","entityUseCode":"","destinationAddressId":1,"originAddressId":1,"discountAmount":0.0,"exemptAmount":5.0,"exemptCertId":0,"exemptNo":"","isItemTaxable":false,"itemCode":"","lineAmount":5.0,"quantity":1.0,"ref1":"","ref2":"","reportingDate":"2026-05-26","revAccount":"","sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxCalculated":0.0,"taxCode":"FR","taxCodeId":10890,"taxDate":"2026-05-26","taxIncluded":false,"details":[{"id":0,"transactionLineId":0,"transactionId":0,"country":"GB","region":"GB","stateFIPS":"GB","exemptAmount":0.0,"jurisCode":"GB","jurisName":"UNITED
         KINGDOM","jurisdictionId":200085,"stateAssignedNo":"","jurisType":"CNT","jurisdictionType":"Country","nonTaxableAmount":5.0,"rate":0.000000,"sourcing":"Destination","tax":0.0,"taxableAmount":0.0,"taxType":"Output","taxSubTypeId":"O","taxName":"GB
         VAT","taxAuthorityTypeId":45,"taxCalculated":0.0,"rateType":"Zero","rateTypeCode":"Z","taxableUnits":0.0000,"nonTaxableUnits":5.0000,"exemptUnits":0.0000,"unitOfBasis":"PerCurrencyUnit","isNonPassThru":false,"isFee":false,"reportingTaxableUnits":0.0,"reportingNonTaxableUnits":5.0,"reportingExemptUnits":0.0,"reportingTax":0.0,"reportingTaxCalculated":0.0,"liabilityType":"Seller","chargedTo":"Buyer","vatCode":"GB_S_-_000_D"}],"nonPassthroughDetails":[],"lineLocationTypes":[{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLineLocationTypeId":0,"documentLineId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"hsCode":"","costInsuranceFreight":0.0,"vatCode":"GBS-000D","vatNumberTypeId":0}],"addresses":[{"id":1,"transactionId":0,"boundaryLevel":"Zip5","line1":"10
         Paternoster Sq","line2":"","line3":"","city":"London","region":"","postalCode":"EC4M
-        7LS","country":"GB","taxRegionId":205085,"taxRegionIdAv":0,"latitude":"","longitude":""},{"id":2,"transactionId":0,"boundaryLevel":"Zip9","line1":"1600
-        Pennsylvania Ave Nw","line2":"","line3":"","city":"Washington","region":"DC","postalCode":"20500-0005","country":"US","taxRegionId":949,"taxRegionIdAv":0,"latitude":"38.897199","longitude":"-77.036548"}],"locationTypes":[{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipFrom"},{"documentLocationTypeId":0,"documentId":0,"documentAddressId":1,"locationTypeCode":"ShipTo"}],"summary":[{"country":"GB","region":"GB","jurisType":"Country","jurisCode":"GB","jurisName":"UNITED
+        7LS","country":"GB","taxRegionId":205085,"taxRegionIdAv":0,"latitude":"","longitude":""}],"locationTypes":[],"summary":[{"country":"GB","region":"GB","jurisType":"Country","jurisCode":"GB","jurisName":"UNITED
         KINGDOM","taxAuthorityType":45,"stateAssignedNo":"","taxType":"Output","taxSubType":"O","taxName":"GB
         VAT","rateType":"Zero","taxable":0.0,"rate":0.000000,"tax":0.0,"taxCalculated":0.0,"nonTaxable":15.0,"exemption":0.0}]}'
-  recorded_at: Tue, 12 May 2026 11:26:06 GMT
+  recorded_at: Tue, 26 May 2026 12:25:29 GMT
 recorded_with: VCR 6.4.0

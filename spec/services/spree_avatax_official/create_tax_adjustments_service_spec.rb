@@ -274,7 +274,7 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
     end
 
     context 'completed order with single line item and shipment' do
-      let(:order) { create(:avatax_order, :completed, number: 'R820471933', with_shipment: true, line_items_count: 1, ship_address: usa_address) }
+      let(:order) { create(:avatax_order, :completed, number: 'R820471934', with_shipment: true, line_items_count: 1, ship_address: usa_address) }
       let(:line_item) { order.line_items.first }
       let(:shipment) { order.shipments.first }
       let(:invoice_transaction) { order.reload.avatax_sales_invoice_transaction }
@@ -325,8 +325,8 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
           result = subject
 
           expect(result.failure?).to eq true
-          expect(result.value).to eq '300 - Tax calculation cannot be determined. Zip is not valid for the state. - ' \
-                                     'The provided address contains a postal code and state combination that is not valid..'
+          expect(result.value).to include('300 - Tax calculation cannot be determined. Zip is not valid for the state.')
+          expect(result.value).to include('The provided address contains a postal code and state combination that is not valid.')
         end
       end
     end

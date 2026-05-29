@@ -12,25 +12,33 @@ describe SpreeAvataxOfficial::Transactions::AmountRefundPresenter, :avalara_inte
   end
 
   let(:order)  { create(:order_with_line_items) }
-  let(:amount) { 27.45 }
+  let(:amount) { order.total / 4 }
 
   before { order.update(completed_at: Time.current) }
 
   describe '#to_json' do
-    it 'sends a ReturnInvoice with the refund amount as a tax-inclusive line' do
+    it 'returns a RefundTransactionModel with refundType Percentage' do
       payload = subject.to_json
-      line    = payload[:lines].first
 
-      expect(payload[:type]).to eq 'ReturnInvoice'
-      expect(payload[:code]).to eq "#{order.number}-1"
-      expect(payload).not_to have_key(:taxOverride)
+      expect(payload).to eq(
+        refundTransactionCode: "#{order.number}-1",
+        referenceCode:         order.number,
+        refundDate:            Time.current.strftime('%Y-%m-%d'),
+        refundType:            'Percentage',
+        refundPercentage:      25.0
+      )
+    end
 
-      expect(payload[:lines].size).to eq 1
-      expect(line[:number]).to start_with('REFUND-')
-      expect(line[:quantity]).to eq 1
-      expect(line[:amount]).to eq(-amount.to_f)
-      expect(line[:taxIncluded]).to eq true
-      expect(line).not_to have_key(:taxOverride)
+    it 'computes refundPercentage as (amount / order.total) * 100' do
+      expect(subject.to_json[:refundPercentage]).to eq 25.0
+    end
+
+    context 'when the refund amount does not divide cleanly into the order total' do
+      let(:amount) { order.total / 3 }
+
+      it 'rounds refundPercentage to 6 decimal places' do
+        expect(subject.to_json[:refundPercentage]).to eq 33.333333
+      end
     end
   end
 end

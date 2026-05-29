@@ -155,36 +155,52 @@ describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration 
       let(:europe_address) { create(:europe_address) }
       let(:tax_summary)    { subject.value['summary'].first }
 
-      let(:from_canada) do
+      def set_order_stock_location_address(order, attrs)
+        country = ::Spree::Country.find_by(iso: attrs[:country_iso]) ||
+                  ::Spree::Country.create!(
+                    name:     attrs[:country_name],
+                    iso_name: attrs[:country_name].to_s.upcase,
+                    iso:      attrs[:country_iso],
+                    iso3:     attrs[:country_iso3]
+                  )
+
+        state = if attrs[:region].present?
+                  ::Spree::State.find_by(country_id: country.id, abbr: attrs[:region]) ||
+                    ::Spree::State.create!(country: country, abbr: attrs[:region], name: attrs[:region])
+                end
+
+        order.shipments.map(&:stock_location).uniq.each do |stock_location|
+          stock_location.update!(
+            address1: attrs[:address1],
+            address2: attrs[:address2] || '',
+            city:     attrs[:city],
+            zipcode:  attrs[:zipcode],
+            country:  country,
+            state:    state
+          )
+        end
+      end
+
+      let(:from_canada_attrs) do
         {
-          line1:      '298 Pinetree',
-          line2:      '',
-          city:       'BEACONSFIELD',
-          region:     'QC',
-          country:    'CAN',
-          postalCode: 'H9W 5E1'
+          address1:     '298 Pinetree',
+          city:         'BEACONSFIELD',
+          region:       'QC',
+          country_name: 'Canada',
+          country_iso:  'CA',
+          country_iso3: 'CAN',
+          zipcode:      'H9W 5E1'
         }
       end
 
-      let(:from_usa) do
+      let(:from_europe_attrs) do
         {
-          line1:      '822 Reed St',
-          line2:      '',
-          city:       'Philadelphia',
-          region:     'PA',
-          country:    'USA',
-          postalCode: '19147'
-        }
-      end
-
-      let(:from_europe) do
-        {
-          line1:      '10 Paternoster Sq',
-          line2:      '',
-          city:       'London',
-          region:     '',
-          country:    'GBR',
-          postalCode: 'EC4M 7LS'
+          address1:     '10 Paternoster Sq',
+          city:         'London',
+          country_name: 'United Kingdom',
+          country_iso:  'GB',
+          country_iso3: 'GBR',
+          zipcode:      'EC4M 7LS'
         }
       end
 
@@ -201,7 +217,7 @@ describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration 
         context 'Europe to Europe sale' do
           it 'calculates VAT' do
             VCR.use_cassette('spree_avatax_official/transactions/create/vat/europe_to_europe') do
-              update_avalara_setting(:ship_from_address, from_europe)
+              set_order_stock_location_address(order, from_europe_attrs)
               order.update(ship_address: europe_address)
               expect(tax_summary['taxName']).to eq 'GB VAT'
             end
@@ -211,7 +227,7 @@ describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration 
         context 'Europe to US sale' do
           it 'calculates US tax' do
             VCR.use_cassette('spree_avatax_official/transactions/create/vat/europe_to_us') do
-              update_avalara_setting(:ship_from_address, from_europe)
+              set_order_stock_location_address(order, from_europe_attrs)
               expect(tax_summary['taxName']).to eq 'PA STATE TAX'
             end
           end
@@ -231,7 +247,7 @@ describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration 
         context 'Canada to Canada sale' do
           it 'calculates GST/TPS' do
             VCR.use_cassette('spree_avatax_official/transactions/create/gst/canada_to_canada') do
-              update_avalara_setting(:ship_from_address, from_canada)
+              set_order_stock_location_address(order, from_canada_attrs)
               order.update(ship_address: canada_address)
               expect(tax_summary['taxName']).to eq 'CANADA GST/TPS'
             end
@@ -241,7 +257,7 @@ describe SpreeAvataxOfficial::Transactions::CreateService, :avalara_integration 
         context 'Canada to US sale' do
           it 'calculates US tax' do
             VCR.use_cassette('spree_avatax_official/transactions/create/gst/canada_to_us') do
-              update_avalara_setting(:ship_from_address, from_canada)
+              set_order_stock_location_address(order, from_canada_attrs)
               expect(tax_summary['taxName']).to eq 'PA STATE TAX'
             end
           end

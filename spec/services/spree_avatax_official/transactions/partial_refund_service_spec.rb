@@ -5,7 +5,7 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundService, :avalara_integ
     subject do
       described_class.call(
         order:            order,
-        transaction_code: 'test-code-1234',
+        transaction_code: 'test-code-1235',
         refund_items:     refund_item
       )
     end

@@ -4,7 +4,7 @@ describe SpreeAvataxOfficial::GetTaxService, :avalara_integration do
   subject { described_class.call(order: order) }
 
   describe '#call' do
-    let(:order) { create(:avatax_order, line_items_count: 1, ship_address: create(:usa_address)) }
+    let(:order) { create(:avatax_order, with_shipment: true, line_items_count: 1, ship_address: create(:usa_address)) }
 
     context 'with successed response from avatax' do
       it 'returns success with tax calculated' do
@@ -16,7 +16,7 @@ describe SpreeAvataxOfficial::GetTaxService, :avalara_integration do
           result = subject
 
           expect(result.success?).to eq true
-          expect(result.value[:taxCalculated]).to eq 0.8
+          expect(result.value[:taxCalculated]).to eq 1.2
         end
       end
     end

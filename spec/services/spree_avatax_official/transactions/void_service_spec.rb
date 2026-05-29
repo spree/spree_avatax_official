@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SpreeAvataxOfficial::Transactions::VoidService, :avalara_integration do
-  let(:order) { create(:completed_order_with_totals, number: 'R555111222', ship_address: create(:usa_address)) }
+  let(:order) { create(:completed_order_with_totals, number: 'R555111223', ship_address: create(:usa_address)) }
 
   describe '#call' do
     subject { described_class.call(order: order.reload) }
