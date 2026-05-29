@@ -72,5 +72,18 @@ describe SpreeAvataxOfficial::Address::Validate, :avalara_integration do
         expect(response.value).to be_nil
       end
     end
+
+    context 'when the address is nil' do
+      let(:address) { nil }
+
+      it 'returns success without hitting Avalara' do
+        expect_any_instance_of(AvaTax::Client).not_to receive(:resolve_address) # rubocop:disable RSpec/AnyInstance
+
+        response = subject
+
+        expect(response.success?).to eq true
+        expect(response.value).to be_nil
+      end
+    end
   end
 end
