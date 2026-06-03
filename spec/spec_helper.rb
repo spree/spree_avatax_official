@@ -78,6 +78,7 @@ RSpec.configure do |config|
 
   config.before do
     Rails.cache.clear
+    Spree::Current.reset
 
     Spree::Country.find_by(iso: 'US') || create(:country, name: 'United States', iso_name: 'UNITED STATES', iso: 'US', states_required: true)
 
