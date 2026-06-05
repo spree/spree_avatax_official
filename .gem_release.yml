@@ -1,0 +1,2 @@
+bump:
+  file: "lib/spree_avatax_official/version.rb"
