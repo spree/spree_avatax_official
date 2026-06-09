@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox-rest.avatax.com/api/v2/definitions/taxcodes?$filter=(taxCode%20contains%20%27OP01%27%20OR%20description%20contains%20%27OP01%27)%20AND%20isActive%20eq%20true&$orderBy=taxCode%20ASC&$top=250
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - AvaTax Ruby Gem 26.5.0
+      X-Avalara-Client:
+      - SpreebySpark;a0n0b00000PqwGxAAJ;2.0.0;RubySdk;26.5.0;
+      Authorization:
+      - "<AVATAX_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Jun 2026 11:55:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '41'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-cache, no-store
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - sameorigin
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Correlation-Id:
+      - f1184361-0f14-4ef6-802f-8e33d9330181
+      X-Avalara-Uid:
+      - f1184361-0f14-4ef6-802f-8e33d9330181
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "@recordsetCount": 0,
+          "value": []
+        }
+  recorded_at: Tue, 09 Jun 2026 11:55:09 GMT
+recorded_with: VCR 6.4.0

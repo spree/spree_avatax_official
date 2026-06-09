@@ -1,0 +1,22 @@
+<%# Overrides Spree::Admin tax_categories/_form to back the tax_code field with %>
+<%# a remote Avalara ListTaxCodes search (SpreeAvataxOfficial::ListTaxCodes). %>
+<div class="card mb-6">
+  <div class="card-body">
+
+    <%= f.spree_text_field :name, autofocus: f.object.new_record?, required: true %>
+
+    <div class="form-group">
+      <%= f.label :tax_code, Spree.t(:tax_code) %>
+      <%= tom_select_tag 'tax_category[tax_code]',
+            url: spree.admin_avalara_tax_codes_path,
+            remote_search: true,
+            create: true,
+            placeholder: Spree.t(:type_to_search),
+            remote_search_active_option: (f.object.tax_code.present? ? [{ id: f.object.tax_code, name: f.object.tax_code }] : nil) %>
+    </div>
+
+    <%= f.spree_text_area :description %>
+
+    <%= f.spree_check_box :is_default, label: Spree.t(:default) %>
+  </div>
+</div>
