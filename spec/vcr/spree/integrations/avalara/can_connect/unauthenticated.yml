@@ -10,9 +10,9 @@ http_interactions:
       Accept:
       - application/json; charset=utf-8
       User-Agent:
-      - AvaTax Ruby Gem 26.4.0
+      - AvaTax Ruby Gem 26.5.0
       X-Avalara-Client:
-      - a0o0b000005HsXPAA0;Spree by Spark;RubySdk;26.4.0;
+      - SpreebySpark;a0n0b00000PqwGxAAJ;1.9.0;RubySdk;26.5.0;
       Authorization:
       - "<AVATAX_TOKEN>"
       Accept-Encoding:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 11 May 2026 08:36:30 GMT
+      - Wed, 03 Jun 2026 15:02:43 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -45,11 +45,11 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Correlation-Id:
-      - 3c345e3e-ea32-49c5-8b01-b3fd723a99b0
+      - c1005cff-0a94-4d9b-b621-cbbf72ab3727
       X-Avalara-Uid:
-      - 3c345e3e-ea32-49c5-8b01-b3fd723a99b0
+      - c1005cff-0a94-4d9b-b621-cbbf72ab3727
       Serverduration:
-      - '00:00:00.0026346'
+      - '00:00:00.0016819'
       Databasecalls:
       - '0'
       Databaseduration:
@@ -60,6 +60,6 @@ http_interactions:
       - '2.0'
     body:
       encoding: UTF-8
-      string: '{"version":"26.4.2","authenticated":false,"authenticationType":"None"}'
-  recorded_at: Mon, 11 May 2026 08:36:30 GMT
+      string: '{"version":"26.6.0","authenticated":false,"authenticationType":"None"}'
+  recorded_at: Wed, 03 Jun 2026 15:02:43 GMT
 recorded_with: VCR 6.4.0
