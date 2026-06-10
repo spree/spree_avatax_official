@@ -14,6 +14,7 @@ module SpreeAvataxOfficial
           code:                     transaction_code,
           referenceCode:            order.number,
           companyCode:              company_code,
+          reportingLocationCode:    order.avatax_reporting_location_code,
           date:                     formatted_date(order_date),
           customerCode:             customer_code,
           lines:                    items_payload,

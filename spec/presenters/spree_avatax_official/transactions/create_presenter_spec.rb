@@ -14,6 +14,7 @@ describe SpreeAvataxOfficial::Transactions::CreatePresenter, :avalara_integratio
       {
         type:                     transaction_type,
         companyCode:              order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code),
+        reportingLocationCode:    order.avatax_reporting_location_code,
         code:                     order.number,
         referenceCode:            order.number,
         date:                     order.updated_at.strftime('%Y-%m-%d'),

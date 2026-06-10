@@ -1,0 +1,32 @@
+<%# Overrides Spree::Admin stock_locations/_form to add the Avalara reporting location code (sent to AvaTax as reportingLocationCode). %>
+<div class="card mb-6">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:general_settings) %>
+    </h5>
+  </div>
+  <div class="card-body" >
+    <%= f.spree_text_field :name, required: true, autofocus: f.object.new_record? %>
+    <%= f.spree_text_field :admin_name, label: Spree.t(:internal_name) %>
+    <%= f.spree_text_field :code,
+          label: Spree.t('spree_avatax_official.stock_location_code_label'),
+          help:  Spree.t('spree_avatax_official.stock_location_code_help') %>
+    <% unless f.object.default? %>
+      <%= f.spree_check_box :active %>
+    <% end %>
+  </div>
+</div>
+<div class="card mb-6">
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= Spree.t(:address) %>
+    </h5>
+  </div>
+  <div class="card-body pb-0">
+    <%= render 'spree/addresses/form',
+                address_name: 'address',
+                address_form: f,
+                address_type: 'stock_location',
+                address: f.object %>
+  </div>
+</div>

@@ -21,6 +21,10 @@
             { include_blank: false, label: Spree.t('admin.integrations.avalara.endpoint') } %>
 
     <%= preference_field(@integration, form, 'company_code', i18n_scope: 'admin.integrations.avalara') %>
+
+    <% if form.object.persisted? %>
+      <%= form.spree_check_box :active, label: Spree.t('admin.integrations.avalara.active') %>
+    <% end %>
   </div>
 </div>
 
