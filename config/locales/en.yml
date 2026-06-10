@@ -30,6 +30,8 @@ en:
       exemption_number: Exemption number
       endpoint_sandbox: Sandbox
       endpoint_production: Production
+      stock_location_code_label: Avalara reporting location code
+      stock_location_code_help: Sent to AvaTax as the reporting location code (outlet) for orders shipped from this location.
     admin:
       integrations:
         avalara:

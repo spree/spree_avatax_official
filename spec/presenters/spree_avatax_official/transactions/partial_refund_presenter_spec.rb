@@ -14,6 +14,7 @@ describe SpreeAvataxOfficial::Transactions::PartialRefundPresenter, :avalara_int
     {
       type:                     'ReturnInvoice',
       companyCode:              order.avalara_integration&.preferred_company_code.presence || order.store.try(:avatax_company_code),
+      reportingLocationCode:    order.avatax_reporting_location_code,
       referenceCode:            order.number,
       code:                     "#{order.number}-1",
       date:                     order.updated_at.strftime('%Y-%m-%d'),

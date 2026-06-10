@@ -5,6 +5,7 @@ module SpreeAvataxOfficial
         base.register_update_hook :recalculate_avatax_taxes
 
         base.has_many :avatax_transactions, class_name: 'SpreeAvataxOfficial::Transaction'
+        base.has_many :stock_locations, through: :shipments
 
         base.has_one :avatax_sales_invoice_transaction, -> { where(transaction_type: 'SalesInvoice') },
                      class_name: 'SpreeAvataxOfficial::Transaction',
@@ -44,6 +45,13 @@ module SpreeAvataxOfficial
 
       def line_items_discounted_in_avatax?
         adjustments.promotion.eligible.any?
+      end
+
+      # Distinct, comma-joined `code`s of every stock location the order ships from,
+      # sent to Avalara as the transaction-level `reportingLocationCode`.
+      # @return [String, nil]
+      def avatax_reporting_location_code
+        stock_locations.filter_map { |stock_location| stock_location.code.presence }.uniq.join(',').presence
       end
 
       def tax_address_symbol
