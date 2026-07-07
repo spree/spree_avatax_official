@@ -34,6 +34,7 @@ en:
       integrations:
         avalara:
           description: Real-time tax calculation and filing via Avalara AvaTax.
+          active: Enabled
           stock_location_address_info: To correctly calculate tax, each %{stock_location_link} must have a complete address - AvaTax uses it as the origin address to calculate tax.
           stock_location_link_label: stock location
           account_number: Account number

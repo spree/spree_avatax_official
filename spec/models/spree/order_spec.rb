@@ -14,6 +14,44 @@ describe Spree::Order do
     end
   end
 
+  describe '#avatax_reporting_location_code' do
+    let(:order) { create(:order) }
+
+    context 'without shipments' do
+      it 'returns nil' do
+        expect(order.avatax_reporting_location_code).to be_nil
+      end
+    end
+
+    context 'when the order ships from multiple stock locations with admin names' do
+      let(:location_a) { create(:stock_location, name: 'Avatax Loc A', admin_name: 'A') }
+      let(:location_b) { create(:stock_location, name: 'Avatax Loc B', admin_name: 'B') }
+
+      before do
+        create(:avatax_shipment, order: order, stock_location: location_a)
+        create(:avatax_shipment, order: order, stock_location: location_b)
+        order.shipments.reload
+      end
+
+      it 'returns the comma-separated admin names of every shipment stock location' do
+        expect(order.avatax_reporting_location_code).to eq 'A,B'
+      end
+    end
+
+    context 'when the shipment stock location has no admin name' do
+      let(:location) { create(:stock_location, name: 'Avatax Loc C', admin_name: nil) }
+
+      before do
+        create(:avatax_shipment, order: order, stock_location: location)
+        order.shipments.reload
+      end
+
+      it 'returns nil' do
+        expect(order.avatax_reporting_location_code).to be_nil
+      end
+    end
+  end
+
   describe '#cancel', :avalara_integration do
     let!(:avatax_tax_rate) { create(:avatax_tax_rate) }
     let(:order) { create(:order, ship_address: create(:usa_address)) }

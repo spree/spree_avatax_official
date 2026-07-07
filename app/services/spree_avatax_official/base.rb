@@ -2,8 +2,8 @@ module SpreeAvataxOfficial
   class Base
     prepend ::Spree::ServiceModule::Base
 
-    APP_NAME           = 'a0o0b000005HsXPAA0'.freeze
-    APP_VERSION        = 'Spree by Spark'.freeze
+    APP_NAME           = 'SpreebySpark;a0n0b00000PqwGxAAJ'.freeze
+    APP_VERSION        = SpreeAvataxOfficial::VERSION
     SUCCESS_STATUSES   = [200, 201].freeze
     CONNECTION_OPTIONS = ::AvaTax::Configuration::DEFAULT_CONNECTION_OPTIONS.merge(
       request: {
