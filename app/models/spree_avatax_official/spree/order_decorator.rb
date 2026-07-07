@@ -47,11 +47,11 @@ module SpreeAvataxOfficial
         adjustments.promotion.eligible.any?
       end
 
-      # Distinct, comma-joined `code`s of every stock location the order ships from,
+      # Distinct, comma-joined `admin_name`s of every stock location the order ships from,
       # sent to Avalara as the transaction-level `reportingLocationCode`.
       # @return [String, nil]
       def avatax_reporting_location_code
-        stock_locations.filter_map { |stock_location| stock_location.code.presence }.uniq.join(',').presence
+        stock_locations.filter_map { |stock_location| stock_location.admin_name.presence }.uniq.join(',').presence
       end
 
       def tax_address_symbol

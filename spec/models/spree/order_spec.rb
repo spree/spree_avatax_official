@@ -23,9 +23,9 @@ describe Spree::Order do
       end
     end
 
-    context 'when the order ships from multiple stock locations with codes' do
-      let(:location_a) { create(:stock_location, name: 'Avatax Loc A', code: 'A') }
-      let(:location_b) { create(:stock_location, name: 'Avatax Loc B', code: 'B') }
+    context 'when the order ships from multiple stock locations with admin names' do
+      let(:location_a) { create(:stock_location, name: 'Avatax Loc A', admin_name: 'A') }
+      let(:location_b) { create(:stock_location, name: 'Avatax Loc B', admin_name: 'B') }
 
       before do
         create(:avatax_shipment, order: order, stock_location: location_a)
@@ -33,13 +33,13 @@ describe Spree::Order do
         order.shipments.reload
       end
 
-      it 'returns the comma-separated codes of every shipment stock location' do
+      it 'returns the comma-separated admin names of every shipment stock location' do
         expect(order.avatax_reporting_location_code).to eq 'A,B'
       end
     end
 
-    context 'when the shipment stock location has no code' do
-      let(:location) { create(:stock_location, name: 'Avatax Loc C', code: nil) }
+    context 'when the shipment stock location has no admin name' do
+      let(:location) { create(:stock_location, name: 'Avatax Loc C', admin_name: nil) }
 
       before do
         create(:avatax_shipment, order: order, stock_location: location)
