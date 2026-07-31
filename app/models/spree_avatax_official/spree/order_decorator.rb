@@ -42,6 +42,31 @@ module SpreeAvataxOfficial
         adjustments.promotion.eligible.sum(:amount).abs
       end
 
+      # Whether AvaTax results should be presented as tax-included for this
+      # order. Resolved from the order's tax destination (the country of the
+      # tax address) rather than the browsing market, so switching currency
+      # does not flip tax presentation for a fixed billing/shipping zone.
+      # Falls back to the browsing market, then to +false+, when the
+      # destination has no dedicated market.
+      #
+      # @return [Boolean]
+      def avatax_tax_inclusive?
+        avatax_tax_market&.tax_inclusive || false
+      end
+
+      # The market that governs tax presentation for this order: the one that
+      # covers the tax address country, independent of the currency the
+      # customer is browsing in.
+      #
+      # @return [Spree::Market, nil]
+      def avatax_tax_market
+        country = tax_address&.country
+        return market unless country && store
+
+        store.markets.joins(:countries).
+          where(::Spree::Country.table_name => { id: country.id }).first || market
+      end
+
       def line_items_discounted_in_avatax?
         adjustments.promotion.eligible.any?
       end

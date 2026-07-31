@@ -57,7 +57,7 @@ module SpreeAvataxOfficial
 
       tax_rate = find_or_create_tax_rate(item, avatax_item)
 
-      store_pre_tax_amount(item, tax_rate, tax_amount)
+      store_pre_tax_amount(item, tax_amount)
 
       create_tax_adjustment(item, tax_rate, tax_amount)
     end
@@ -71,17 +71,33 @@ module SpreeAvataxOfficial
       end
     end
 
+    # Looks up the shared tax rate by its stable identity (name, zone, tax
+    # category) only. Matching on the AvaTax +amount+ or +included_in_price+
+    # here would spawn a duplicate row every time an address change moved the
+    # rate or a currency switch flipped inclusiveness. +amount+ is kept
+    # current for the label, but +included_in_price+ is written once at
+    # creation and never rewritten: it is a property of the tax zone, not of
+    # a single order, so mutating it on a shared row corrupts tax
+    # presentation for every other order in that zone.
     def find_or_create_tax_rate(item, avatax_item)
-      ::Spree::TaxRate.find_or_create_by!(
-        name:               tax_rate_name,
-        amount:             sum_rates_from_details(avatax_item),
-        zone:               item.tax_zone&.reload,
-        tax_category:       item.tax_category,
+      amount = sum_rates_from_details(avatax_item)
+
+      tax_rate = ::Spree::TaxRate.create_with(
+        amount:             amount,
         show_rate_in_label: false,
-        included_in_price:  item.included_in_price
-      ) do |tax_rate|
-        tax_rate.calculator = SpreeAvataxOfficial::Calculator::AvataxTransactionCalculator.new
-      end
+        included_in_price:  item.included_in_price,
+        calculator:         SpreeAvataxOfficial::Calculator::AvataxTransactionCalculator.new
+      ).find_or_create_by!(
+        name:         tax_rate_name,
+        zone:         item.tax_zone&.reload,
+        tax_category: item.tax_category
+      )
+
+      tax_rate.update_column(:amount, amount) if tax_rate.amount != amount
+
+      tax_rate
+    rescue ActiveRecord::RecordNotUnique
+      retry
     end
 
     def tax_rate_name
@@ -98,13 +114,19 @@ module SpreeAvataxOfficial
       )
     end
 
-    def store_pre_tax_amount(item, tax_rate, tax_amount)
+    # Nets the item's pre-tax amount using how this item's tax was actually
+    # computed (+item.included_in_price+, i.e. the value sent to AvaTax as
+    # +taxIncluded+), not the shared tax rate row's frozen flag. The two can
+    # diverge when a tax zone spans destinations with different inclusiveness;
+    # keying off the item keeps the persisted subtotal reconciled with the
+    # tax adjustment and the order total.
+    def store_pre_tax_amount(item, tax_amount)
       pre_tax_amount = case item.class.name.demodulize
                        when 'LineItem' then item.discounted_amount
                        when 'Shipment' then item.discounted_cost
                        end
 
-      pre_tax_amount -= tax_amount if tax_rate.included_in_price?
+      pre_tax_amount -= tax_amount if item.included_in_price
 
       item.update_column(:pre_tax_amount, pre_tax_amount)
     end
