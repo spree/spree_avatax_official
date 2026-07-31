@@ -115,6 +115,25 @@ describe SpreeAvataxOfficial::CreateTaxAdjustmentsService, :avalara_integration 
         end
       end
 
+      context 'when recalculating after the stored tax rate has drifted' do
+        let(:order)     { create(:avatax_order, with_shipment: true, line_items_count: 1, ship_address: usa_address) }
+        let(:line_item) { order.line_items.first }
+
+        it 'reuses the row instead of creating a duplicate, refreshes the amount, and leaves included_in_price untouched' do
+          VCR.use_cassette('spree_avatax_official/create_tax_adjustments/tax_excluded/line_item_and_shipment') do
+            subject
+
+            tax_rate          = Spree::TaxRate.find_by(name: 'AvaTax Official Tax Rate', tax_category: line_item.tax_category)
+            original_included = tax_rate.included_in_price
+            tax_rate.update_column(:amount, 0.99)
+
+            expect { described_class.call(order: order) }.not_to change { Spree::TaxRate.count }
+            expect(tax_rate.reload.amount).not_to eq(0.99)
+            expect(tax_rate.included_in_price).to eq(original_included)
+          end
+        end
+      end
+
       context 'with multiple line items with multiple quantity' do
         let(:order) { create(:avatax_order, with_shipment: true, ship_address: usa_address) }
         let(:first_line_item) { order.line_items.first }

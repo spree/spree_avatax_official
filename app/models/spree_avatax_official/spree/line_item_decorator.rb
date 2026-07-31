@@ -8,7 +8,7 @@ module SpreeAvataxOfficial
       end
 
       def included_in_price
-        order.market&.tax_inclusive || false
+        order&.avatax_tax_inclusive? || false
       end
 
       def avatax_tax_code

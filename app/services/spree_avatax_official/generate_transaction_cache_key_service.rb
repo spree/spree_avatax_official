@@ -93,11 +93,9 @@ module SpreeAvataxOfficial
     end
 
     def market_cache_key(order)
-      market = order.market
-
       [
-        market&.id,
-        market&.tax_inclusive
+        order.market&.id,
+        order.avatax_tax_inclusive?
       ].join('-')
     end
   end
